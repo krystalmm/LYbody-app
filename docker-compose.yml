@@ -1,0 +1,47 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/LYbody
+      - bundle_path:/bundle
+      - public-data:/LYbody/public
+      - tmp-data:/LYbody/tmp
+      - log-data:/LYbody/log
+    environment:
+      - BUNDLE_PATH=/bundle
+    depends_on:
+      - db
+      - chrome
+      
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    # ports:
+    #   - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
+      
+  nginx:
+    build: ./nginx_docker
+    volumes:
+      - public-data:/LYbody/public
+      - tmp-data:/LYbody/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  bundle_path:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:
