@@ -24,11 +24,9 @@
 * ER図
 https://app.diagrams.net/#G1t_YOgt5Ajguem_MlGS0Lx_N9UccJ0Tig
 
-* テーブル定義書
-https://docs.google.com/spreadsheets/d/14DiCaDb-yX9gor5FPFDjbI3Jjy0qpRsr/edit#gid=295174056
+* テーブル設計書
 
-* アプリケーション詳細設計書
-https://docs.google.com/spreadsheets/d/1lfx-xfpKFh563OqhFzn50xOLC-EpE1cE/edit#gid=670534430
+
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1zEFPaBFNXamLd9ti4T9cmBucDQ6VpfFjD2NiNodrttU/edit#gid=0
@@ -43,5 +41,5 @@ https://docs.google.com/spreadsheets/d/1zEFPaBFNXamLd9ti4T9cmBucDQ6VpfFjD2NiNodr
 * Docker/Docker-compose
 
 ## 使用素材
-* O-DAN
-https://o-dan.net/ja/
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
