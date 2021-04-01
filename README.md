@@ -16,22 +16,9 @@
 自宅で正しいトレーニングをしたいユーザ（筋トレ・bodymake初心者）
 
 ### 主な利用シーン
-好きなインストラクターを選び、レッスンの予約ができる。（レッスンはZoomで行う）
-チャット機能でインストラクターに疑問点を質問できる。
+自宅で気軽にトレーニングを始めたいときや、ジムに通いたいが感染症が気になるとき、自宅付近にジムがないとき
 
-
-## 設計書
-* ER図
-https://app.diagrams.net/#G1t_YOgt5Ajguem_MlGS0Lx_N9UccJ0Tig
-
-* テーブル定義書
-https://docs.google.com/spreadsheets/d/14DiCaDb-yX9gor5FPFDjbI3Jjy0qpRsr/edit#gid=295174056
-
-* アプリケーション詳細設計書
-https://docs.google.com/spreadsheets/d/1lfx-xfpKFh563OqhFzn50xOLC-EpE1cE/edit#gid=670534430
-
-
-## チャレンジ要素一覧
+## 機能一覧
 https://docs.google.com/spreadsheets/d/1zEFPaBFNXamLd9ti4T9cmBucDQ6VpfFjD2NiNodrttU/edit#gid=0
 
 ## 開発環境
