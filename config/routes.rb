@@ -7,4 +7,9 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     registrations: 'public/registrations',
   }
+
+  scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+  end
 end
