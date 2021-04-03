@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :instructors, only: :sessions, controllers: {
-    sessions: 'admin/sessions'
+    sessions: 'instructors/sessions'
   }
 
   devise_for :users, only: [:sessions, :registrations], controllers: {
