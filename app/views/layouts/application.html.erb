@@ -10,10 +10,11 @@
   </head>
 
   <body>
+    <%= render 'shared/header' %>
+    <%= render 'shared/flash_message' %>
     <div class="ui container">
-      <p class="notice"><%= notice %></p>
-      <p class="ui error message alert"><%= alert %></p>
       <%= yield %>
     </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
