@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_012704) do
+ActiveRecord::Schema.define(version: 2021_04_03_012952) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2021_04_03_012704) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
+  end
+
+  create_table "instructor_lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "instructor_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instructor_id"], name: "index_instructor_lessons_on_instructor_id"
+    t.index ["lesson_id"], name: "index_instructor_lessons_on_lesson_id"
   end
 
   create_table "instructors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,6 +101,8 @@ ActiveRecord::Schema.define(version: 2021_04_03_012704) do
 
   add_foreign_key "cards", "users"
   add_foreign_key "chats", "rooms"
+  add_foreign_key "instructor_lessons", "instructors"
+  add_foreign_key "instructor_lessons", "lessons"
   add_foreign_key "reservations", "instructors"
   add_foreign_key "reservations", "users"
   add_foreign_key "rooms", "instructors"
