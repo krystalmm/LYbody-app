@@ -33,8 +33,30 @@ li {
   list-style: none;
 }
 
+a {
+  color: #e4e4e4;
+
+  &:hover {
+    color: #e4e4e4;
+    opacity: 0.6;
+    transition: opacity .3s ease;
+  }
+}
+
 header {
   border-bottom: 1px solid #8b8b8b;
+
+  li {
+    padding-right: 30px;
+  }
+
+  .navbar-toggler {
+    border-color: #e4e4e4;
+  }
+
+  .navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(228,228,228,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24' /%3E%3C/svg%3E");
+  }
 }
 
 
