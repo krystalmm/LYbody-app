@@ -1,8 +1,8 @@
 module ApplicationHelper
   def flash_class(type)
     case type
-    when 'success', 'notice' then 'ui success message'
-    when 'danger', 'alert' then 'ui error message'
+    when 'success', 'notice' then 'alert-success'
+    when 'danger', 'alert' then 'alert-danger'
     end
   end
 end
