@@ -14,21 +14,19 @@ services:
     depends_on:
       - db
       - chrome
-      
+
   db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
-    # ports:
-    #   - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
-      
+
   chrome:
     image: selenium/standalone-chrome:latest
     ports:
       - 4444:4444
-      
+
   nginx:
     build: ./nginx_docker
     volumes:
