@@ -38,6 +38,7 @@ a {
 
   &:hover {
     color: #e4e4e4;
+    text-decoration: none;
     opacity: 0.6;
     transition: opacity .3s ease;
   }
@@ -59,4 +60,7 @@ header {
   }
 }
 
+footer {
+  border-top: 1px solid #8b8b8b;
+}
 
