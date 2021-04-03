@@ -27,6 +27,13 @@
 body {
   background-color: #151515;
   color: #e4e4e4;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 li {
@@ -62,5 +69,19 @@ header {
 
 footer {
   border-top: 1px solid #8b8b8b;
+}
+
+
+// public/top page
+
+.main-content {
+  position: relative;
+
+  .main-content-sub {
+    font-size: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
 
