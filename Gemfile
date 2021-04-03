@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'devise'
 gem 'dotenv-rails'
+gem 'jquery-rails'
 gem 'mini_magick'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
