@@ -1,0 +1,16 @@
+<header>
+  <div class="ui stackable  column grid">
+    <a href="/" class="left floated column">
+      <%= image_tag asset_path('logo.png'), :size => '150x100' %>
+    </a>
+    <ul class="ui inverted secondary pointing menu right floated column">
+      <% if instructor_signed_in? %>
+        <li></li>
+      <% elsif user_signed_in? %>
+        <li></li>
+      <% else %>
+        <li><%= link_to "About", about_path, class: 'item' %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>

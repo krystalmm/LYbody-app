@@ -41,7 +41,8 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'bootstrap', '~> 4.5'
+gem 'font-awesome-sass', '~>5.13'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
