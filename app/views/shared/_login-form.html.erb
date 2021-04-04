@@ -4,7 +4,7 @@
       <dt><%= f.label :email, "メールアドレス" %></dt>
       <dd>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control col-7 validate[required, custom[email]]' %>
-        <dt></dt> <small class="form-text text-muted email-help">ご登録頂いているメールアドレスをご入力ください。</small>
+        <dt></dt><small class="form-text text-muted email-help">ご登録頂いているメールアドレスをご入力ください。</small>
       </dd>
       <dt class="mt-4"><%= f.label :password, "パスワード" %></dt>
       <dd class="mt-4"><%= f.password_field :password , autofocus: true, autocomplete: "current-password", placeholder: 'パスワードを入力してください', class: 'form-control col-7 validate[required, minSize[8]]' %></dd>

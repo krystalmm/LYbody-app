@@ -3,3 +3,9 @@ $(document).on('turbolinks:load', function(){
     promptPosition: "topLeft", scrollOffset: 140
   });
 });
+
+$(document).on('turbolinks:load', function(){
+  $('#user-form').validationEngine('attach', {
+    promptPosition: "topLeft", scrollOffset: 140
+  });
+});

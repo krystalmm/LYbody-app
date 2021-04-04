@@ -141,13 +141,16 @@
                 },
                 "validate2fields": {
                     "alertText": "* 『HELLO』と入力してください"
-                }
+                },
+                "katakana": {
+                    "regex": /^[ア-ンァ-ォャ-ョー\s 　]+$/,
+                    "alertText": "全角カタカナで入力してください"
+                },
             };
-            
+
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
 
 
-    
