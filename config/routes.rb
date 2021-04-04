@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
   }
 
+  namespace :instructors do
+    get '/' => 'homes#top'
+  end
+
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
