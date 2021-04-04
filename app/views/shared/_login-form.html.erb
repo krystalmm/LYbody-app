@@ -1,0 +1,8 @@
+<div class="col-10 offset-1 pt-3">
+  <%= form_with model: model, url: url, local: true do |f| %>
+    <dl>
+      <dt><%= f.label :email, "メールアドレス" %></dt>
+      <dd><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control col-7' %></dd>
+    </dl>
+  <% end %>
+</div>

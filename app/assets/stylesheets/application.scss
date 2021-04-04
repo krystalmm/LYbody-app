@@ -24,6 +24,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   background-color: #151515;
   color: #e4e4e4;
@@ -52,7 +56,6 @@ a {
 }
 
 header {
-  border-bottom: 1px solid #8b8b8b;
 
   li {
     padding-right: 30px;
@@ -76,6 +79,7 @@ footer {
 
 .border-heading-bottom {
   border-bottom: 1px solid #8b8b8b;
+  padding-bottom: 10px;
 }
 
 .border-heading-side {
@@ -100,6 +104,18 @@ footer {
   }
 }
 
+// form-layouts
+
+dl dt {
+  float: left;
+  clear: both;
+  font-weight: normal;
+  padding-top: 5px;
+  margin-right: 60px;
+  margin-left: 15px;
+}
+
+
 
 // public/top page
 
@@ -116,7 +132,30 @@ footer {
 
 // public/about page
 
-.about-top-content {
-  border: 1px solid #c2a8ff;
+.about {
+  font-size: 18px;
+  line-height: 40px;
+
+  .about-top-content {
+    border: 1px solid #c2a8ff;
+  }
 }
 
+
+
+// タプレットサイズ(768px)以下
+
+@media screen and (max-width:768px) {
+  html {
+    font-size: 2vw;
+  }
+}
+
+
+// スマホサイズ(425px)以下
+
+@media screen and (max-width:425px) {
+  html {
+    font-size: 2.5vw;
+  }
+}
