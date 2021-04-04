@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LYbody</title>
+    <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="stylesheets/validationEngine.jquery.css">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="javascripts/jquery.validationEngine-ja.js"></script>
     <script src="javascripts/jquery.validationEngine.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
