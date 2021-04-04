@@ -3,6 +3,11 @@
     <dl>
       <dt><%= f.label :email, "メールアドレス" %></dt>
       <dd><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control col-7' %></dd>
+      <dt><%= f.label :password, "パスワード" %></dt>
+      <dd>
+        <%= f.password_field :password , autofocus: true, autocomplete: "current-password", class: 'form-control col-7' %>
+        <dt></dt> <small class="form-text text-muted password-help">パスワードは8文字以上で設定してください。</small>
+      </dd>
     </dl>
   <% end %>
 </div>

@@ -110,9 +110,18 @@ dl dt {
   float: left;
   clear: both;
   font-weight: normal;
-  padding-top: 5px;
+  width: 165px;
+  padding: 10px 0;
   margin-right: 60px;
   margin-left: 15px;
+}
+
+dl dd {
+  padding: 10px 0;
+}
+
+.password-help {
+  margin-top: -10px;
 }
 
 
