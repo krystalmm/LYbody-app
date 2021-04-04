@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="login col-8 offset-2">
-      <h3 class="border-heading-bottom mb-5">ログイン</h3>
+      <h2 class="border-heading-bottom mb-5">ログイン</h2>
       <%= render 'shared/login-form', model: @user, url: user_session_path %>
+      <h4 class="border-heading-side my-5 pt-5">メンバー登録がお済みでない方</h4>
+      <div class="signup-link col-10 offset-1 text-center pb-5 mb-5">
+        <%= link_to "新規登録する", new_user_registration_path, class: 'btn btn-outline-light btn-lg px-5 my-5' %>
+      </div>
     </div>
   </div>
 </div>

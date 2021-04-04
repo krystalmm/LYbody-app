@@ -50,8 +50,6 @@ a {
   &:hover {
     color: #e4e4e4;
     text-decoration: none;
-    opacity: 0.6;
-    transition: opacity .3s ease;
   }
 }
 
@@ -59,6 +57,11 @@ header {
 
   li {
     padding-right: 30px;
+  }
+
+  a:hover {
+    opacity: 0.6;
+    transition: opacity .3s ease;
   }
 
   .navbar-toggler {
@@ -120,7 +123,7 @@ dl dd {
   padding: 10px 0;
 }
 
-.password-help {
+.email-help {
   margin-top: -10px;
 }
 
