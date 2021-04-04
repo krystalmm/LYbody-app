@@ -72,6 +72,35 @@ footer {
 }
 
 
+// text-border
+
+.border-heading-bottom {
+  border-bottom: 1px solid #8b8b8b;
+}
+
+.border-heading-side {
+  color: #e4e4e4;
+  display: flex;
+  align-items: center;
+
+  &:before, &:after {
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    background: #8b8b8b;
+    display: block;
+  }
+
+  &:before {
+    margin-right: 1em;
+  }
+
+  &:after {
+    margin-left: 1em;
+  }
+}
+
+
 // public/top page
 
 .main-content {
@@ -83,5 +112,11 @@ footer {
     bottom: 0;
     right: 0;
   }
+}
+
+// public/about page
+
+.about-top-content {
+  border: 1px solid #c2a8ff;
 }
 
