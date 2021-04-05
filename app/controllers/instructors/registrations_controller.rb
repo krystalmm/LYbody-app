@@ -42,7 +42,7 @@ class Instructors::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :mind, :comment])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :instructor_image, :mind, :comment])
   end
 
   def after_update_path_for(resource)
