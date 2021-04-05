@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :instructors do
     get '/' => 'homes#top'
+    get '/mypage' => 'instructors#show'
   end
 
   scope module: :public do

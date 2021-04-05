@@ -7,7 +7,7 @@
     <div class="signup col-md-8 offset-md-2 mb-5 pb-5">
       <h2 class="border-heading-bottom mb-5">新規登録</h2>
       <p class="mb-5 col-12 ml-2">※<span class="essential-icon ml-2">必須</span> は入力必須項目です。</p>
-      <%= render 'shared/user-form', model: @user, url: user_registration_path, submit_text: '登録する', password_class: 'form-control validate[required, minSize[8], custom[onlyLetterNumber]] mt-2', password_confirmation_class: 'form-control validate[required, equals[password], minSize[8], custom[onlyLetterNumber]] mt-2' %>
+      <%= render 'shared/user-form', model: @user, url: user_registration_path, submit_text: '登録する' %>
     </div>
   </div>
 </div>
