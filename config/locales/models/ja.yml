@@ -26,6 +26,7 @@ ja:
         name: インストラクター名
         email: メールアドレス
         password: パスワード
+        instructor_image: インストラクター画像
         mind: 心掛け
         comment: 一言
       reservation:
