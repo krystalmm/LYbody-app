@@ -1,7 +1,58 @@
+<% provide(:title, 'マイページ | LYbody') %>
+
+<%= render 'shared/backpage' %>
+
 <div class="container">
   <div class="row">
-    <div class="mypage">
-      
+    <div class="mypage col-10 offset-1">
+      <h2 class="border-heading-bottom mb-5">マイページ</h2>
+      <div class="user-info border-bottom pb-4">
+        <h4 class="border-heading-side my-5 pt-3">ご登録情報</h4>
+        <table class="table table-borderless table-sm col-md-8 offset-md-2 col-10 offset-1">
+          <tbody>
+            <tr>
+              <td class="td-left">氏名</td>
+              <td><%= current_user.fullname %></td>
+            </tr>
+            <tr>
+              <td>カナ</td>
+              <td><%= current_user.kana_fullname %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= current_user.email %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= current_user.phone_number %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="edit-link text-right pr-5">
+          <%= link_to root_path, class: 'border-bottom hover-link' do %>
+            登録情報を編集する　→
+          <% end %>
+        </div>
+      </div>
+      <div class="mypage-bottom mt-5">
+        <%# <% if current_user.reservations.present? %>
+          <div class="reservation-info col-md-8 offset-md-2 border p-4">
+            <p class="mb-0">
+              <%= current_user.firstname %>さんの次回のレッスン予約日時は、
+            </p>
+            <p class="text-right mb-0">
+              <span class="reservation-important">3月29日 18:00 ~ 19:00（インストラクター：New）</span>です。
+            </p>
+          </div>
+        <%# <% else %>
+          <div class="pay-link text-center">
+            <%= link_to "支払いをして入会する", root_path, class: 'btn btn-outline-light btn-lg px-5' %>
+          </div>
+        <%# <% end %>
+      </div>
+      <div class="withdraw-link my-5 text-right">
+        <%= link_to "※ 退会をご希望の方はこちら", unsubcribe_users_path, class: 'hover-link' %>
+      </div>
     </div>
   </div>
 </div>
