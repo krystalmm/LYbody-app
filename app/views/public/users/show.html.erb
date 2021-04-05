@@ -29,7 +29,7 @@
           </tbody>
         </table>
         <div class="edit-link text-right pr-5">
-          <%= link_to root_path, class: 'border-bottom hover-link' do %>
+          <%= link_to edit_information_path, class: 'border-bottom hover-link' do %>
             登録情報を編集する　→
           <% end %>
         </div>
@@ -51,7 +51,7 @@
         <%# <% end %>
       </div>
       <div class="withdraw-link my-5 text-right">
-        <%= link_to "※ 退会をご希望の方はこちら", unsubcribe_users_path, class: 'hover-link' %>
+        <%= link_to "※ 退会をご希望の方はこちら", unsubcribe_path, class: 'hover-link' %>
       </div>
     </div>
   </div>

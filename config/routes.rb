@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resource :users, only: [:edit, :update] do
-      collection do
-        patch 'withdraw' => 'users#withdraw', as: 'withdraw'
-        get 'unsubcribe' => 'users#unsubcribe', as: 'unsubcribe'
-        get 'my_page' => 'users#show'
-      end
-    end
+    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
+    put 'users/withdraw' => 'users#withdraw'
+    get 'users/unsubcribe' => 'users#unsubcribe', as: 'unsubcribe'
+    get 'users/mypage' => 'users#show', as: 'mypage'
+    get 'users/information/edit' => 'users#edit', as: 'edit_information'
+    patch 'users/information' => 'users#update', as: 'update_information'
+    put 'users/information' => 'users#update'
   end
 end
