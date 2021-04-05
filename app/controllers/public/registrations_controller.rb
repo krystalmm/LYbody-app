@@ -38,11 +38,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :kana_firstname, :kana_lastname, :email, :password, :phone_number])
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def after_update_path_for(resource)
+    mypage_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

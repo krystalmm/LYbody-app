@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'users/unsubcribe' => 'users#unsubcribe', as: 'unsubcribe'
     get 'users/mypage' => 'users#show', as: 'mypage'
     get 'users/information/edit' => 'users#edit', as: 'edit_information'
-    patch 'users/information' => 'users#update', as: 'update_information'
+    patch 'users/information' => 'users#update'
     put 'users/information' => 'users#update'
   end
 end
