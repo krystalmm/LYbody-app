@@ -1,14 +1,14 @@
 <div class="col-10 offset-1 pt-3">
   <%= form_with model: model, url: url, id: 'login-form', local: true do |f| %>
-    <dl>
-      <dt><%= f.label :email, "メールアドレス" %></dt>
-      <dd>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control col-7 validate[required, custom[email]]' %>
-        <dt></dt><small class="form-text text-muted email-help">ご登録頂いているメールアドレスをご入力ください。</small>
-      </dd>
-      <dt class="mt-4"><%= f.label :password, "パスワード" %></dt>
-      <dd class="mt-4"><%= f.password_field :password , autofocus: true, autocomplete: "current-password", placeholder: 'パスワードを入力してください', class: 'form-control col-7 validate[required, minSize[8]]' %></dd>
-    </dl>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control validate[required, custom[email]]' %>
+      <small class="form-text text-muted email-help">ご登録頂いているメールアドレスをご入力ください。</small>
+    </div>
+    <div class="form-group mt-4">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password , autofocus: true, autocomplete: "current-password", placeholder: 'パスワードを入力してください', class: 'form-control validate[required, minSize[8]]' %>
+    </div>
     <div class="login-button text-center pt-4">
       <%= f.submit "ログインする", class: 'btn btn-outline-light btn-lg px-5 mt-5' %>
     </div>
