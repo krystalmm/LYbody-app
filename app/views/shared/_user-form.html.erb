@@ -3,7 +3,7 @@
     <div class="form-group">
       <%= f.label 'お名前' %><span class="essential-icon">必須</span>
       <div class="row mt-2 pl-4">
-        <%= f.label :firstname, '（性）', class: 'pt-1 pr-3' %>
+        <%= f.label :firstname, '（姓）', class: 'pt-1 pr-3' %>
         <%= f.text_field :firstname, autofocus: true, autocomplete: 'firstname', placeholder: '山田', class: 'form-control col-lg-4 col-3 validate[required] mr-lg-5' %>
         <%= f.label :lastname, '（名）', class: 'pt-1 pr-3' %>
         <%= f.text_field :lastname, autofocus: true, autocomplete: 'lastname', placeholder: '太郎', class: 'form-control col-lg-4 col-3 validate[required]' %>
@@ -12,7 +12,7 @@
     <div class="form-group mt-4">
       <%= f.label 'フリガナ' %><span class="essential-icon">必須</span>
       <div class="row mt-2 pl-4">
-        <%= f.label :kana_firstname, '（性）', class: 'pt-1 pr-3' %>
+        <%= f.label :kana_firstname, '（姓）', class: 'pt-1 pr-3' %>
         <%= f.text_field :kana_firstname, autofocus: true, autocomplete: 'kana_firstname', placeholder: 'ヤマダ', class: 'form-control col-lg-4 col-3 validate[required, custom[katakana]] mr-lg-5' %>
         <%= f.label :kana_lastname, '（名）', class: 'pt-1 pr-3' %>
         <%= f.text_field :kana_lastname, autofocus: true, autocomplete: 'kana_lastname', placeholder: 'タロウ', class: 'form-control col-lg-4 col-3 validate[required, custom[katakana]]' %>

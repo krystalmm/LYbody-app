@@ -1,0 +1,62 @@
+ja:
+  activerecord:
+    models:
+      user: 会員
+      instructor: インストラクター
+      reservation: 予約
+      room: チャットルーム
+      chat: チャット
+      card: カード
+      lesson: レッスン
+      instructor_lesson: インストラクターレッスン
+      review: レビュー
+      contact: お問い合わせ
+    attributes:
+      user:
+        firstname: 名前（姓）
+        lastname: 名前（名）
+        kana_firstname: フリガナ（姓）
+        kana_lastname: フリガナ（名）
+        email: メールアドレス
+        password: パスワード
+        phone_number: 電話番号
+        is_valid: 会員ステータス
+        is_payed: 入会ステータス
+      instructor:
+        name: インストラクター名
+        email: メールアドレス
+        password: パスワード
+        mind: 心掛け
+        comment: 一言
+      reservation:
+        user_id: ユーザーID
+        instructor_id: インストラクターID
+        start_time: 予約時間（開始）
+        end_time: 予約時間（終了）
+      room:
+        user_id: ユーザーID
+        instructor_id: インストラクターID
+      chat:
+        room_id: チャットルームID
+        is_user: ユーザーであるか
+        message: メッセージ
+      card:
+        user_id: ユーザーID
+        customer_id: カスタマーID
+        card_id: カードID
+      lesson:
+        lesson: レッスン
+      instructor_lesson:
+        instructor_id: インストラクターID
+        lesson_id: レッスンID
+      review:
+        instructor_id: インストラクターID
+        user_id: ユーザーID
+        comment: 投稿内容
+      contact:
+        name: 氏名
+        email: メールアドレス
+        message: お問い合わせ内容
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
