@@ -8,6 +8,7 @@ class DeviseCreateInstructors < ActiveRecord::Migration[5.2]
       t.string :encrypted_password, null: false, default: ""
 
       t.string :name, null: false
+      t.string :instructor_image, null: false
       t.text :mind, null: false
       t.string :comment, null: false
 
