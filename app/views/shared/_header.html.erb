@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg">
     <a href="/" class="navbar-brand">
-      <%= image_tag asset_path('logo'), :size => '160x100' %>
+      <%= image_tag asset_path('logo'), :size => '200x60' %>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,20 +9,61 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto pr-5">
         <% if instructor_signed_in? %>
-          <li><%= link_to "会員一覧", root_path, class: 'nav-link' %></li>
-          <li><%= link_to "マイページ", root_path, class: 'nav-link' %></li>
-          <li><%= link_to "ログアウト", destroy_instructor_session_path, class: 'nav-link', method: :delete %></li>
+          <li>
+            <%= link_to root_path, class: 'nav-link text-center' do %>
+              Users <br> 会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path, class: 'nav-link text-center' do %>
+              My Page <br> マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_instructor_session_path, class: 'nav-link text-center', method: :delete do %>
+              Sign Out <br> ログアウト
+            <% end %>
+          </li>
         <% elsif user_signed_in? %>
-          <li><%= link_to "マイページ", root_path, class: 'nav-link' %></li>
-          <li><%= link_to "インストラクター", root_path, class: 'nav-link' %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %></li>
+          <li>
+            <%= link_to root_path, class: 'nav-link text-center' do %>
+              My Page <br> マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path, class: 'nav-link text-center' do %>
+              Instructor <br> インストラクター
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, class: 'nav-link text-center', method: :delete do %>
+              Sign Out <br> ログアウト
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to "About", about_path, class: 'nav-link' %></li>
-          <li><%= link_to "インストラクター", root_path, class: 'nav-link' %></li>
-          <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %></li>
-          <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link' %></li>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-center' do %>
+              About <br> LYbodyについて
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path, class: 'nav-link text-center' do %>
+              Instructor <br> インストラクター
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: 'nav-link text-center' do %>
+              Sign Up <br> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, class: 'nav-link text-center' do %>
+              Sign In <br> ログイン
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
   </nav>
 </header>
+<div class="header-height"></div>
