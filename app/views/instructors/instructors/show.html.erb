@@ -1,1 +1,33 @@
-show
+<div class="container">
+  <div class="row">
+    <div class="instructor-mypage col-10 offset-1">
+      <h2 class="border-heading-bottom mb-5">マイページ</h2>
+      <div class="instructor-info">
+        <h4 class="border-heading-side my-5 pt-3">登録情報・レッスン追加</h4>
+        <div class="info-wrap d-flex px-5">
+          <div class="instructor-img">
+            <%= image_tag @instructor.instructor_image.url %>
+          </div>
+          <table class="table table-borderless table-sm">
+            <tbody>
+              <tr>
+                <td>インストラクター名</td>
+                <td><%= @instructor.name %></td>
+              </tr>
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= @instructor.email %></td>
+              </tr>
+              <tr>
+                <td>レッスン</td>
+                <td>
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

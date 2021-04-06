@@ -2,7 +2,7 @@ class InstructorImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [450, 570]
+  process resize_to_fill: [300, 380]
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development?
@@ -41,6 +41,10 @@ class InstructorImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fill: [200, 300]
+  end
+
+  version :thumb_sm do
+    process resize_to_fill: [130,190]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
