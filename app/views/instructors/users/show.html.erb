@@ -1,3 +1,46 @@
 <% provide(:title, '会員詳細 | LYbody - インストラクター') %>
 
 <%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="user-detail col-md-8 offset-md-2 col-10 offset-1">
+      <h2 class="border-heading-bottom mb-5"><%= @user.fullname %>さんの詳細</h2>
+      <div class="user-info px-5">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>会員ID</td>
+              <td><%= @user.id %></td>
+            </tr>
+            <tr>
+              <td>氏名</td>
+              <td><%= @user.fullname %></td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td><%= @user.kana_fullname %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= @user.phone_number %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td><%= is_valid_value(@user) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chat-link text-center mt-5 pt-3">
+        <%= link_to root_path, class: 'btn btn-outline-light' do %>
+          <%= @user.lastname %>さんとのチャットを見る
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

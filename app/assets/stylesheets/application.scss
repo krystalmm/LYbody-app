@@ -185,10 +185,6 @@ footer {
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  td {
-    border-top: 1px solid #8b8b8b !important;
-  }
-
   .table-sm-width {
     width: 15%;
   }
@@ -281,6 +277,19 @@ footer {
       opacity: 0.6;
       transition: opacity .3s ease;
     }
+
+    td {
+      border-top: 1px solid #8b8b8b !important;
+    }
+  }
+}
+
+
+// instructors/users show page
+
+.user-detail {
+  table {
+    font-size: 1.2rem;
   }
 }
 
