@@ -45,10 +45,6 @@ class Instructors::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :instructor_image, :mind, :comment])
   end
 
-  def after_update_path_for(resource)
-    instructors_mypage_path
-  end
-
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])

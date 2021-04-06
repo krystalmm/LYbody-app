@@ -1,2 +1,0 @@
-module Instructors::HomesHelper
-end
