@@ -10,7 +10,7 @@
       <ul class="navbar-nav ml-auto pr-5">
         <% if instructor_signed_in? %>
           <li>
-            <%= link_to root_path, class: 'nav-link text-center' do %>
+            <%= link_to instructors_users_path, class: 'nav-link text-center' do %>
               Users <br> 会員一覧
             <% end %>
           </li>
