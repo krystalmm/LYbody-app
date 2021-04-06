@@ -1,5 +1,9 @@
+<% provide(:title, 'インストラクターマイページ | LYbody') %>
+
+<%= render 'shared/backpage' %>
+
 <div class="container">
-  <%= render 'shared/error_messages', obj: @instructor %>
+  <%= render 'shared/error_messages', obj: @lesson %>
   <div class="row">
     <div class="instructor-mypage col-10 offset-1 mb-5 pb-3">
       <h2 class="border-heading-bottom mb-5">マイページ</h2>
@@ -22,8 +26,12 @@
               <tr>
                 <td>レッスン</td>
                 <td>
-                  <% @instructor.lessons.each do |lesson| %>
-                    <%= lesson.lesson %><%= link_to "レッスン削除", instructors_lesson_path(lesson), method: :delete, class: 'ml-2' %> <br>
+                  <% if @instructor.lessons.present? %>
+                    <% @instructor.lessons.each do |lesson| %>
+                      <%= lesson.lesson %><%= link_to "レッスン削除", instructors_lesson_path(current_instructor, lesson.id), method: :delete, class: 'ml-2' %> <br>
+                    <% end %>
+                  <% else %>
+                    <p>なし</p>
                   <% end %>
                 </td>
               </tr>

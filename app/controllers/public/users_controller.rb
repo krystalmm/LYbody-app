@@ -9,11 +9,7 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    if params[:user][:password].blank?
-      params[:user].delete("password")
-    end
     if @user.update(user_params)
-      sign_in(@user, :bypass => true)
       redirect_to mypage_path, notice: 'ご登録情報の更新が完了しました。'
     else
       render :edit

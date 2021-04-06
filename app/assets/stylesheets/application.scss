@@ -53,6 +53,9 @@ a {
   }
 }
 
+
+// header
+
 header {
   width: 100%;
   position: fixed;
@@ -79,11 +82,15 @@ header {
   }
 }
 
+
 // headerの高さを出す
 .header-height {
   width: 100%;
   height: 90px;
 }
+
+
+// footer
 
 footer {
   border-top: 1px solid #8b8b8b;
@@ -132,6 +139,7 @@ footer {
   border: 1px solid #8b8b8b !important;
 }
 
+
 // 前に戻るリンク
 
 .backpage-wrap {
@@ -159,6 +167,7 @@ footer {
   }
 }
 
+
 // 必須アイコン
 
 .essential-icon {
@@ -168,12 +177,21 @@ footer {
   margin-left: 10px;
 }
 
+
 // table
+
 .table {
   color: #e4e4e4;
   table-layout: fixed;
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+
+// エラー時のフォーム
+
+.field_with_errors {
+  display: contents;
 }
 
 
@@ -190,6 +208,7 @@ footer {
   }
 }
 
+
 // public/about page
 
 .about {
@@ -200,6 +219,7 @@ footer {
     border: 1px solid #c2a8ff;
   }
 }
+
 
 // public/mypage
 
