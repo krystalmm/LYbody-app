@@ -1,9 +1,9 @@
 <div class="container">
   <%= render 'shared/error_messages', obj: @instructor %>
   <div class="row">
-    <div class="instructor-mypage col-10 offset-1">
+    <div class="instructor-mypage col-10 offset-1 mb-5 pb-3">
       <h2 class="border-heading-bottom mb-5">マイページ</h2>
-      <div class="instructor-info">
+      <div class="instructor-info border-bottom">
         <h4 class="border-heading-side my-5 pt-3">登録情報・レッスン追加</h4>
         <div class="info-wrap d-flex px-5">
           <div class="instructor-img">
@@ -30,7 +30,7 @@
             </tbody>
           </table>
         </div>
-        <div class="lesson-form mt-5">
+        <div class="lesson-form my-5">
           <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
             <div class="form-wrap d-flex justify-content-center">
               <%= f.label :lesson, "レッスン名", class: 'mr-4 pt-1' %>
@@ -38,6 +38,27 @@
               <%= f.submit "レッスンを追加する", class: 'btn btn-outline-light' %>
             </div>
           <% end %>
+        </div>
+      </div>
+      <div class="lesson-reservation border-bottom">
+        <h4 class="border-heading-side mb-5 mt-5">レッスン予約確認</h4>
+        <div class="reservation-list col-md-8 offset-md-2 mb-5">
+          <table class="table table-borderless table-sm">
+            <thead>
+              <tr>
+                <td>予約日時</td>
+                <td>予約者氏名</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @instructor.reservations.each do |reservation| %>
+              <tr>
+                <td><%= reservation.date_and_time %></td>
+                <td><%= reservation.user.fullname %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

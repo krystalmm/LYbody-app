@@ -5,6 +5,7 @@ class Instructor < ApplicationRecord
 
   has_many :instructor_lessons, dependent: :nullify
   has_many :lessons, through: :instructor_lessons
+  has_many :reservations, dependent: :destroy
 
   mount_uploader :instructor_image, InstructorImageUploader
 end
