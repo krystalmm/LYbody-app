@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render 'shared/error_messages', obj: @instructor %>
   <div class="row">
     <div class="instructor-mypage col-10 offset-1">
       <h2 class="border-heading-bottom mb-5">マイページ</h2>
@@ -6,9 +7,9 @@
         <h4 class="border-heading-side my-5 pt-3">登録情報・レッスン追加</h4>
         <div class="info-wrap d-flex px-5">
           <div class="instructor-img">
-            <%= image_tag @instructor.instructor_image.url %>
+            <%= image_tag @instructor.instructor_image.url(:thumb_sm) %>
           </div>
-          <table class="table table-borderless table-sm">
+          <table class="table table-borderless table-sm col-9 ml-5 mt-3">
             <tbody>
               <tr>
                 <td>インストラクター名</td>
@@ -21,11 +22,22 @@
               <tr>
                 <td>レッスン</td>
                 <td>
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  <% @instructor.lessons.each do |lesson| %>
+                    <%= lesson.lesson %><%= link_to "レッスン削除", instructors_lesson_path(lesson), method: :delete, class: 'ml-2' %> <br>
+                  <% end %>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="lesson-form mt-5">
+          <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
+            <div class="form-wrap d-flex justify-content-center">
+              <%= f.label :lesson, "レッスン名", class: 'mr-4 pt-1' %>
+              <%= f.text_field :lesson, class: 'form-control col-4 mr-5' %>
+              <%= f.submit "レッスンを追加する", class: 'btn btn-outline-light' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

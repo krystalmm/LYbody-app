@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :instructors do
     get '/' => 'instructors#show'
+    resources :lessons, only: [:create, :destroy]
   end
 
   scope module: :public do
