@@ -143,7 +143,6 @@ footer {
 // 前に戻るリンク
 
 .backpage-wrap {
-
   .backpage {
     margin-top: 10px;
     color: #e4e4e4;
@@ -243,6 +242,23 @@ footer {
   }
 }
 
+
+// instructors/mypage
+
+.instructor-mypage{
+  table {
+    font-size: 1.1rem;
+  }
+
+  .lesson-delete-link {
+    font-size: 0.9rem;
+
+    &:hover {
+      opacity: 0.6;
+      transition: opacity .3s ease;
+    }
+  }
+}
 
 
 // タプレットサイズ(768px)以下

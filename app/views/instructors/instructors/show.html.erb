@@ -13,7 +13,7 @@
           <div class="instructor-img">
             <%= image_tag @instructor.instructor_image.url(:thumb_sm) %>
           </div>
-          <table class="table table-borderless table-sm col-9 ml-5 mt-3">
+          <table class="table table-borderless table-sm col-10 ml-5 mt-3">
             <tbody>
               <tr>
                 <td>インストラクター名</td>
@@ -28,7 +28,7 @@
                 <td>
                   <% if @instructor.lessons.present? %>
                     <% @instructor.lessons.each do |lesson| %>
-                      <%= lesson.lesson %><%= link_to "レッスン削除", instructors_lesson_path(current_instructor, lesson.id), method: :delete, class: 'ml-2' %> <br>
+                      <%= lesson.lesson %><%= link_to "（削除する）", instructors_lesson_path(lesson.id), method: :delete, class: 'lesson-delete-link ml-2' %> <br>
                     <% end %>
                   <% else %>
                     <p>なし</p>

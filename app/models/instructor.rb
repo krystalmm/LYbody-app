@@ -3,7 +3,7 @@ class Instructor < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  has_many :instructor_lessons, dependent: :nullify
+  has_many :instructor_lessons, dependent: :destroy
   has_many :lessons, through: :instructor_lessons
   has_many :reservations, dependent: :destroy
 

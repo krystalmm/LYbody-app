@@ -12,7 +12,10 @@ class Instructors::LessonsController < ApplicationController
   end
 
   def destroy
-    @lesson = Lesson.find(params[:id])
+    @lesson = current_instructor.lessons.find(params[:id])
+    if @lesson.destroy
+      redirect_to instructors_path, notice: 'レッスンを削除しました。'
+    end
   end
 
   private
