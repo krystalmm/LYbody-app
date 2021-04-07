@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   namespace :instructors do
-    get '/' => 'instructors#show'
+    get '/mypage' => 'instructors#show'
     resources :lessons, only: [:create, :destroy]
     resources :users, only: [:index, :show]
   end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
     put 'users/withdraw' => 'users#withdraw'
     get 'users/unsubcribe' => 'users#unsubcribe', as: 'unsubcribe'
@@ -25,5 +26,7 @@ Rails.application.routes.draw do
     get 'users/information/edit' => 'users#edit', as: 'edit_information'
     patch 'users/information' => 'users#update'
     put 'users/information' => 'users#update'
+
+    resources :instructors, only: [:index, :show]
   end
 end
