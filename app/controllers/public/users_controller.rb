@@ -16,6 +16,16 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+  end
+
+  def withdraw
+    current_user.update(is_valid: false)
+    reset_session
+    flash[:info] = "ありがとうございました。またのご利用をお待ちしております。"
+    redirect_to root_path
+  end
+
   private
 
   def set_current_user

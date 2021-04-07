@@ -5,13 +5,7 @@ class ApplicationController < ActionController::Base
     when Instructor
       instructors_mypage_path
     when User
-      if current_user.is_valid == true
-        mypage_path
-      else
-        reset_session
-        flash[:notice] = 'このユーザーは退会済みです'
-        new_user_session_path
-      end
+      mypage_path
     end
   end
 
