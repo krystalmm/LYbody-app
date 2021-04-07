@@ -2,12 +2,12 @@
   <%= form_with model: model, url: url, id: 'login-form', local: true do |f| %>
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control validate[required, custom[email]]' %>
+      <%= f.email_field :email, autocomplete: "email", placeholder: 'lybody@example.com', class: 'form-control validate[required, custom[email]]' %>
       <small class="form-text text-muted email-help">ご登録頂いているメールアドレスをご入力ください。</small>
     </div>
     <div class="form-group mt-4">
       <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password , autofocus: true, autocomplete: "current-password", placeholder: 'パスワードを入力してください', class: 'form-control validate[required, minSize[8]]' %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: 'パスワードを入力してください', class: 'form-control validate[required, minSize[8]]' %>
     </div>
     <div class="login-button text-center pt-4">
       <%= f.submit "ログインする", class: 'btn btn-outline-light btn-lg px-5 mt-5' %>

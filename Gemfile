@@ -44,6 +44,7 @@ gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rails-i18n'
+gem 'seed-fu'
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass', '~>5.13'
 
