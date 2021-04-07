@@ -21,4 +21,24 @@ Instructor.seed do |s|
   s.name = "Kevin"
   s.email = "kevin@lybody.com"
   s.password = "kevinpassword"
+  s.instructor_image = File.open("./app/assets/images/instructor3.png")
+  s.comment = "運動することの楽しさを感じていただけると嬉しいです！一緒に頑張りましょう！"
+end
+
+Instructor.seed do |s|
+  s.id = 4
+  s.name = "Mary"
+  s.email = "mary@lybody.com"
+  s.password = "marypassword"
+  s.instructor_image = File.open("./app/assets/images/instructor4.png")
+  s.comment = "理想の体を手に入れて自分に自信を持って欲しいです！"
+end
+
+Instructor.seed do |s|
+  s.id = 5
+  s.name = "Nancy"
+  s.email = "nancy@lybody.com"
+  s.password = "nancypassword"
+  s.instructor_image = File.open("./app/assets/images/instructor5.png")
+  s.comment = "心身ともに強く美しくなっていただけるように全力でサポートします！"
 end
