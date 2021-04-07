@@ -1,0 +1,65 @@
+<% provide(:title, '- ' + @instructor.name + ' - | LYbody') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="instructor-detail col-12">
+      <h2 class="border-heading-bottom mb-5"><%= @instructor.name %></h2>
+      <div class="info-wrap d-flex px-5">
+        <div class="instructor-img pr-3">
+          <%= image_tag @instructor.instructor_image.url(:thumb) %>
+        </div>
+        <table class="table table-borderless col-9 ml-5 mt-4">
+          <tbody>
+            <tr>
+              <td>インストラクター名</td>
+              <td><%= @instructor.name %></td>
+            </tr>
+            <tr>
+              <td>担当レッスン</td>
+              <td>
+                <% @instructor.lessons.each do |lesson| %>
+                  <%= lesson.lesson %> <br>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>一言</td>
+              <td><%= @instructor.comment %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="links col-8 offset-2 d-flex justify-content-between mt-5">
+        <%= link_to "空き状況を確認する", root_path, class: 'btn btn-outline-light px-5' %>
+        <%= link_to "チャットで質問する", root_path, class: 'btn btn-outline-light px-5' %>
+      </div>
+      <div class="review mt-5 pt-5 col-10 offset-1">
+        <h4 class="border-heading-bottom mb-4"><i class="far fa-comments"></i> レッスンレビュー</h4>
+        <p class="text-right mr-4">レビュー件数：件</p>
+        <div class="review-content border p-5 mt-5">
+          <%# <% comments.each do |comment| %>
+            <div class="review-content-wrap d-flex">
+              <p class="review-user mr-5">レビュー投稿者： 投稿者名表示！</p>
+              <p>レビュー内容表示！</p>
+            </div>
+            <p class="text-right">投稿日： 投稿日表示！</p>
+            <%# <% if comment.user == current_user %>
+              <div class="delete-review text-right">
+                <%= link_to "レビューを削除する", root_path %>
+              </div>
+            <%# <% end %>
+          <%# <% end %>
+          <%# <% unless comments.exists? %>
+            <p class="text-center">レビューはまだありません。</p>
+          <%# <% end %>
+        </div>
+        <%# <% if user_signed_in? %>
+          <h4 class="border-heading-side my-5 pt-3">レビューを投稿する</h4>
+          <%# レビューのフォーム %>
+        <%# <% end %>
+      </div>
+    </div>
+  </div>
+</div>

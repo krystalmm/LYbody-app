@@ -247,13 +247,35 @@ footer {
 }
 
 
-// public/instructors
+// public/instructors page
 
 .public-instructors {
+  .instructor-name {
+    font-size: 1.2rem;
+  }
+
   .instructor-lessons {
     li:nth-child(1) {
-      margin-top: 20px;
+      margin-top: 10px;
     }
+  }
+
+  a img {
+    filter: grayscale(100%);
+  }
+
+  a img:hover {
+    filter: grayscale(0);
+    transition-duration: .3s;
+  }
+}
+
+
+// public/instructors show page
+
+.instructor-detail {
+  table {
+    font-size: 1.2rem;
   }
 }
 

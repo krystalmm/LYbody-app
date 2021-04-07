@@ -6,12 +6,16 @@
   <div class="row">
     <div class="public-instructors col-10 offset-1">
       <h2 class="border-heading-bottom mb-5">インストラクター</h2>
+      <p class="mb-5 pl-3">※ 画像をクリックすると、各インストラクターの詳細がご覧いただけます。</p>
       <ul class="instructor-list d-flex flex-wrap">
         <% @instructors.each do |instructor| %>
           <li class="instructor-list-item col-6 mb-5 pb-5">
             <div class="instructor-img text-center">
-              <%= image_tag instructor.instructor_image.url %>
+              <%= link_to instructor_path(instructor) do %>
+                <%= image_tag instructor.instructor_image.url %>
+              <% end %>
             </div>
+            <p class="instructor-name text-center mt-3"><%= instructor.name %></p>
             <ul class="instructor-lessons">
               <% instructor.lessons.each do |lesson| %>
                 <li class="instructor-lessons-item text-center">
