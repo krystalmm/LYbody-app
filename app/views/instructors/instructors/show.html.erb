@@ -38,11 +38,24 @@
             </tbody>
           </table>
         </div>
-        <div class="lesson-form my-5">
+        <div class="lesson-form my-5 col-10 offset-1">
           <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
-            <div class="form-wrap d-flex justify-content-center">
-              <%= f.label :lesson, "レッスン名", class: 'mr-4 pt-1' %>
-              <%= f.text_field :lesson, class: 'form-control col-4 mr-5' %>
+            <div class="existing-lesson-form d-flex">
+              <p class="pr-5 mr-3">
+                <%= radio_button_tag "lesson", "existing_lesson" %>
+                <%= f.label "既存のレッスンから選択して追加する" %>
+              </p>
+              <%= f.collection_select :lesson, Lesson.all, :id, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-5 ml-4' } %>
+            </div>
+            <div class="add-lesson-form d-flex mt-3">
+              <p class="mr-5 pr-4">
+                <%= radio_button_tag "lesson", "add_lesson" %>
+                <%= f.label "新しくレッスンを追加する" %>
+              </p>
+              <%= f.label :lesson, "レッスン名", class: 'mr-3 pt-1' %>
+              <%= f.text_field :lesson, class: 'form-control col-5 mr-5' %>
+            </div>
+            <div class="lesson-submit text-center mt-4">
               <%= f.submit "レッスンを追加する", class: 'btn btn-outline-light' %>
             </div>
           <% end %>
