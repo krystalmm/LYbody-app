@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_013611) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.string "instructor_image", null: false
+    t.boolean "has_lesson", default: false, null: false
     t.text "comment", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

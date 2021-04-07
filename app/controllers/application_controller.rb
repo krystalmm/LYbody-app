@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Instructor
-      instructors_path
+      instructors_mypage_path
     when User
       if current_user.is_valid == true
         mypage_path

@@ -9,6 +9,7 @@ class DeviseCreateInstructors < ActiveRecord::Migration[5.2]
 
       t.string :name, null: false
       t.string :instructor_image, null: false
+      t.boolean :has_lesson, null: false, default: false
       t.text :comment, null: false
 
       ## Recoverable

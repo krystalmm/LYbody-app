@@ -1,6 +1,6 @@
 class Public::InstructorsController < ApplicationController
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.where(has_lesson: true)
   end
 
   def show

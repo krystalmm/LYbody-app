@@ -44,7 +44,7 @@
           <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
             <div class="existing-lesson-form d-flex">
               <p class="pr-5 mr-3">
-                <%= radio_button_tag :lesson_button, "existing_lesson" %>
+                <%= radio_button_tag :lesson_button, "existing_lesson", default: true %>
                 <%= f.label "既存のレッスンから選択して追加する" %>
               </p>
               <%= f.collection_select :lesson_select, Lesson.all, :lesson, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-5 ml-4' } %>

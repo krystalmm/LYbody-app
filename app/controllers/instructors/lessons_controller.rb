@@ -8,7 +8,8 @@ class Instructors::LessonsController < ApplicationController
       @lesson = current_instructor.lessons.new(lesson_params)
     end
     if current_instructor.save
-      redirect_to instructors_path, notice: 'レッスンが追加されました。'
+      current_instructor.update(has_lesson: true) if current_instructor.has_lesson == false
+      redirect_to instructors_mypage_path, notice: 'レッスンが追加されました。'
     else
       @instructor = current_instructor
       render 'instructors/instructors/show'
@@ -16,9 +17,10 @@ class Instructors::LessonsController < ApplicationController
   end
 
   def destroy
-    @lesson = current_instructor.instructor_lessons.find_by(lesson_id: params[:id])
+    @lesson = Lesson.find(params[:id])
     if @lesson.destroy
-      redirect_to instructors_path, notice: 'レッスンを削除しました。'
+      current_instructor.update(has_lesson: false) if current_instructor.lessons.blank?
+      redirect_to instructors_mypage_path, notice: 'レッスンを削除しました。'
     end
   end
 
