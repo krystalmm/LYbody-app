@@ -1,0 +1,27 @@
+<% provide(:title, 'インストラクター | LYbody') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="public-instructors col-10 offset-1">
+      <h2 class="border-heading-bottom mb-5">インストラクター</h2>
+      <ul class="instructor-list d-flex flex-wrap">
+        <% @instructors.each do |instructor| %>
+          <li class="instructor-list-item col-6 mb-5 pb-5">
+            <div class="instructor-img text-center">
+              <%= image_tag instructor.instructor_image.url %>
+            </div>
+            <ul class="instructor-lessons">
+              <% instructor.lessons.each do |lesson| %>
+                <li class="instructor-lessons-item text-center">
+                  <%= lesson.lesson %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

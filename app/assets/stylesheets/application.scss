@@ -247,6 +247,17 @@ footer {
 }
 
 
+// public/instructors
+
+.public-instructors {
+  .instructor-lessons {
+    li:nth-child(1) {
+      margin-top: 20px;
+    }
+  }
+}
+
+
 // instructors/mypage
 
 .instructor-mypage{
