@@ -44,13 +44,13 @@ class InstructorImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb_sm do
-    process resize_to_fill: [130,190]
+    process resize_to_fill: [130, 190]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w(jpg png)
+    %w[jpg png]
   end
 
   # Override the filename of the uploaded files:

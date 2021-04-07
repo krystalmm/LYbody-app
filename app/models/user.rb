@@ -21,10 +21,10 @@ class User < ApplicationRecord
   validates :is_valid, inclusion: { in: [true, false] }
 
   def fullname
-    self.firstname + '　' + self.lastname
+    "#{firstname}　#{lastname}"
   end
 
   def kana_fullname
-    self.kana_firstname + '　' + self.kana_lastname
+    "#{kana_firstname}　#{kana_lastname}"
   end
 end

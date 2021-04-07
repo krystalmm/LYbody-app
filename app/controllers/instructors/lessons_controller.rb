@@ -1,10 +1,13 @@
 class Instructors::LessonsController < ApplicationController
   before_action :authenticate_instructor!
 
+  # rubocop:disable Metrics/AbcSize
+
   def create
-    if params[:lesson_button] == "existing_lesson"
+    case params[:lesson_button]
+    when 'existing_lesson'
       @lesson = current_instructor.lessons.new(lesson: params[:lesson][:lesson_select])
-    elsif params[:lesson_button] == "add_lesson"
+    when 'add_lesson'
       @lesson = current_instructor.lessons.new(lesson_params)
     end
     if current_instructor.save
@@ -16,12 +19,14 @@ class Instructors::LessonsController < ApplicationController
     end
   end
 
+  # rubocop:enable Metrics/AbcSize
+
   def destroy
     @lesson = Lesson.find(params[:id])
-    if @lesson.destroy
-      current_instructor.update(has_lesson: false) if current_instructor.lessons.blank?
-      redirect_to instructors_mypage_path, notice: 'レッスンを削除しました。'
-    end
+    return unless @lesson.destroy
+
+    current_instructor.update(has_lesson: false) if current_instructor.lessons.blank?
+    redirect_to instructors_mypage_path, notice: 'レッスンを削除しました。'
   end
 
   private

@@ -2,11 +2,9 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -16,13 +14,12 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def unsubscribe
-  end
+  def unsubscribe; end
 
   def withdraw
     current_user.update(is_valid: false)
     reset_session
-    flash[:info] = "ありがとうございました。またのご利用をお待ちしております。"
+    flash[:info] = 'ありがとうございました。またのご利用をお待ちしております。'
     redirect_to root_path
   end
 
@@ -33,6 +30,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :kana_firstname, :kana_lastname, :email, :phone_number, :password)
+    params.require(:user).permit(:first_name, :last_name, :kana_firstname, :kana_lastname, :email, :phone_number,
+                                 :password)
   end
 end

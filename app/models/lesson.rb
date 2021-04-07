@@ -1,5 +1,4 @@
 class Lesson < ApplicationRecord
-
   has_many :instructor_lessons, dependent: :destroy
   has_many :instructors, through: :instructor_lessons
 

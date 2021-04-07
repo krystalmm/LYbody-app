@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/LexicallyScopedActionFilter
+
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_inactive_user, only: [:create]
@@ -23,12 +25,10 @@ class Public::SessionsController < Devise::SessionsController
 
   def reject_inactive_user
     user = User.find_by(email: params[:user][:email])
-    if user
-      if user.valid_password?(params[:user][:password]) && !user.is_valid
-        flash[:danger] = "お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。"
-        redirect_to new_user_session_path
-      end
-    end
+    return unless user && (user.valid_password?(params[:user][:password]) && !user.is_valid)
+
+    flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
+    redirect_to new_user_session_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -36,3 +36,5 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 end
+
+# rubocop:enable Rails/LexicallyScopedActionFilter
