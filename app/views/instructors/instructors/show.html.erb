@@ -28,7 +28,9 @@
                 <td>
                   <% if @instructor.lessons.present? %>
                     <% @instructor.lessons.each do |lesson| %>
-                      <%= lesson.lesson %><%= link_to "（削除する）", instructors_lesson_path(lesson.id), method: :delete, class: 'lesson-delete-link ml-2' %> <br>
+                      <% if lesson.id %>
+                        <%= lesson.lesson %><%= link_to "（削除する）", instructors_lesson_path(lesson.id), method: :delete, class: 'lesson-delete-link ml-2' %> <br>
+                      <% end %>
                     <% end %>
                   <% else %>
                     <p>なし</p>
@@ -42,14 +44,14 @@
           <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
             <div class="existing-lesson-form d-flex">
               <p class="pr-5 mr-3">
-                <%= radio_button_tag "lesson", "existing_lesson" %>
+                <%= radio_button_tag :lesson_button, "existing_lesson" %>
                 <%= f.label "既存のレッスンから選択して追加する" %>
               </p>
-              <%= f.collection_select :lesson, Lesson.all, :id, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-5 ml-4' } %>
+              <%= f.collection_select :lesson_select, Lesson.all, :lesson, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-5 ml-4' } %>
             </div>
             <div class="add-lesson-form d-flex mt-3">
               <p class="mr-5 pr-4">
-                <%= radio_button_tag "lesson", "add_lesson" %>
+                <%= radio_button_tag :lesson_button, "add_lesson" %>
                 <%= f.label "新しくレッスンを追加する" %>
               </p>
               <%= f.label :lesson, "レッスン名", class: 'mr-3 pt-1' %>

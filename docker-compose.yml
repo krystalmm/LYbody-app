@@ -11,6 +11,8 @@ services:
       - log-data:/LYbody/log
     environment:
       - BUNDLE_PATH=/bundle
+    tty: true
+    stdin_open: true
     depends_on:
       - db
       - chrome

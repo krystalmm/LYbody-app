@@ -16,3 +16,9 @@ Instructor.seed do |s|
   s.comment = "時に厳しく、時に楽しく、をモットーにレッスンを提供しています！"
 end
 
+Instructor.seed do |s|
+  s.id = 3
+  s.name = "Kevin"
+  s.email = "kevin@lybody.com"
+  s.password = "kevinpassword"
+end
