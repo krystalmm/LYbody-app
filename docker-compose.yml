@@ -8,7 +8,7 @@ services:
       - bundle_path:/bundle
       - public-data:/LYbody/public
       - tmp-data:/LYbody/tmp
-      - log-data:/LYbody/log
+      - log-data:/var/log/nginx
     environment:
       - BUNDLE_PATH=/bundle
     tty: true
