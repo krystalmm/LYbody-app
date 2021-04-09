@@ -2,15 +2,15 @@
 
 <%= render 'shared/backpage' %>
 
-<div class="col-8 offset-2">
-  <div id="calendar"></div>
+<div class="reservations col-8 offset-2 my-5">
+  <h2 class="border-heading-bottom mb-5">レッスン予約状況（インストラクター：<%= @instructor.name %>）</h2>
+  <p>※ 空き状況を確認し、レッスンご受講の希望日をクリックしてご希望のレッスン開始時間を選択してください。（レッスン実施時間は１時間です。） <br> ※ 必ずログイン後に予約してください。（ご予約は入会されている方のみ可能です。）</p>
+  <div id="calendar" class="py-5"></div>
 </div>
 
-
-
-
+<% if user_signed_in? %>
 <div class="modal fade" id="new_reservation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="text-dark">レッスン予約（インストラクター：<%= @instructor.name %>）</h5>
@@ -19,12 +19,18 @@
         </button>
       </div>
       <div class="modal-body text-dark">
-         <p class="select-day" id="select-day"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="reservation-form">
+          <%= form_with model: @reservation do |f| %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :instructor_id, :value => @instructor.id %>
+            <%= f.label :start_time, "レッスン予約希望日時" %> <br>
+            <p style="font-size: 0.8rem;">※ 時間は開始時間を選択してください。</p>
+            <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_month_numbers:true, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
+            <%= f.submit "予約する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<% end %>

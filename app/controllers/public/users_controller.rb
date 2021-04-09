@@ -2,7 +2,9 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
 
-  def show; end
+  def show
+    @reservation = Reservation.find_by(user_id: current_user.id)
+  end
 
   def edit; end
 

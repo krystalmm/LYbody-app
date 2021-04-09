@@ -4,7 +4,9 @@ $(document).on('turbolinks:load', function () {
 
     selectable: true,
 
-    events: '/events.json',
+    events: {
+      url: '/reservations.json',
+    },
 
     header: {
       left: "prev",
@@ -16,13 +18,32 @@ $(document).on('turbolinks:load', function () {
 
     timeFormat: "HH:mm",
 
-    select: function(startTime, endTime) {
+    dayClick: function(day) {
       $('#new_reservation').modal('show');
-    }
-  });
+      pulldown_option_year = document.getElementById("reservation_start_time_1i").getElementsByTagName('option');
+      for ( i = 0; i < pulldown_option_year.length; i++ ) {
+        if (pulldown_option_year[i].value == day.format('YYYY')) {
+          pulldown_option_year[i].selected = true;
+          break;
+        }
+      }
 
-  $('#new_reservation').on('show.bs.modal', function(event) {
-    var modal = $(this);
-    modal.find('.modal-body').text('');
+      pulldown_option_month = document.getElementById("reservation_start_time_2i").getElementsByTagName('option');
+      for ( i = 0; i < pulldown_option_month.length; i++) {
+        if (pulldown_option_month[i].value == day.format('M')) {
+          pulldown_option_month[i].selected = true;
+          break;
+        }
+      }
+
+      pulldown_option_day = document.getElementById("reservation_start_time_3i").getElementsByTagName('option');
+      for ( i = 0; i < pulldown_option_day.length; i++ ) {
+        if (pulldown_option_day[i].value == day.format('D')) {
+          pulldown_option_day[i].selected = true;
+          break;
+        }
+      }
+    },
   });
 });
+

@@ -8,6 +8,14 @@ class Public::ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.set_end_time
+    respond_to do |format|
+      if @reservation.save
+        format.js
+      else
+        format.js { render :errors }
+      end
+    end
   end
 
   private

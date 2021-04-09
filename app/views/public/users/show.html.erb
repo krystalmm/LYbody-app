@@ -35,20 +35,20 @@
         </div>
       </div>
       <div class="mypage-bottom mt-5">
-        <%# <% if current_user.reservations.present? %>
+        <% if current_user.reservation.present? %>
           <div class="reservation-info col-md-8 offset-md-2 border p-4">
             <p class="mb-0">
               <%= current_user.firstname %>さんの次回のレッスン予約日時は、
             </p>
             <p class="text-right mb-0">
-              <span class="reservation-important">3月29日 18:00 ~ 19:00（インストラクター：New）</span>です。
+              <span class="reservation-important"><%= @reservation.date_and_time %>（インストラクター：New）</span>です。
             </p>
           </div>
-        <%# <% else %>
-          <div class="pay-link text-center">
+        <% else %>
+          <div class="pay-link text-center pt-5">
             <%= link_to "支払いをして入会する", root_path, class: 'btn btn-outline-light btn-lg px-5' %>
           </div>
-        <%# <% end %>
+        <% end %>
       </div>
       <div class="withdraw-link my-5 text-right">
         <%= link_to "※ 退会をご希望の方はこちら", unsubscribe_path, class: 'hover-link' %>
