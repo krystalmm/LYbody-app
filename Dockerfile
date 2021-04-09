@@ -1,6 +1,7 @@
 FROM ruby:2.6.3
 RUN apt-get update -qq && \
     apt-get install -y build-essential nodejs libpq-dev
+ENV TZ Asia/Tokyo
 RUN mkdir /LYbody
 WORKDIR /LYbody
 COPY Gemfile /LYbody/Gemfile
