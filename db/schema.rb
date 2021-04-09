@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_013611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["instructor_id"], name: "index_reservations_on_instructor_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id", unique: true
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
