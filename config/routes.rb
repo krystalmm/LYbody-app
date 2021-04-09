@@ -28,5 +28,6 @@ Rails.application.routes.draw do
     put 'users/information' => 'users#update'
 
     resources :instructors, only: [:index, :show]
+    resources :reservations, only: [:index, :create]
   end
 end

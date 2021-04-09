@@ -43,11 +43,12 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
 gem 'font-awesome-sass', '~>5.13'
+gem 'fullcalendar-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
+gem 'momentjs-rails'
 gem 'rails-i18n'
 gem 'seed-fu'
-gem 'simple_calendar'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
