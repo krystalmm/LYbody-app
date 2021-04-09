@@ -41,7 +41,9 @@
               <%= current_user.firstname %>さんの次回のレッスン予約日時は、
             </p>
             <p class="text-right mb-0">
-              <span class="reservation-important"><%= @reservation.date_and_time %>（インストラクター：New）</span>です。
+              <span class="reservation-important">
+                <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
+              </span>です。
             </p>
           </div>
         <% else %>

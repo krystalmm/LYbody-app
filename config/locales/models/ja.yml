@@ -32,8 +32,8 @@ ja:
       reservation:
         user_id: ユーザーID
         instructor_id: インストラクターID
-        start_time: 予約時間（開始）
-        end_time: 予約時間（終了）
+        start_time: 予約時間（開始時間）
+        end_time: 予約時間（終了時間）
       room:
         user_id: ユーザーID
         instructor_id: インストラクターID
