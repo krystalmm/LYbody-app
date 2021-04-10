@@ -40,11 +40,17 @@
             <p class="mb-0">
               <%= current_user.firstname %>さんの次回のレッスン予約日時は、
             </p>
-            <p class="text-right mb-0">
+            <p class="text-right mb-3">
               <span class="reservation-important">
                 <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
               </span>です。
             </p>
+            <div class="my-reservation-links d-flex justify-content-between col-10 offset-1">
+              <button type="button" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                予約日時を変更する
+              </button>
+              <%= link_to "予約をキャンセルする", class: 'btn btn-outline-light btn-sm' %>
+            </div>
           </div>
         <% else %>
           <div class="pay-link text-center pt-5">

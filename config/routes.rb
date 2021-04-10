@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/mypage' => 'instructors#show'
     resources :lessons, only: [:create, :destroy]
     resources :users, only: [:index, :show]
+    resources :reservations, only: [:create, :destroy]
   end
 
   scope module: :public do
@@ -28,6 +29,6 @@ Rails.application.routes.draw do
     put 'users/information' => 'users#update'
 
     resources :instructors, only: [:index, :show]
-    resources :reservations, only: [:index, :create]
+    resources :reservations, only: [:index, :create, :update, :destroy]
   end
 end

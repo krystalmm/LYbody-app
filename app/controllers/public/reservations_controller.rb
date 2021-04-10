@@ -22,6 +22,14 @@ class Public::ReservationsController < ApplicationController
     end
   end
 
+  def update
+
+  end
+
+  def destroy
+
+  end
+
   private
 
   def reservation_params
