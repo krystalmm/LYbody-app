@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', function () {
+  if($('#calendar').length == 0){
+    return;
+  }
   $('#calendar').fullCalendar({
 
     googleCalendarApiKey: 'AIzaSyAwUYezhMS-s1MSN2fVyuA8_I-OufFUT5E',
@@ -20,6 +23,9 @@ $(document).on('turbolinks:load', function () {
 
     events: {
       url: '/reservations.json',
+      data:{
+        instructor_id: getInstructorId()
+      }
     },
 
     header: {
@@ -58,10 +64,42 @@ $(document).on('turbolinks:load', function () {
         }
       }
 
-
-      // var selectedDay = document.getElementById("selected-day");
-      // selectedDay.value = day.format();
+      pulldown_option_hour = document.getElementById("reservation_start_time_4i").getElementsByTagName('option');
+      if (day.format('d')=="0" || day.format('d') == "6"){
+        for ( i = 0; i < pulldown_option_hour.length; i++ ) {
+          if (parseInt(pulldown_option_hour[i].value) < 17) {
+            pulldown_option_hour[i].style = ""
+          }
+          if(parseInt(pulldown_option_hour[i].value) > 18) {
+            pulldown_option_hour[i].style = "display:none;"
+          }
+          if (parseInt(pulldown_option_hour[i].value) == 9) {
+            pulldown_option_hour[i].selected = true;
+          }
+        }
+      }else{
+        for ( i = 0; i < pulldown_option_hour.length; i++ ) {
+          if(parseInt(pulldown_option_hour[i].value) < 17) {
+            pulldown_option_hour[i].style = "display:none;"
+          }
+          if(parseInt(pulldown_option_hour[i].value) > 18) {
+            pulldown_option_hour[i].style = ""
+          }
+          if(parseInt(pulldown_option_hour[i].value) == 17) {
+            pulldown_option_hour[i].selected = true;
+          }
+         }
+      }
     },
   });
 });
+
+
+function getInstructorId() {
+  var url = window.location.href;
+  var name = "instructor_id";
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+  results = regex.exec(url);
+  return results[2];
+};
 

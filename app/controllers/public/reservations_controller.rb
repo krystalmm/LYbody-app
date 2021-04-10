@@ -4,6 +4,10 @@ class Public::ReservationsController < ApplicationController
     @instructor = Instructor.find(params[:instructor_id])
     @reservations = Reservation.where(instructor_id: @instructor.id)
     @reservation = Reservation.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create

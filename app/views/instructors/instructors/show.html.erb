@@ -42,20 +42,20 @@
         </div>
         <div class="lesson-form my-5 col-10 offset-1">
           <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
-            <div class="existing-lesson-form d-flex">
+            <div class="existing-lesson-form d-lg-flex d-block">
               <p class="pr-5 mr-3">
                 <%= radio_button_tag :lesson_button, "existing_lesson", default: true %>
                 <%= f.label "既存のレッスンから選択して追加する" %>
               </p>
-              <%= f.collection_select :lesson_select, Lesson.all, :lesson, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-5 ml-4' } %>
+              <%= f.collection_select :lesson_select, Lesson.all, :lesson, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-lg-5 ml-4' } %>
             </div>
-            <div class="add-lesson-form d-flex mt-3">
+            <div class="add-lesson-form d-lg-flex d-block mt-3">
               <p class="mr-5 pr-4">
                 <%= radio_button_tag :lesson_button, "add_lesson" %>
                 <%= f.label "新しくレッスンを追加する" %>
               </p>
               <%= f.label :lesson, "レッスン名", class: 'mr-3 pt-1' %>
-              <%= f.text_field :lesson, class: 'form-control col-5 mr-5' %>
+              <%= f.text_field :lesson, class: 'form-control col-lg-5 mr-5' %>
             </div>
             <div class="lesson-submit text-center mt-4">
               <%= f.submit "レッスンを追加する", class: 'btn btn-outline-light' %>
@@ -69,15 +69,15 @@
           <table class="table table-borderless table-sm">
             <thead>
               <tr>
-                <td>予約日時</td>
-                <td>予約者氏名</td>
+                <td class="td-left border-bottom pl-3">予約日時</td>
+                <td class="border-bottom">予約者氏名</td>
               </tr>
             </thead>
             <tbody>
               <% @instructor.reservations.each do |reservation| %>
               <tr>
-                <td><%= reservation.date_and_time %></td>
-                <td><%= reservation.user.fullname %></td>
+                <td class="pt-3 pl-3"><%= reservation.date_and_time %></td>
+                <td class="pt-3"><%= reservation.user.fullname %></td>
               </tr>
               <% end %>
             </tbody>

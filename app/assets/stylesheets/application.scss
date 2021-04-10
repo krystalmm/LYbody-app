@@ -291,6 +291,7 @@ footer {
 
 
 // public/reservations page
+
 #calendar {
   .fc-widget-content:not(.fc-axis) {
     .fc-day-top.fc-today {
@@ -337,6 +338,14 @@ footer {
     &:hover {
       opacity: 0.6;
       transition: opacity .3s ease;
+    }
+  }
+
+  .reservation-list {
+    table {
+      .td-left {
+        width: 70%;
+      }
     }
   }
 }
