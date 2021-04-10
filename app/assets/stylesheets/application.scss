@@ -293,16 +293,33 @@ footer {
 // public/reservations page
 #calendar {
   .fc-widget-content:not(.fc-axis) {
+    .fc-day-top.fc-today {
+      background-color: #628ab500;
+    }
+
     .fc-today {
       background-color: rgba(111, 109, 224, 0.21);
     }
   }
 
+  td.fc-day-top.fc-sat {
+    background-color: #628ab500;
+  }
+
   td.fc-sat {
     background-color:#6398d230;
   }
+
+  td.fc-day-top.fc-sun {
+    background-color: #628ab500;
+  }
+
   td.fc-sun {
-      background-color: #cc718a2b;
+    background-color: #cc718a3d;
+  }
+
+  td.fc-bgevent {
+    background-color: #e27a97a1;
   }
 }
 

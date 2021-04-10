@@ -1,5 +1,19 @@
 $(document).on('turbolinks:load', function () {
   $('#calendar').fullCalendar({
+
+    googleCalendarApiKey: 'AIzaSyAwUYezhMS-s1MSN2fVyuA8_I-OufFUT5E',
+
+    eventSources: [
+      {
+        googleCalendarId: 'ja.japanese#holiday@group.v.calendar.google.com',
+        className: 'event_holiday',
+        rendering: 'background',
+      },
+      {
+        googleCalendarId: 'n96qd41t70nuol4kpc2c3uahi0@group.calendar.google.com',
+      },
+    ],
+
     lang: 'ja',
 
     selectable: true,
