@@ -43,6 +43,10 @@ $(document).on('turbolinks:load', function () {
           break;
         }
       }
+
+
+      // var selectedDay = document.getElementById("selected-day");
+      // selectedDay.value = day.format();
     },
   });
 });

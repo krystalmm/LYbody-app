@@ -291,7 +291,20 @@ footer {
 
 
 // public/reservations page
+#calendar {
+  .fc-widget-content:not(.fc-axis) {
+    .fc-today {
+      background-color: rgba(111, 109, 224, 0.21);
+    }
+  }
 
+  td.fc-sat {
+    background-color:#6398d230;
+  }
+  td.fc-sun {
+      background-color: #cc718a2b;
+  }
+}
 
 
 // instructors/mypage
