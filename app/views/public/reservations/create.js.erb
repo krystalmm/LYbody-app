@@ -2,4 +2,5 @@ $('#calendar').fullCalendar(
   'renderEvent',
   $.parseJSON("<%= j render(@reservation, format: :json).html_safe %>"), true
 );
+$('js-error-message').empty();
 $('#new_reservation').modal('hide');

@@ -11,7 +11,7 @@ class Public::ReservationsController < ApplicationController
     @reservation.set_end_time
     respond_to do |format|
       if @reservation.save
-        format.js
+        format.js { flash[:notice] = "レッスンの予約が完了しました。" }
       else
         format.js { render :errors }
       end

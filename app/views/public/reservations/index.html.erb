@@ -2,10 +2,18 @@
 
 <%= render 'shared/backpage' %>
 
-<div class="reservations col-8 offset-2 my-5">
-  <h2 class="border-heading-bottom mb-5">レッスン予約状況（インストラクター：<%= @instructor.name %>）</h2>
-  <p>※ 空き状況を確認し、レッスンご受講の希望日をクリックしてご希望のレッスン開始時間を選択してください。（レッスン実施時間は１時間です。） <br> ※ 必ずログイン後に予約してください。（ご予約は入会されている方のみ可能です。）</p>
-  <div id="calendar" class="py-5"></div>
+<div class="container">
+  <div class="js-error-message"></div>
+  <div class="row">
+    <div class="reservations my-5">
+      <h2 class="border-heading-bottom mb-5">レッスン予約状況（インストラクター：<%= @instructor.name %>）</h2>
+      <p>
+        ※ 空き状況を確認し、レッスンご受講の希望日をクリックしてご希望のレッスン開始時間を選択してください。（レッスン実施時間は１時間です。） <br>
+        ※ 必ずログイン後に予約してください。（ご予約は入会されている方のみ可能です。）
+      </p>
+      <div id="calendar" class="py-5"></div>
+    </div>
+  </div>
 </div>
 
 <% if user_signed_in? %>
