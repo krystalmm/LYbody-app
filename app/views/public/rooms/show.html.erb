@@ -33,7 +33,7 @@
           <div class="chat-text d-flex justify-content-center">
             <%= f.text_area :message, placeholder: 'メッセージを入力', class: 'form-control col-8', id: 'chat-textarea', rows: 1 %>
             <div class="ml-5">
-              <%= f.submit "送信", class: 'btn btn-outline-light' %>
+              <%= f.submit "送信", class: 'btn btn-outline-light chat-submit' %>
             </div>
           </div>
         <% end %>

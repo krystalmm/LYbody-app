@@ -281,6 +281,22 @@ footer {
 }
 
 
+// public/chat page
+
+.user-chat-page {
+  .user-chat-form {
+    position: fixed;
+    bottom: 130px;
+    width: 52%;
+
+    .chat-submit {
+      position: fixed;
+      bottom: 130px;
+    }
+  }
+}
+
+
 // public/users/unsubscribe page
 
 .unsubscribe {
@@ -376,6 +392,22 @@ footer {
 .user-detail {
   table {
     font-size: 1.2rem;
+  }
+}
+
+
+// instructors/chat page
+
+.instructor-chat-page {
+  .instructor-chat-form {
+    position: fixed;
+    bottom: 130px;
+    width: 52%;
+
+    .chat-submit {
+      position: fixed;
+      bottom: 130px;
+    }
   }
 }
 

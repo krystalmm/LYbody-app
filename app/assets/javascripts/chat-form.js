@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function () {
   var defaultHeight = textarea.clientHeight;
 
   textarea.addEventListener('input', function () {
-    // １行に戻った時に元に戻す処理
+    // textareaのデフォルトの高さ（これがないと行を減らしていく時に自動で高さが減らない）
     textarea.style.height = defaultHeight + 'px';
 
     var scrollHeight = textarea.scrollHeight;
