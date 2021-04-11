@@ -6,6 +6,38 @@
   <div class="row">
     <div class="user-chat-page col-10 offset-1">
       <h2 class="border-heading-bottom mb-5">チャット（<%= @room.instructor.name %>）</h2>
+      <div id="user-chats">
+        <% @chats.each do |chat| %>
+          <% if chat.is_user == true %>
+            <div class="my-chats">
+              <p><%= chat.message %></p>
+            </div>
+          <% else %>
+            <div class="instructor-chats">
+              <div class="instructor-icon">
+                <%= image_tag @room.instructor.instructor_image.url %>
+              </div>
+              <div class="chat-wrap">
+                <div class="chat-content">
+                  <p><%= chat.message %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="user-chat-form">
+        <%= form_with model: @chat, url: chats_path, local: true do |f| %>
+          <%= f.hidden_field :is_user, :value => true %>
+          <%= f.hidden_field :room_id, :value => @room.id %>
+          <div class="chat-text d-flex justify-content-center">
+            <%= f.text_area :message, placeholder: 'メッセージを入力', class: 'form-control col-8', id: 'chat-textarea', rows: 1 %>
+            <div class="ml-5">
+              <%= f.submit "送信", class: 'btn btn-outline-light' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

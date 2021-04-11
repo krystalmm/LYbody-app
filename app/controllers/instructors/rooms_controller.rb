@@ -3,6 +3,7 @@ class Instructors::RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(user_id: params[:id])
+
     if @room.nil?
       @room = Room.new(user_id: params[:id])
       @room.instructor_id = current_instructor.id
@@ -10,5 +11,8 @@ class Instructors::RoomsController < ApplicationController
         redirect_to instructors_room_path(@room.id)
       end
     end
+
+    @chat = Chat.new
+    @chats = @room.chats.order(:created_at)
   end
 end
