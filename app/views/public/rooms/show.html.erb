@@ -1,0 +1,11 @@
+<% provide(:title, "チャット - #{@room.instructor.name} - | LYbody") %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="user-chat-page col-10 offset-1">
+      <h2 class="border-heading-bottom mb-5">チャット（<%= @room.instructor.name %>）</h2>
+    </div>
+  </div>
+</div>

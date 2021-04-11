@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :lessons, only: [:create, :destroy]
     resources :users, only: [:index, :show]
     resources :reservations, only: [:update, :destroy]
+    resources :rooms, only: [:show]
+    resource :chats, only: [:create]
   end
 
   scope module: :public do
@@ -30,5 +32,7 @@ Rails.application.routes.draw do
 
     resources :instructors, only: [:index, :show]
     resources :reservations, only: [:index, :create, :update, :destroy]
+    resources :rooms, only: [:show]
+    resource :chats, only: [:create]
   end
 end

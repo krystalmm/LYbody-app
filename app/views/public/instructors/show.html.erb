@@ -1,4 +1,4 @@
-<% provide(:title, '- ' + @instructor.name + ' - | LYbody') %>
+<% provide(:title, "- #{@instructor.name} - | LYbody") %>
 
 <%= render 'shared/backpage' %>
 
@@ -31,10 +31,22 @@
           </tbody>
         </table>
       </div>
-      <div class="links col-8 offset-2 d-flex justify-content-between mt-5">
-        <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
-        <%= link_to "チャットで質問する", root_path, class: 'btn btn-outline-light px-5' %>
-      </div>
+      <% if user_signed_in? %>
+        <%# <% if payed(current_user) %>
+          <div class="links col-8 offset-2 d-flex justify-content-between mt-5">
+            <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
+            <%= link_to "チャットで質問する", room_path(@instructor), class: 'btn btn-outline-light px-5' %>
+          </div>
+        <%# <% else %>
+          <div class="link text-center mt-5">
+            <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
+          </div>
+        <%# <% end %>
+      <% else %>
+        <div class="link text-center mt-5">
+          <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
+        </div>
+      <% end %>
       <div class="review mt-5 pt-5 col-10 offset-1">
         <h4 class="border-heading-bottom mb-4"><i class="far fa-comments"></i> レッスンレビュー</h4>
         <p class="text-right mr-4">レビュー件数：件</p>
