@@ -14,5 +14,7 @@ class Instructors::RoomsController < ApplicationController
 
     @chat = Chat.new
     @chats = @room.chats.order(:created_at)
+
+    @footer_chat = true
   end
 end

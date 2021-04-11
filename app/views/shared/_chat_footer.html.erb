@@ -1,0 +1,18 @@
+<div class="footer-height"></div>
+<footer class="pt-3 pb-4" id="chat-footer">
+  <% if instructor_signed_in? %>
+    <div class="footer-logo text-center">
+      <p>LYbody</p>
+    </div>
+  <% else %>
+    <div class="col-10 offset-1 d-flex justify-content-between">
+      <div class="footer-logo">
+        <p>LYbody</p>
+      </div>
+      <ul class="footer-nav d-flex">
+        <li class="mr-5"><%= link_to "インストラクター", instructors_path %></li>
+        <li><%= link_to "お問い合わせ", root_path %></li>
+      </ul>
+    </div>
+  <% end %>
+</footer>

@@ -15,7 +15,7 @@
           <% else %>
             <div class="instructor-chats">
               <div class="instructor-icon">
-                <%= image_tag @room.instructor.instructor_image.url %>
+                <%= image_tag @room.instructor.instructor_image.url(:thumb) %>
               </div>
               <div class="chat-wrap">
                 <div class="chat-content">
@@ -26,7 +26,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="user-chat-form">
+      <div class="user-chat-form col-6 offset-3">
         <%= form_with model: @chat, url: chats_path, local: true do |f| %>
           <%= f.hidden_field :is_user, :value => true %>
           <%= f.hidden_field :room_id, :value => @room.id %>

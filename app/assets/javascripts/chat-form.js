@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', function () {
+  if($('#chat-textarea').length == 0){
+    return;
+  }
   $(window).keydown(function (e) {
     // mac => cmd & enter, windows => ctrl & enter
     if (!((e.metaKey && e.keyCode == 13) || (e.ctrlKey && e.keyCode == 13))) return;

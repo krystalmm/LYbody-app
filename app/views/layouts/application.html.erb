@@ -18,6 +18,10 @@
       </div>
       <%= yield %>
     </main>
-    <%= render 'shared/footer' %>
+    <% if @footer_chat %>
+      <%= render 'shared/chat_footer' %>
+    <% else %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>

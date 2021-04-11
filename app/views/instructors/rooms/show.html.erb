@@ -26,9 +26,9 @@
           <% end %>
         <% end %>
       </div>
-      <div class="instructor-chat-form">
-        <%= form_with model: @chat, url: chats_path, local: true do |f| %>
-          <%= f.hidden_field :is_user, :value => true %>
+      <div class="instructor-chat-form col-6 offset-3">
+        <%= form_with model: @chat, url: instructors_chats_path, local: true do |f| %>
+          <%= f.hidden_field :is_user, :value => false %>
           <%= f.hidden_field :room_id, :value => @room.id %>
           <div class="chat-text d-flex justify-content-center">
             <%= f.text_area :message, placeholder: 'メッセージを入力', class: 'form-control col-8', id: 'chat-textarea', rows: 1 %>
