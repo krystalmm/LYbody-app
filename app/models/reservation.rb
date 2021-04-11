@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
   validates :user_id, presence: true, uniqueness: true
   validates :start_time, presence: true, uniqueness: true
   validates :end_time, presence: true
-  validate :check_start_and_end_time
+  validate :check_start_and_end_time, on: :create
   validate :check_start_time
 
   LESSON_HOUR = 1
