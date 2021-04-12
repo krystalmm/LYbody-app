@@ -6,14 +6,14 @@
   <div class="row">
     <div class="instructor-chat-page col-10 offset-1">
       <h2 class="border-heading-bottom mb-5">チャット（<%= @room.user.fullname %>）</h2>
-      <div id="instructor-chats">
+      <div id="instructor-chats" class="col-10 offset-1">
         <% @chats.each do |chat| %>
           <% if chat.is_user == false %>
             <div class="my-chats">
               <p><%= chat.message %></p>
             </div>
           <% else %>
-            <div class="user-chats">
+            <div class="user-chats d-flex">
               <div class="user-icon">
                 <%# userのアイコン登録できるようにする！ %>
               </div>
