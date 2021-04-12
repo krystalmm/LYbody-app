@@ -12,9 +12,6 @@ $(document).on('turbolinks:load', function () {
         className: 'event_holiday',
         rendering: 'background',
       },
-      // {
-      //   googleCalendarId: 'n96qd41t70nuol4kpc2c3uahi0@group.calendar.google.com',
-      // },
     ],
 
     lang: 'ja',
