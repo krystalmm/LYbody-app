@@ -2,3 +2,4 @@ $('.js-error-message').replaceWith(
   "<%= j(render 'shared/error_messages', obj: @reservation) %>"
 );
 $('#new_reservation').modal('hide');
+$('body, html').animate({ scrollTop: 0 }, 500 );

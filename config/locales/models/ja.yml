@@ -30,9 +30,9 @@ ja:
         mind: 心がけ
         comment: 一言
       reservation:
-        user_id: ユーザーID
+        user_id: ""
         instructor_id: インストラクターID
-        start_time: 予約時間（開始時間）
+        start_time: ""
         end_time: 予約時間（終了時間）
       room:
         user_id: ユーザーID
