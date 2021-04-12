@@ -2,16 +2,19 @@ $(document).on('turbolinks:load', function () {
   if($('#chat-textarea').length == 0){
     return;
   }
+
+  // 特定のキーでsubmitする
   $(window).keydown(function (e) {
     // mac => cmd & enter, windows => ctrl & enter
     if (!((e.metaKey && e.keyCode == 13) || (e.ctrlKey && e.keyCode == 13))) return;
 
     var target = $(e.target);
     if (target.is('textarea')) {
-      target.closest('form').submit();
+      Rails.fire(target.closest('form')[0],'submit');
     }
   });
 
+  // 自動で改行させる
   var textarea = document.getElementById('chat-textarea');
   var defaultHeight = textarea.clientHeight;
 

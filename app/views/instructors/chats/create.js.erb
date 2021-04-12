@@ -1,0 +1,5 @@
+$('#chat-wrap').html("<%= j(render 'instructors/rooms/chat-content', chats: @chats, room: @room) %>");
+var textarea = $('#chat-textarea');
+textarea.val("");
+window.scroll(0, $(document).height());
+textarea.height(22);

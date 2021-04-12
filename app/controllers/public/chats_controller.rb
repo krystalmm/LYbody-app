@@ -3,11 +3,12 @@ class Public::ChatsController < ApplicationController
 
   def create
     @room = Room.find(params[:chat][:room_id])
+    @chats = @room.chats.order(:created_at)
     @chat = Chat.new(chat_params)
-    if @chat.save
-      redirect_to room_path(@room)
-    else
-      redirect_to room_path(@room)
+    respond_to do |format|
+      if @chat.save
+        format.js
+      end
     end
   end
 
