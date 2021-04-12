@@ -21,6 +21,8 @@ class User < ApplicationRecord
   validates :is_payed, inclusion: { in: [true, false] }
   validates :is_valid, inclusion: { in: [true, false] }
 
+  mount_uploader :icon_image, UserImageUploader
+
   def fullname
     "#{firstname}　#{lastname}"
   end
