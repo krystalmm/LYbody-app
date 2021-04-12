@@ -61,35 +61,43 @@ $(document).on('turbolinks:load', function () {
         }
       }
 
-      pulldown_option_hour = document.getElementById("reservation_start_time_4i").getElementsByTagName('option');
-      if (day.format('d')=="0" || day.format('d') == "6"){
-        for ( i = 0; i < pulldown_option_hour.length; i++ ) {
-          if (parseInt(pulldown_option_hour[i].value) < 17) {
-            pulldown_option_hour[i].style = ""
-          }
-          if(parseInt(pulldown_option_hour[i].value) > 18) {
-            pulldown_option_hour[i].style = "display:none;"
-          }
-          if (parseInt(pulldown_option_hour[i].value) == 9) {
-            pulldown_option_hour[i].selected = true;
-          }
-        }
-      }else{
-        for ( i = 0; i < pulldown_option_hour.length; i++ ) {
-          if(parseInt(pulldown_option_hour[i].value) < 17) {
-            pulldown_option_hour[i].style = "display:none;"
-          }
-          if(parseInt(pulldown_option_hour[i].value) > 18) {
-            pulldown_option_hour[i].style = ""
-          }
-          if(parseInt(pulldown_option_hour[i].value) == 17) {
-            pulldown_option_hour[i].selected = true;
-          }
-         }
-      }
+      setPulldownTime(day);
     },
   });
 });
+
+// ユーザーのマイページの予約変更モーダルの時間表示
+$(document).on('turbolinks:load', function () {
+  $('#userReservationModalButton').on('click', function () {
+    $('#userReservationModal').modal('show');
+
+    // 何も選択してない状態の日時取得
+    var year = $('#reservation_start_time_1i option:selected').text();
+    var month = $('#reservation_start_time_2i option:selected').text();
+    var day = $('#reservation_start_time_3i option:selected').text();
+    var defaultDate = moment(year + month + day);
+
+    setPulldownTime(defaultDate);
+
+    // 選択された状態の日時取得
+    $('#reservation_start_time_1i, #reservation_start_time_2i, #reservation_start_time_3i').change(function () {
+      var selectedYear = $('#reservation_start_time_1i').val();
+
+      if ($('#reservation_start_time_2i').val() < 10) {
+        var selectedMonth = 0 + $('#reservation_start_time_2i').val();
+      } else {
+        var selectedMonth = $('#reservation_start_time_2i').val();
+      };
+
+      var selectedDay = $('#reservation_start_time_3i').val();
+      var selectedDate = moment(selectedYear + selectedMonth + selectedDay);
+
+      setPulldownTime(selectedDate);
+    });
+  });
+});
+
+
 
 
 function getInstructorId() {
@@ -100,3 +108,34 @@ function getInstructorId() {
   return results[2];
 };
 
+
+// プルダウンの時間選択を曜日で分ける
+function setPulldownTime(day) {
+  pulldown_option_hour = document.getElementById("reservation_start_time_4i").getElementsByTagName('option');
+
+  var reset = "";
+  var none = "display:none;"
+
+  // 土日の場合
+  if (day.format('d')=="0" || day.format('d') == "6"){
+    setPulldownTimeStyle(reset, none, 9);
+
+  // 平日の場合
+  }else{
+    setPulldownTimeStyle(none, reset, 17);
+  }
+}
+
+function setPulldownTimeStyle(before17Style, after18Style, selectedNumber) {
+  for ( i = 0; i < pulldown_option_hour.length; i++ ) {
+    if (parseInt(pulldown_option_hour[i].value) < 17) {
+      pulldown_option_hour[i].style = before17Style;
+    }
+    if(parseInt(pulldown_option_hour[i].value) > 18) {
+      pulldown_option_hour[i].style = after18Style;
+    }
+    if (parseInt(pulldown_option_hour[i].value) == selectedNumber) {
+      pulldown_option_hour[i].selected = true;
+    }
+  }
+}
