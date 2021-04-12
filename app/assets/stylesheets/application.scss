@@ -286,9 +286,11 @@ footer {
 .user-chat-page {
   #user-chats {
     text-align: right;
+    padding: 0 20px;
 
     .my-chats {
       margin: 15px 0;
+      margin-right: -30px;
 
       p {
         display: inline-block;
@@ -500,9 +502,11 @@ footer {
 .instructor-chat-page {
   #instructor-chats {
     text-align: right;
+    padding: 0 20px;
 
     .my-chats {
       margin: 15px 0;
+      margin-right: -30px;
 
       p {
         display: inline-block;

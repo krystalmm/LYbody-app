@@ -6,7 +6,7 @@
   <div class="row">
     <div class="instructor-chat-page col-10 offset-1">
       <h2 class="border-heading-bottom mb-5">チャット（<%= @room.user.fullname %>）</h2>
-      <div id="instructor-chats" class="col-10 offset-1">
+      <div id="instructor-chats">
         <% @chats.each do |chat| %>
           <% if chat.is_user == false %>
             <div class="my-chats">
@@ -26,11 +26,11 @@
           <% end %>
         <% end %>
       </div>
-      <div class="instructor-chat-form col-6 offset-3">
+      <div class="instructor-chat-form">
         <%= form_with model: @chat, url: instructors_chats_path, local: true do |f| %>
           <%= f.hidden_field :is_user, :value => false %>
           <%= f.hidden_field :room_id, :value => @room.id %>
-          <div class="chat-text d-flex justify-content-center">
+          <div class="chat-text col-8 offset-2 d-flex justify-content-center">
             <%= f.text_area :message, placeholder: 'メッセージを入力', class: 'form-control col-8', id: 'chat-textarea', rows: 1 %>
             <div class="ml-5">
               <%= f.submit "送信", class: 'btn btn-outline-light chat-submit' %>
