@@ -1,5 +1,4 @@
 class Public::ReservationsController < ApplicationController
-
   def index
     @instructor = Instructor.find(params[:instructor_id])
     @reservations = Reservation.where(instructor_id: @instructor.id)
@@ -15,19 +14,16 @@ class Public::ReservationsController < ApplicationController
     @reservation.set_end_time
     respond_to do |format|
       if @reservation.save
-        format.js { flash[:notice] = "レッスンの予約が完了しました。" }
+        format.js { flash[:notice] = 'レッスンの予約が完了しました。' }
       else
         format.js { render :errors }
       end
     end
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-
-  end
+  def destroy; end
 
   private
 
@@ -39,7 +35,7 @@ class Public::ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
-  def reservation_params
-    params.require(:reservation).permit(:start_time)
-  end
+  # def reservation_params
+  #   params.require(:reservation).permit(:start_time)
+  # end
 end

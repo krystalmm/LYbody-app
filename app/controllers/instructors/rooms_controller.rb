@@ -7,9 +7,7 @@ class Instructors::RoomsController < ApplicationController
     if @room.nil?
       @room = Room.new(user_id: params[:id])
       @room.instructor_id = current_instructor.id
-      if @room.save
-        redirect_to instructors_room_path(@room.id)
-      end
+      redirect_to instructors_room_path(@room.id) if @room.save
     end
 
     @chat = Chat.new

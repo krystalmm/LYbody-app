@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_032439) do
+ActiveRecord::Schema.define(version: 2021_04_13_060858) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_032439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["instructor_id"], name: "index_reservations_on_instructor_id"
+    t.index ["start_time", "instructor_id"], name: "index_reservations_on_start_time_and_instructor_id", unique: true
     t.index ["user_id"], name: "index_reservations_on_user_id", unique: true
   end
 

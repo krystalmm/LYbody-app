@@ -5,9 +5,9 @@ class Instructors::ReservationsController < ApplicationController
   def update
     if @reservation.update(reservation_params)
       @reservation.update(end_time: @reservation.set_end_time)
-      redirect_to instructors_mypage_path, notice: "予約の変更が完了しました。"
+      redirect_to instructors_mypage_path, notice: '予約の変更が完了しました。'
     else
-      flash[:danger] = "予約時間（開始時間）は現在の日時より遅い時間を選択してください。"
+      flash[:danger] = '予約時間（開始時間）は現在の日時より遅い時間を選択してください。'
       redirect_to instructors_mypage_path
     end
   end
@@ -15,7 +15,7 @@ class Instructors::ReservationsController < ApplicationController
   def destroy
     return unless @reservation.destroy
 
-    redirect_to instructors_mypage_path, notice: "予約を削除しました。"
+    redirect_to instructors_mypage_path, notice: '予約を削除しました。'
   end
 
   private

@@ -2,8 +2,8 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :instructor
 
-  validates :user_id,presence: true, uniqueness: { message: "お客様はすでにご予約済みです。ご予約日時はマイページよりご確認頂けます。" }
-  validates :start_time, presence: true, uniqueness: { message: "この時間はすでにご予約がございます。別の日時を選択してください。" }
+  validates :user_id, presence: true, uniqueness: { message: 'お客様はすでにご予約済みです。ご予約日時はマイページよりご確認頂けます。' }
+  validates :start_time, presence: true, uniqueness: { scope: :instructor, message: 'この時間はすでにご予約がございます。別の日時を選択してください。' }
   validates :end_time, presence: true
   validate :check_start_and_end_time, on: :create
   validate :check_start_time
@@ -11,19 +11,15 @@ class Reservation < ApplicationRecord
   LESSON_HOUR = 1
 
   def check_start_and_end_time
-    if self.start_time > self.end_time
-      errors.add(:end_time)
-    end
+    errors.add(:end_time) if start_time > end_time
   end
 
   def check_start_time
-    if self.start_time < Time.now
-      errors.add(:start_time, "予約時間（開始時間）は現在の日時より遅い時間を選択してください。")
-    end
+    errors.add(:start_time, '予約時間（開始時間）は現在の日時より遅い時間を選択してください。') if start_time < Time.zone.now
   end
 
   def set_end_time
-    self.end_time = self.start_time + LESSON_HOUR.hour
+    self.end_time = start_time + LESSON_HOUR.hour
   end
 
   def date_and_time
