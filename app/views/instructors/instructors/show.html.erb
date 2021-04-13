@@ -96,8 +96,6 @@
                       <div class="modal-body">
                         <div class="reservation-edit-form">
                           <%= form_with model: reservation, url: instructors_reservation_path(reservation), local: true do |f| %>
-                            <%= f.hidden_field :user_id, :value => reservation.user.id %>
-                            <%= f.hidden_field :instructor_id, :value => @instructor.id %>
                             <%= f.label :start_time, "変更後予約日時（開始時間）" %> <br>
                             <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_month_numbers:true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
                             <%= f.submit "変更する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>

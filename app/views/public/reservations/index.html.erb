@@ -35,7 +35,7 @@
             <%= f.hidden_field :instructor_id, :value => @instructor.id %>
             <%= f.label :start_time, "レッスン予約希望日時" %> <br>
             <p style="font-size: 0.8rem;">※ 時間は開始時間を選択してください。</p>
-            <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_month_numbers:true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
+            <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_two_digit_numbers: true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
             <%= f.submit "予約する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>
           <% end %>
         </div>

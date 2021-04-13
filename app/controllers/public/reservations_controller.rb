@@ -23,7 +23,6 @@ class Public::ReservationsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
@@ -34,5 +33,13 @@ class Public::ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:user_id, :instructor_id, :start_time)
+  end
+
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:start_time)
   end
 end
