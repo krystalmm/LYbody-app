@@ -47,6 +47,7 @@ gem 'fullcalendar-rails'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'momentjs-rails'
+gem 'payjp'
 gem 'rails-i18n'
 gem 'seed-fu'
 

@@ -1,6 +1,6 @@
 FROM ruby:2.6.3
 RUN apt-get update -qq && \
-    apt-get install -y build-essential nodejs libpq-dev
+    apt-get install -y build-essential nodejs libpq-dev vim
 ENV TZ Asia/Tokyo
 RUN mkdir /LYbody
 WORKDIR /LYbody

@@ -14,6 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :phone_number, null: false
       t.boolean :is_valid, null: false, default: true
       t.boolean :is_payed, null: false, default: false
+      t.string :subscription_id
 
       ## Recoverable
       t.string   :reset_password_token
