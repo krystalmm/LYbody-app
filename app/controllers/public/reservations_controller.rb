@@ -28,7 +28,7 @@ class Public::ReservationsController < ApplicationController
     # 予約日前日と当日は変更不可
     selected_day = DateTime.new(params[:reservation]["start_time(1i)"].to_i, params[:reservation]["start_time(2i)"].to_i, params[:reservation]["start_time(3i)"].to_i, params[:reservation]["start_time(4i)"].to_i, params[:reservation]["start_time(5i)"].to_i)
     if selected_day < DateTime.current.since(2.days)
-      flash[:danger] = 'ご予約日前日（当日）の変更は、ご予約されたレッスンのインストラクターまでご連絡して頂きますようお願い致します。'
+      flash[:danger] = 'ご予約日前日（当日）の変更をご希望の方は、ご予約されたレッスンのインストラクターまでご連絡して頂きますようお願い致します。'
       redirect_to mypage_path
       return
     end
