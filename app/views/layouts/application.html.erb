@@ -14,7 +14,9 @@
     <%= render 'shared/header' %>
     <main class="mt-5">
       <div class="container">
-        <%= render 'shared/flash_message' %>
+        <div id="flash-messages">
+          <%= render 'shared/flash_message' %>
+        </div>
       </div>
       <%= yield %>
     </main>
