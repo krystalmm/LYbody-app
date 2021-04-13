@@ -65,53 +65,57 @@
       </div>
       <div class="lesson-reservation border-bottom">
         <h4 class="border-heading-side mb-5 mt-5">レッスン予約確認</h4>
-        <div class="reservation-list col-md-10 offset-md-1 mb-5">
-          <table class="table table-borderless table-sm">
-            <thead>
-              <tr>
-                <td class="td-left border-bottom pl-3">予約日時</td>
-                <td class="border-bottom">予約者氏名</td>
-                <td class="border-bottom"></td>
-                <td class="border-bottom"></td>
-              </tr>
-            </thead>
-            <tbody>
-              <% @instructor.reservations.each do |reservation| %>
-              <tr>
-                <td class="pt-3 pl-3"><%= reservation.date_and_time %></td>
-                <td class="pt-3"><%= reservation.user.fullname %></td>
-                <td class="pt-3">
-                  <button type="button" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#ReservationModal-<%= reservation.id %>">
-                    変更する
-                  </button>
-                  <div class="modal fade" id="ReservationModal-<%= reservation.id %>" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content text-dark">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">予約変更</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="reservation-edit-form">
-                          <%= form_with model: reservation, url: instructors_reservation_path(reservation), local: true do |f| %>
-                            <%= f.label :start_time, "変更後予約日時（開始時間）" %> <br>
-                            <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_month_numbers:true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
-                            <%= f.submit "変更する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>
-                          <% end %>
+        <% if @instructor.reservations.present? %>
+          <div class="reservation-list col-md-10 offset-md-1 mb-5">
+            <table class="table table-borderless table-sm">
+              <thead>
+                <tr>
+                  <td class="td-left border-bottom pl-3">予約日時</td>
+                  <td class="border-bottom">予約者氏名</td>
+                  <td class="border-bottom"></td>
+                  <td class="border-bottom"></td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @instructor.reservations.each do |reservation| %>
+                <tr>
+                  <td class="pt-3 pl-3"><%= reservation.date_and_time %></td>
+                  <td class="pt-3"><%= reservation.user.fullname %></td>
+                  <td class="pt-3">
+                    <button type="button" class="btn btn-outline-light btn-sm" data-toggle="modal" data-target="#ReservationModal-<%= reservation.id %>">
+                      変更する
+                    </button>
+                    <div class="modal fade" id="ReservationModal-<%= reservation.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                      <div class="modal-content text-dark">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">予約変更</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="reservation-edit-form">
+                            <%= form_with model: reservation, url: instructors_reservation_path(reservation), local: true do |f| %>
+                              <%= f.label :start_time, "変更後予約日時（開始時間）" %> <br>
+                              <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_month_numbers:true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
+                              <%= f.submit "変更する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>
+                            <% end %>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                </td>
-                <td class="pt-3"><%= link_to "削除する", instructors_reservation_path(reservation), class: 'btn btn-outline-light btn-sm', method: :delete %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+                  </td>
+                  <td class="pt-3"><%= link_to "削除する", instructors_reservation_path(reservation), class: 'btn btn-outline-light btn-sm', method: :delete %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% else %>
+          <p class="text-center mb-5">現在レッスンは予約されておりません。</p>
+        <% end %>
       </div>
     </div>
   </div>

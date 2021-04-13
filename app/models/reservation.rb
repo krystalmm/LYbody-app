@@ -15,7 +15,7 @@ class Reservation < ApplicationRecord
   end
 
   def check_start_time
-    errors.add(:start_time, '予約時間（開始時間）は現在の日時より遅い時間を選択してください。') if start_time < Time.zone.now
+    errors.add(:start_time, '予約時間（開始時間）は現在の日時より遅い時間を選択してください。') if start_time < DateTime.current
   end
 
   def set_end_time
