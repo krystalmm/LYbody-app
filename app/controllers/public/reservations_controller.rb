@@ -28,7 +28,7 @@ class Public::ReservationsController < ApplicationController
     # 予約日前日と当日は変更不可
     selected_day = DateTime.new(params[:reservation]["start_time(1i)"].to_i, params[:reservation]["start_time(2i)"].to_i, params[:reservation]["start_time(3i)"].to_i, params[:reservation]["start_time(4i)"].to_i, params[:reservation]["start_time(5i)"].to_i)
     if selected_day < DateTime.current.since(2.days)
-      flash[:danger] = 'ご予約日前日（当日）の変更は、ご予約されたレッスンのインストラクターまでご連絡して頂きますようお願い致します。'
+      flash[:danger] = 'ご予約日前日（当日）の変更をご希望の方は、ご予約されたレッスンのインストラクターまでご連絡して頂きますようお願い致します。'
       redirect_to mypage_path
       return
     end
@@ -42,7 +42,18 @@ class Public::ReservationsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    # 予約日前日と当日はキャンセル不可
+    if @reservation.start_time < DateTime.current.since(2.days)
+      flash[:danger] = 'ご予約日前日（当日）のキャンセルをご希望の方は、ご予約されたレッスンのインストラクターまでご連絡して頂きますようお願い致します。'
+      redirect_to mypage_path
+      return
+    end
+
+    return unless @reservation.destroy
+
+    redirect_to mypage_path, notice: '予約を削除しました。'
+  end
 
   private
 

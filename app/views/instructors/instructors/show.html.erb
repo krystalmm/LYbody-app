@@ -29,7 +29,7 @@
                   <% if @instructor.lessons.present? %>
                     <% @instructor.lessons.each do |lesson| %>
                       <% if lesson.id %>
-                        <%= lesson.lesson %><%= link_to "（削除する）", instructors_lesson_path(lesson.id), method: :delete, class: 'lesson-delete-link ml-2' %> <br>
+                        <%= lesson.lesson %><%= link_to "（削除する）", instructors_lesson_path(lesson.id), method: :delete, class: 'lesson-delete-link ml-2', data: { confirm: '本当に削除しますか？' } %> <br>
                       <% end %>
                     <% end %>
                   <% else %>
@@ -107,7 +107,7 @@
                     </div>
                   </div>
                   </td>
-                  <td class="pt-3"><%= link_to "削除する", instructors_reservation_path(reservation), class: 'btn btn-outline-light btn-sm', method: :delete %></td>
+                  <td class="pt-3"><%= link_to "削除する", instructors_reservation_path(reservation), class: 'btn btn-outline-light btn-sm', method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
                 </tr>
                 <% end %>
               </tbody>

@@ -8,13 +8,16 @@
     <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://js.pay.jp/" type="text/javascript"></script>
   </head>
 
   <body>
     <%= render 'shared/header' %>
     <main class="mt-5">
       <div class="container">
-        <%= render 'shared/flash_message' %>
+        <div id="flash-messages">
+          <%= render 'shared/flash_message' %>
+        </div>
       </div>
       <%= yield %>
     </main>

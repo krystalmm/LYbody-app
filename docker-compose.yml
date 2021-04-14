@@ -2,7 +2,10 @@ version: '3'
 services:
   web:
     build: .
-    command: bundle exec puma -C config/puma.rb
+    # ======= ローカルと本番で切り替え ================
+    # command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
+    # =============================================
     volumes:
       - .:/LYbody
       - bundle_path:/bundle
@@ -14,16 +17,18 @@ services:
     tty: true
     stdin_open: true
     depends_on:
-      - db
       - chrome
+  # ============ローカルと本番で切り替え==============
+  #     - db
 
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      TZ: Asia/Tokyo
-    volumes:
-      - db-data:/var/lib/mysql
+  # db:
+  #   image: mysql:5.7
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     TZ: Asia/Tokyo
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  # ==============================================
 
   chrome:
     image: selenium/standalone-chrome:latest
