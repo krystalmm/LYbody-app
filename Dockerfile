@@ -1,6 +1,9 @@
 FROM ruby:2.6.3
+RUN curl https://deb.nodesource.com/setup_12.x | bash
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && \
-    apt-get install -y build-essential nodejs libpq-dev vim
+    apt-get install -y build-essential nodejs libpq-dev vim yarn
 ENV TZ Asia/Tokyo
 RUN mkdir /LYbody
 WORKDIR /LYbody
