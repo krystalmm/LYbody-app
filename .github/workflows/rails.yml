@@ -24,6 +24,7 @@ jobs:
         RAILS_ENV: test
   build:
     runs-on: ubuntu-latest
+    needs: rspec
     steps:
     - uses: actions/checkout@v2
     - name: Deploy
