@@ -35,7 +35,7 @@
         <%# <% if payed(current_user) %>
           <div class="links col-8 offset-2 d-flex justify-content-between mt-5">
             <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
-            <%= link_to "チャットで質問する", room_path(@instructor), class: 'btn btn-outline-light px-5' %>
+            <%= link_to "チャットで質問する", room_path(@instructor), class: 'btn btn-outline-light px-5', data: { "turbolinks" => false } %>
           </div>
         <%# <% else %>
           <div class="link text-center mt-5">
