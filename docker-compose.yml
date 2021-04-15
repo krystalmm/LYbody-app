@@ -16,9 +16,9 @@ services:
       - BUNDLE_PATH=/bundle
     tty: true
     stdin_open: true
+    depends_on:
+      - chrome
   # ============ローカルと本番で切り替え==============
-  #   depends_on:
-  #     - chrome
   #     - db
 
   # db:
@@ -28,12 +28,12 @@ services:
   #     TZ: Asia/Tokyo
   #   volumes:
   #     - db-data:/var/lib/mysql
-
-  # chrome:
-  #   image: selenium/standalone-chrome:latest
-  #   ports:
-  #     - 4444:4444
   # ==============================================
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
 
   nginx:
     build: ./nginx_docker
