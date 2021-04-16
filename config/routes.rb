@@ -34,5 +34,10 @@ Rails.application.routes.draw do
     resources :reservations, only: [:index, :create, :update, :destroy]
     resources :rooms, only: [:show]
     resource :chats, only: [:create]
+    resources :cards, only: [:new, :show, :create, :destroy] do
+      collection do
+        post 'cancel' => 'cards#cancel'
+      end
+    end
   end
 end
