@@ -30,11 +30,13 @@ Rails.application.routes.draw do
     patch 'users/information' => 'users#update'
     put 'users/information' => 'users#update'
 
-    resources :instructors, only: [:index, :show]
+    resources :instructors, only: [:index, :show] do
+      resources :reviews, only: [:create, :destroy]
+    end
     resources :reservations, only: [:index, :create, :update, :destroy]
     resources :rooms, only: [:show]
     resource :chats, only: [:create]
-    resources :cards, only: [:new, :show, :create, :destroy] do
+    resources :cards, only: [:new, :show, :create] do
       collection do
         post 'cancel' => 'cards#cancel'
       end

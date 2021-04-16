@@ -7,6 +7,7 @@ class Instructor < ApplicationRecord
   has_many :lessons, through: :instructor_lessons
   has_many :reservations, dependent: :destroy
   has_many :rooms, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   mount_uploader :instructor_image, InstructorImageUploader
 end
