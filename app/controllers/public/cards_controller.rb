@@ -2,7 +2,8 @@ class Public::CardsController < ApplicationController
   require 'payjp'
 
   before_action :authenticate_user!
-  before_action :set_api_key
+  before_action :set_payjp_secret_key, except: :new
+  before_action :set_card, only: [:new, :show, :destroy]
 
   # プラン作成
   def plan
@@ -15,12 +16,18 @@ class Public::CardsController < ApplicationController
   end
 
   def new
-    card = Card.find(user_id: current_user.id)
-    redirect_to action: "show" if card.present?
+    redirect_to action: "show" if @card.present?
+    @card = Card.new
   end
 
   def show
-    @card = Card.find(user_id: current_user.id)
+    redirect_to action: 'new' if @card.blank?
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    default_card_information = customer.cards.retrieve(@card.card_id)
+    @card_info = customer.cards.retrieve(@card.card_id)
+    @exp_month = default_card_information.exp_month.to_s
+    @exp_year = default_card_information.exp_year.to_s.slice(2,3)
+    @card_brand = default_card_information.brand
   end
 
   def create
@@ -61,10 +68,21 @@ class Public::CardsController < ApplicationController
     redirect_to mypage_path, notice: '定期決済が解除されました。以降レッスンのご受講はできません。再度受講したくなった際は、もう一度決済手続きから始めて頂くようお願い致します。'
   end
 
+  def destroy
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @card.destroy
+    customer.delete
+    redirect_to mypage_path, notice: 'クレジットカードが削除されました。'
+  end
+
   private
 
-  def set_api_key
+  def set_payjp_secret_key
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+  end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
   end
 
 end
