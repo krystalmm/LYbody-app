@@ -3,7 +3,7 @@ class Public::CardsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_payjp_secret_key, except: :new
-  before_action :set_card, only: [:new, :show, :destroy]
+  before_action :set_card, only: [:new, :show, :pay, :destroy]
 
   # プラン作成
   def plan
@@ -16,12 +16,13 @@ class Public::CardsController < ApplicationController
   end
 
   def new
-    redirect_to action: "show" if @card.present?
+    redirect_to card_path(@card) if @card.present?
     @card = Card.new
+    gon.payjpPublicKey = Rails.application.credentials[:payjp][:PAYJP_PUBLIC_KEY]
   end
 
   def show
-    redirect_to action: 'new' if @card.blank?
+    redirect_to new_card_path if @card.blank?
     customer = Payjp::Customer.retrieve(@card.customer_id)
     default_card_information = customer.cards.retrieve(@card.card_id)
     @card_info = customer.cards.retrieve(@card.card_id)
@@ -32,7 +33,7 @@ class Public::CardsController < ApplicationController
 
   def create
     if params['payjp-token'].blank?
-      redirect_to action: 'new'
+      redirect_to new_card_path
     else
       customer = Payjp::Customer.create(
         card: params['payjp-token']
@@ -43,16 +44,15 @@ class Public::CardsController < ApplicationController
         pay
       else
         flash[:danger] = 'カード情報を登録できませんでした。'
-        redirect_to action: 'new'
+        redirect_to new_card_path
       end
     end
   end
 
   def pay
-    card = Card.find(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.create(
-      :customer => card.customer_id,
+      :customer => @card.customer_id,
       :plan => plan,
       :metadata => { user_id: current_user.id }
     )
@@ -84,5 +84,4 @@ class Public::CardsController < ApplicationController
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
-
 end
