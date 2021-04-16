@@ -43,9 +43,16 @@
             </tbody>
           </table>
         </div>
-        <div class="edit-link text-right pr-5">
+        <div class="edit-link text-right pr-5 mt-3">
           <%= link_to edit_information_path, class: 'border-bottom hover-link' do %>
             登録情報を編集する　→
+          <% end %>
+        </div>
+        <div class="card-link text-right pr-5 mt-2">
+          <% if @user.card.present? %>
+            <%= link_to card_path(@user.card), class: 'border-bottom hover-link' do %>
+              ご登録カード情報を確認する　→
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -92,10 +99,13 @@
               </div>
             </div>
           <% else %>
-            <div class="no-reservations">
+            <div class="no-reservations text-center">
               <p>現在レッスンのご予約はございません。</p>
             </div>
           <% end %>
+          <div class="cancel-link text-center mt-5">
+            <%= link_to "定期決済を解除する", cancel_cards_path, method: :post, data: { confirm: '定期決済を解除すると、レッスンのご受講ができなくなり、クレジットカード情報も削除されます。本当に解除しますか？' }, class: 'btn btn-outline-light' %>
+          </div>
         <% else %>
           <div class="pay-link text-center pt-5">
             <%= link_to "支払い手続きをしてレッスンを受講する", new_card_path, class: 'btn btn-outline-light px-5' %>

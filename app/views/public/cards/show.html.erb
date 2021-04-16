@@ -1,0 +1,20 @@
+<% provide(:title, 'ご登録カード情報 | LYbody') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="card-info col-8 offset-2">
+      <h2 class="border-heading-bottom card-info-heading">ご登録カード情報</h2>
+      <div class="card-info-content mt-5">
+        <div class="card-number">
+          <%= image_tag asset_path("cards/#{card_src(@card_brand)}"), width: 50, height: 30, class: 'mr-3' %>
+          **** **** **** <%= @card_info.last4 %>
+        </div>
+        <div class="card-exp-info mt-3">
+          有効期限：<%= "#{@exp_month} / #{@exp_year}" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

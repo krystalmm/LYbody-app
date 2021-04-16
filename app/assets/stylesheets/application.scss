@@ -482,6 +482,25 @@ footer {
 }
 
 
+// public/cards show page
+
+.card-info {
+  .card-info-heading {
+    margin-bottom: 100px;
+  }
+
+  .card-info-content {
+    font-size: 1.1rem;
+    width: 50%;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 200px;
+  }
+}
+
+
 // instructors/mypage
 
 .instructor-mypage{
