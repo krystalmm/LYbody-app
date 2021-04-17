@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.is_payed? %>
 <div class="modal fade" id="new_reservation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">

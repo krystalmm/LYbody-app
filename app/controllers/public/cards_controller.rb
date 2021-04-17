@@ -3,7 +3,7 @@ class Public::CardsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_payjp_secret_key, except: :new
-  before_action :set_card, only: [:new, :show, :pay]
+  before_action :set_card, only: [:new, :show, :pay, :cancel]
 
   # プラン作成
   def plan
@@ -61,6 +61,12 @@ class Public::CardsController < ApplicationController
   end
 
   def cancel
+    if current_user.reservation.present?
+      flash[:danger] = '現在ご予約されているレッスンがございますので、定期決済の解除はできません。'
+      redirect_to mypage_path
+      return
+    end
+
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.retrieve(current_user.subscription_id)
     subscription.cancel
@@ -68,7 +74,7 @@ class Public::CardsController < ApplicationController
     @card.destroy
     customer.delete
     current_user.update(is_payed: false)
-    redirect_to mypage_path, notice: '定期決済が解除されました。期間終了日以降はレッスンのご受講はできません。再度受講したくなった際は、もう一度決済手続きから始めて頂くようお願い致します。'
+    redirect_to mypage_path, notice: '定期決済が解除されました。以降はレッスンのご受講はできません。再度受講したくなった際は、もう一度決済手続きから始めて頂くようお願い致します。'
   end
 
   private
