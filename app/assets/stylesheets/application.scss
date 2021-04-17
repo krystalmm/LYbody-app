@@ -317,6 +317,17 @@ footer {
   table {
     font-size: 1.2rem;
   }
+
+  .review-user, .review-day, .delete-review {
+    font-size: 0.9rem;
+  }
+
+  .delete-review a {
+    &:hover {
+      opacity: 0.6;
+      transition: opacity .3s ease;
+    }
+  }
 }
 
 

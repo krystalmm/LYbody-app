@@ -2,7 +2,7 @@ class Instructors::UsersController < ApplicationController
   before_action :authenticate_instructor!
 
   def index
-    @users = User.all
+    @users = User.where(is_payed: true).order(:id)
   end
 
   def show
