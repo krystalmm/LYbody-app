@@ -2,6 +2,8 @@
 
 <%= render 'shared/backpage' %>
 
+<%= render 'shared/loading' %>
+<div id="wrap">
 <div class="container">
   <div class="row">
     <div class="mypage col-10 offset-1">
@@ -104,7 +106,7 @@
             </div>
           <% end %>
           <div class="cancel-link text-center mt-5">
-            <%= link_to "定期決済を解除する", cancel_cards_path, method: :post, data: { confirm: '定期決済を解除すると、レッスンのご受講ができなくなり、クレジットカード情報も削除されます。本当に解除しますか？' }, class: 'btn btn-outline-light' %>
+            <%= link_to "定期決済を解除する", cancel_cards_path, method: :post, data: { confirm: '定期決済を解除すると、レッスンのご受講ができなくなり、クレジットカード情報も削除されます。本当に解除しますか？' }, class: 'btn btn-outline-light loading' %>
           </div>
         <% else %>
           <div class="pay-link text-center pt-5">
@@ -117,4 +119,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

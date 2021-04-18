@@ -198,6 +198,31 @@ footer {
   display: contents;
 }
 
+// ローディング
+
+#loader-bg {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  z-index: 1001;
+}
+
+#loader {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -100px;
+  text-align: center;
+  color: #e4e4e4;
+  z-index: 1002;
+}
+
 
 // public/top page
 
