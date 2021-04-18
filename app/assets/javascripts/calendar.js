@@ -38,28 +38,13 @@ $(document).on('turbolinks:load', function () {
     dayClick: function(day) {
       $('#new_reservation').modal('show');
       pulldown_option_year = document.getElementById("reservation_start_time_1i").getElementsByTagName('option');
-      for ( i = 0; i < pulldown_option_year.length; i++ ) {
-        if (pulldown_option_year[i].value == day.format('YYYY')) {
-          pulldown_option_year[i].selected = true;
-          break;
-        }
-      }
+      setPulldownDay(pulldown_option_year, day.format('YYYY'));
 
       pulldown_option_month = document.getElementById("reservation_start_time_2i").getElementsByTagName('option');
-      for ( i = 0; i < pulldown_option_month.length; i++) {
-        if (pulldown_option_month[i].value == day.format('M')) {
-          pulldown_option_month[i].selected = true;
-          break;
-        }
-      }
+      setPulldownDay(pulldown_option_month, day.format('M'));
 
       pulldown_option_day = document.getElementById("reservation_start_time_3i").getElementsByTagName('option');
-      for ( i = 0; i < pulldown_option_day.length; i++ ) {
-        if (pulldown_option_day[i].value == day.format('D')) {
-          pulldown_option_day[i].selected = true;
-          break;
-        }
-      }
+      setPulldownDay(pulldown_option_day, day.format('D'));
 
       setPulldownTime(day);
     },
@@ -97,9 +82,7 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-
-
-
+// クエリパラメータからインストラクターIDを取得する
 function getInstructorId() {
   var url = window.location.href;
   var name = "instructor_id";
@@ -107,6 +90,16 @@ function getInstructorId() {
   results = regex.exec(url);
   return results[2];
 };
+
+// プルダウンの年月日をクリックされた日にちに設定する
+function setPulldownDay(pulldownOption, dayFormat) {
+  for ( i = 0; i < pulldownOption.length; i++ ) {
+    if (pulldownOption[i].value == dayFormat) {
+      pulldownOption[i].selected = true;
+      break;
+    }
+  }
+}
 
 
 // プルダウンの時間選択を曜日で分ける
