@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2021_04_19_074149) do
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_contacts_on_email", unique: true
   end
 
   create_table "instructor_lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
