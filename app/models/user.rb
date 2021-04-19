@@ -8,12 +8,12 @@ class User < ApplicationRecord
   has_one :card, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  validates :firstname, presence: true, length: { maximum: 30 }
-  validates :lastname, presence: true, length: { maximum: 30 }
+  validates :firstname, presence: true, length: { maximum: 15 }
+  validates :lastname, presence: true, length: { maximum: 15 }
 
   VALID_KANA_REGEX = /\A[\p{katakana}\u{30fc}\s 　]+\z/.freeze
-  validates :kana_firstname, presence: true, length: { maximum: 30 }, format: { with: VALID_KANA_REGEX }
-  validates :kana_lastname, presence: true, length: { maximum: 30 }, format: { with: VALID_KANA_REGEX }
+  validates :kana_firstname, presence: true, length: { maximum: 15 }, format: { with: VALID_KANA_REGEX }
+  validates :kana_lastname, presence: true, length: { maximum: 15 }, format: { with: VALID_KANA_REGEX }
 
   validates :email, presence: true, length: { maximum: 255 }
 
