@@ -61,6 +61,7 @@
       <div class="mypage-bottom mt-5">
         <% if @user.is_payed? %>
           <% if @user.reservation.present? %>
+            <p class="text-center">※ レッスン予約日当日の該当時間になりましたら、「ビデオ通話でレッスンを受ける」からレッスンをご受講ください。</p>
             <div class="reservation-info col-md-8 offset-md-2 border p-4">
               <p class="mb-0">
                 <%= @user.firstname %>さんの次回のレッスン予約日時は、
