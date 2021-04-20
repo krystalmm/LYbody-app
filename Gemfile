@@ -42,6 +42,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
+gem 'exception_notification'
 gem 'fog-aws'
 gem 'font-awesome-sass', '~>5.13'
 gem 'fullcalendar-rails'
@@ -52,6 +53,7 @@ gem 'momentjs-rails'
 gem 'payjp'
 gem 'rails-i18n'
 gem 'seed-fu'
+gem 'slack-notifier'
 gem 'whenever', require: false
 
 group :development, :test do
