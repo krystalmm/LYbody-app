@@ -106,6 +106,7 @@
               <p>現在レッスンのご予約はございません。</p>
             </div>
           <% end %>
+          <p class="text-center mt-5">※ 決済の引き落とし日は、毎月月末になります。</p>
           <div class="cancel-link text-center mt-5">
             <%= link_to "定期決済を解除する", cancel_cards_path, method: :post, data: { confirm: '定期決済を解除すると、レッスンのご受講ができなくなり、クレジットカード情報も削除されます。本当に解除しますか？' }, class: 'btn btn-outline-light loading' %>
           </div>
