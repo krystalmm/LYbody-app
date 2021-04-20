@@ -19,7 +19,7 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      redirect_to root_path
+      redirect_to root_path, notice: 'お問い合わせを受け付けました。折り返し担当者よりご連絡致しますので、恐れ入りますがしばらくお待ちください。'
     else
       render :new
     end
