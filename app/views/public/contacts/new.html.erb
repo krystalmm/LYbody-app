@@ -7,7 +7,7 @@
     <div class="contact col-10 offset-1">
       <h2 class="border-heading-bottom mb-5">お問い合わせフォーム</h2>
       <div class="contact-form col-10 offset-1">
-        <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+        <%= form_with model: @contact, url: confirm_path, id: 'contact-form', local: true do |f| %>
           <div class="form-group">
             <%= f.label :name, "お名前" %><span class="essential-icon">必須</span>
             <%= f.text_field :name, autocomplete: 'name', placeholder: '例：令和 道子', class: 'form-control col-5 validate[required] mt-2' %>
