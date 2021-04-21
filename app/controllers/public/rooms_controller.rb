@@ -11,7 +11,7 @@ class Public::RoomsController < ApplicationController
     end
 
     @chat = Chat.new
-    @chats = @room.chats.order(:created_at)
+    @chats = @room.chats.order(:created_at).page(params[:page]).per(8)
 
     @footer_chat = true
   end

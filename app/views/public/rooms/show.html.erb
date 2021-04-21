@@ -9,6 +9,7 @@
       <div id="chat-wrap">
         <%= render 'chat-content', chats: @chats, room: @room %>
       </div>
+      <%= paginate @chats %>
       <div class="user-chat-form">
         <%= form_with model: @chat, url: chats_path do |f| %>
           <%= f.hidden_field :is_user, :value => true %>

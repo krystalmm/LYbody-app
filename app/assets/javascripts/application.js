@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery3
+//= require infinite-scroll.pkgd.min
 //= require popper
 //= require bootstrap-sprockets
 
