@@ -32,4 +32,8 @@ class User < ApplicationRecord
   def kana_fullname
     "#{kana_firstname}　#{kana_lastname}"
   end
+
+  def self.looks(words)
+    @users = User.where(["concat(firstname, lastname) LIKE ?", "%#{words}%"])
+  end
 end

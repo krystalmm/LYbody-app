@@ -5,31 +5,18 @@
 <div class="container">
   <div class="row">
     <div class="users col-md-8 offset-md-2 col-10 offset-1">
-      <h2 class="border-heading-bottom mb-5">会員一覧<span class="text-sm">（※ 入会者のみ）</span></h2>
-      <table class="table text-center">
-        <thead>
-          <tr>
-            <td class="table-sm-width">会員ID</td>
-            <td>氏名</td>
-            <td>メールアドレス</td>
-            <td>会員ステータス</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td>
-                <%= link_to instructors_user_path(user) do %>
-                  <%= user.fullname %>
-                <% end %>
-              </td>
-              <td><%= user.email %></td>
-              <td><%= valid_value?(user) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <h2 class="border-heading-bottom mb-5">会員一覧</h2>
+      <div class="text-right">
+        <button class="btn dropdown-toggle text-light mb-2" type="button" id="user-select-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          絞り込み
+        </button>
+        <div class="dropdown-menu" aria-labelledby="user-select-button">
+          <a href="/instructors/users" class="dropdown-item">全ての会員</a>
+          <a href="/instructors/users/?option=payed" class="dropdown-item">定期決済中の会員</a>
+        </div>
+      </div>
+      <%= render 'shared/instructors-users', users: @users %>
+      <%= paginate @users %>
     </div>
   </div>
 </div>

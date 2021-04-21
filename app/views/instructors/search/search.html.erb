@@ -1,0 +1,13 @@
+<% provide(:title, '検索結果 | LYbody - インストラクター') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="search col-md-8 offset-md-2 col-10 offset-1">
+      <h2 class="border-heading-bottom mb-5">検索結果</h2>
+      <%= render 'shared/instructors-users', users: @users %>
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:update, :destroy]
     resources :rooms, only: [:show]
     resource :chats, only: [:create]
+    get '/search' => 'search#search'
   end
 
   scope module: :public do
@@ -42,7 +43,7 @@ Rails.application.routes.draw do
       end
     end
     resources :contacts, only: [:new, :create]
-    post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
-    post 'contacts/back', to: 'contacts#back', as: 'back'
+    post 'contacts/confirm' => 'contacts#confirm', as: 'confirm'
+    post 'contacts/back' => 'contacts#back', as: 'back'
   end
 end
