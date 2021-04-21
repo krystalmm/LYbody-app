@@ -241,11 +241,30 @@ footer {
 }
 
 
-// エラー時のフォーム
+// pagination
 
-.field_with_errors {
-  display: contents;
+.pagination {
+  justify-content: center;
 }
+
+.page-item.active .page-link {
+  color: #000;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.page-link {
+  color: #ffffff;
+  background-color: #151515;
+  border: 1px solid #ffffff;
+
+  &:hover {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #dee2e6;
+  }
+}
+
 
 // ローディング
 

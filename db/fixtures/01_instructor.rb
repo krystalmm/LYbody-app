@@ -54,6 +54,6 @@ Instructor.seed do |s|
   s.email = "jessica@lybody.com"
   s.password = "jessicapassword"
   s.instructor_image = File.open("./app/assets/images/instructors/instructor6.png")
-  s.has_lesson = false
+  s.has_lesson = true
   s.comment = "私のレッスンで楽しく笑顔になっていただけたら嬉しいです！！"
 end
