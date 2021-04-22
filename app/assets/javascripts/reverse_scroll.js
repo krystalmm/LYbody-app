@@ -1,15 +1,20 @@
 $(document).on('turbolinks:load', function () {
   var i = 2;
-  $('.chat').scrollTop(1);
-  $('.chat').scroll(function () {
-    if (($('.chat').scrollTop() == 0) && (i <= parseInt($('.chat').find('ul.pagination last a').prop("search").match(/[0-9]/), 10))) {
+  chatwindow = document.getElementById('chat-window');
+  $('#chat-window').scrollTop(1);
+  if (chatwindow == null) {
+    return;
+  }
+  chatwindow.onscroll = function () {
+    // 一番上にスクロールされた時の処理
+    if (($('#chat-window').scrollTop() == 0) && (i <= parseInt($("#chat-window").find("ul.pagination a").prop("search").match(/[0-9]/), 10))) {
+      console.log("scroll top");
       $.ajax({
-        url: $(".chat").find("ul.pagination a[rel=next]").prop("search").replace(/[0-9]/, i)
-      }).done(function(data) {
-        $(".chat").prepend($(data).find(".chat").html());
-        $(".chat").scrollTop($(".chat").first().height());
+        // roomコントローラのpaginationアクション
+        url: location.href + '/' + i
+      }).done(function () {
         i++;
       })
     }
-  });
+  };
 });

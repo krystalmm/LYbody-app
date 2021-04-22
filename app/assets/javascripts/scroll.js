@@ -7,4 +7,8 @@ $(document).on('turbolinks:load', function () {
       hideNav: '.pagination',
     });
   }
+
+  // var chat = document.getElementById("chat-wrap");
+  // var bottom = chat.scrollHeight - chat.clientHeight;
+  // chat.scroll(0, bottom);
 });

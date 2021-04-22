@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :reservations, only: [:update, :destroy]
     resources :rooms, only: [:show]
+    get 'rooms/:id/:page' => 'rooms#pagination', as: 'room_pagination'
     resource :chats, only: [:create]
     get '/search' => 'search#search'
   end
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     end
     resources :reservations, only: [:index, :create, :update, :destroy]
     resources :rooms, only: [:show]
+    get 'rooms/:id/:page' => 'rooms#pagination', as: 'room_pagination'
     resource :chats, only: [:create]
     resources :cards, only: [:new, :show, :create] do
       collection do
