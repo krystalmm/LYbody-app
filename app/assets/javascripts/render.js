@@ -1,3 +1,3 @@
 // $(document).on('turbolinks:load', function () {
-//   history.replaceState(",", '/instructors/mypage');
+//   history.replaceState('', '', '/instructors/mypage');
 // });

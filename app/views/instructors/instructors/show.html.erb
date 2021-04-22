@@ -143,3 +143,13 @@
     </div>
   </div>
 </div>
+<% if @lesson.errors.any? %>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    // instructors/mypage のURLを取得
+    var $dir = location.href.split("/");
+    var $dir2 = $dir[$dir.length -2];
+    history.pushState('', '', '/' + $dir2 + '/mypage')
+  });
+  </script>
+<% end %>
