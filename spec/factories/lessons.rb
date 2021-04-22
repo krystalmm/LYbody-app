@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :lesson do
-    lesson { 'MyString' }
+    lesson { 'Lesson' }
   end
 end

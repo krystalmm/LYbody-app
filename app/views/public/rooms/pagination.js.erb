@@ -1,3 +1,4 @@
 $('#chat-wrap').prepend("<%= j(render 'public/rooms/chat-content', chats: @chats, room: @room) %>");
-var bottom = window.scrollHeight - window.clientHeight;
-window.scroll(0, bottom);
+var scrollPosition = document.getElementById("chat-window").scrollTop;
+var scrollHeight = document.getElementById("chat-window").scrollHeight;
+document.getElementById("chat-window").scrollTop = scrollHeight;

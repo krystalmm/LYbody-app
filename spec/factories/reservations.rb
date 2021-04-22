@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :reservation do
-    user_id { 1 }
-    instructor_id { 1 }
-    start_time { '2021-04-03 01:05:50' }
-    end_time { '2021-04-03 01:05:50' }
+    start_time { '2021-04-03 19:00:00' }
+    end_time { '2021-04-03 20:00:00' }
+    association :instructor
+    association :user
   end
 end

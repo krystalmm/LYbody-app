@@ -1,4 +1,4 @@
-<div id="user-chats" class="chats">
+<div id="user-chats-<%= @page %>" class="chats user-chats">
   <% chats.each do |chat| %>
     <% if chat.is_user == true %>
       <div class="my-chats">

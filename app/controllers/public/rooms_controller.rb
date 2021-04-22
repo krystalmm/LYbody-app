@@ -11,7 +11,14 @@ class Public::RoomsController < ApplicationController
     end
 
     @chat = Chat.new
-    @chats = @room.chats.order(:created_at).limit(8).page(params[:page]).per(8)
+    chat_scope = @room.chats.order(:created_at)
+    # @chats = @room.chats.order(created_at: "DESC").page(params[:page]).per(8)
+    @chats = reverse_paginate(chat_scope, params[:page])
+    if params[:page].present?
+      @page = params[:page]
+    else
+      @page = 1
+    end
 
     @footer_chat = true
   end
@@ -27,8 +34,24 @@ class Public::RoomsController < ApplicationController
     end
     @chat = Chat.new
 
-    @chats = @room.chats.limit(8).order(:created_at).page(params[:page]).per(8)
+    chat_scope = @room.chats.order(:created_at)
+    # @chats = @room.chats.order(created_at: "DESC").page(params[:page]).per(8)
+    @chats = reverse_paginate(chat_scope, params[:page])
+    if params[:page].present?
+      @page = params[:page]
+    else
+      @page = 1
+    end
 
     @footer_chat = true
+  end
+
+  def reverse_paginate(scope, page)
+    if page
+      page_number = page
+    else
+      page_number = Kaminari.paginate_array(scope.reverse).page(1).per(8).max_pages
+    end
+    Kaminari.paginate_array(scope.reverse).page(page_number).per(8).reverse!
   end
 end

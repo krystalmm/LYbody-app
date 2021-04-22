@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="instructor-chat-page col-10 offset-1" id="chat-window">
+    <div class="instructor-chat-page col-10 offset-1" id="chat-window"  style="overflow: scroll;height: 620px;">
       <h2 class="border-heading-bottom mb-5">チャット（<%= @room.user.fullname %>）</h2>
       <div id="chat-wrap">
         <%= render 'chat-content', chats: @chats, room: @room %>

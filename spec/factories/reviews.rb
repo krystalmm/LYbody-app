@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :review do
-    instructor { nil }
-    user { nil }
-    comment { 'MyText' }
+    comment { 'Review comment' }
+    association :instructor
+    association :user
   end
 end

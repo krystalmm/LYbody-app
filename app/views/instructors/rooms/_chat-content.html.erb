@@ -1,5 +1,5 @@
 <div id="instructor-chats" class="chats">
-  <% chats.each do |chat| %>
+  <% chats.reverse_each do |chat| %>
     <% if chat.is_user == false %>
       <div class="my-chats">
         <p><%= safe_join(chat.message.split("\n"),tag(:br)) %></p>

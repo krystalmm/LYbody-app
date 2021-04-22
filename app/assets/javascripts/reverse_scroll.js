@@ -8,7 +8,6 @@ $(document).on('turbolinks:load', function () {
   chatwindow.onscroll = function () {
     // 一番上にスクロールされた時の処理
     if (($('#chat-window').scrollTop() == 0) && (i <= parseInt($("#chat-window").find("ul.pagination a").prop("search").match(/[0-9]/), 10))) {
-      console.log("scroll top");
       $.ajax({
         // roomコントローラのpaginationアクション
         url: location.href + '/' + i

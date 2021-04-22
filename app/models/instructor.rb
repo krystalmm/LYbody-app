@@ -9,5 +9,7 @@ class Instructor < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  validates :email, presence: true, length: { maximum: 255 }
+
   mount_uploader :instructor_image, InstructorImageUploader
 end
