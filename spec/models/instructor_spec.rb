@@ -28,10 +28,18 @@ RSpec.describe Instructor, type: :model do
     expect(instructor).to be_invalid
   end
 
-  it 'is invalid with a duplicate email address' do
+  it 'is invalid with a duplicate email' do
     FactoryBot.create(:instructor, email: 'duplicate@example.com')
     instructor = FactoryBot.build(:instructor, email: 'duplicate@example.com')
     expect(instructor).to be_invalid
+  end
+
+  it 'has invalid email' do
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar..com]
+    invalid_addresses.each do |invalid_address|
+      instructor.email = invalid_address
+      expect(instructor).to be_invalid, "#{invalid_address.inspect} should be invalid."
+    end
   end
 
   it 'is invalid without a password' do

@@ -28,7 +28,7 @@ RSpec.describe Contact, type: :model do
     expect(contact).to be_invalid
   end
 
-  it 'has invalid email addresses' do
+  it 'has invalid email' do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar..com]
     invalid_addresses.each do |invalid_address|
       contact.email = invalid_address

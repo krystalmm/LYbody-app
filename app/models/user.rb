@@ -15,7 +15,8 @@ class User < ApplicationRecord
   validates :kana_firstname, presence: true, length: { maximum: 15 }, format: { with: VALID_KANA_REGEX }
   validates :kana_lastname, presence: true, length: { maximum: 15 }, format: { with: VALID_KANA_REGEX }
 
-  validates :email, presence: true, length: { maximum: 255 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, length: { maximum: 255 }
 
   VALID_PHONE_REGEX = /\A\d{10,11}\z/.freeze
   validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
