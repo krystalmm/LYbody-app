@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'UsersLogins', type: :system, js: true do
+RSpec.describe 'UsersLogin', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
 
   it 'succeeds login when user submit valid information followed by logout' do

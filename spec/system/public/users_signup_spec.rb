@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'UsersSignups', type: :system, js: true do
+RSpec.describe 'UsersSignup', type: :system, js: true do
   it 'succeeds signup when user submit valid information' do
     visit new_user_registration_path
     fill_in 'user_firstname', with: 'Test'
