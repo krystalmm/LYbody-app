@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'UsersLogins', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
 
-  it 'login succeeds when user submit valid information followed by logout' do
+  it 'succeeds login when user submit valid information followed by logout' do
     visit new_user_session_path
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
@@ -22,7 +22,7 @@ RSpec.describe 'UsersLogins', type: :system, js: true do
     end
   end
 
-  it "don't login when user submit invalid information" do
+  it "can't login when user submit invalid information" do
     visit new_user_session_path
     fill_in 'user_email', with: 'invalid@email.com'
     fill_in 'user_password', with: 'invalidpassword'
@@ -30,7 +30,6 @@ RSpec.describe 'UsersLogins', type: :system, js: true do
     aggregate_failures do
       expect(current_path).to eq new_user_session_path
       expect(has_css?('.alert-danger')).to be_truthy
-      # リロードしたらエラーメッセージが消えている
       visit current_path
       expect(has_css?('.alert-danger')).to be_falsy
     end
