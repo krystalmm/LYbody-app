@@ -14,6 +14,6 @@ RUN bundle install
 COPY . /LYbody
 RUN mkdir -p tmp/sockets
 RUN mkdir -p tmp/pids
-RUN touch log/cron.log
 RUN bundle exec whenever --update-crontab
 CMD ["cron", "-f"]
+RUN service cron start
