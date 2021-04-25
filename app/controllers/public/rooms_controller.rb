@@ -12,7 +12,6 @@ class Public::RoomsController < ApplicationController
 
     @chat = Chat.new
     chat_scope = @room.chats.order(:created_at)
-    # @chats = @room.chats.order(created_at: "DESC").page(params[:page]).per(8)
     @chats = reverse_paginate(chat_scope, params[:page])
     if params[:page].present?
       @page = params[:page]
@@ -35,7 +34,6 @@ class Public::RoomsController < ApplicationController
     @chat = Chat.new
 
     chat_scope = @room.chats.order(:created_at)
-    # @chats = @room.chats.order(created_at: "DESC").page(params[:page]).per(8)
     @chats = reverse_paginate(chat_scope, params[:page])
     if params[:page].present?
       @page = params[:page]
