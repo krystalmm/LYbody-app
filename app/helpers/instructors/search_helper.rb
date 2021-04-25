@@ -1,0 +1,2 @@
+module Instructors::SearchHelper
+end

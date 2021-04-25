@@ -1,0 +1,11 @@
+<% if page.current? %>
+  <li class="page-item active">
+    <% url = "#{url}?page=1" if page.number == 1 %>
+    <%= link_to_unless page.current?, page.number, url, opts = { :remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil, class: 'page-link' } %>
+  </li>
+<% else %>
+  <li class="page-item">
+    <% url = "#{url}?page=1" if page.number == 1 %>
+    <%= link_to_unless page.current?, page.number, url, opts = { :remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil, class: 'page-link' } %>
+  </li>
+<% end %>

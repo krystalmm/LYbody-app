@@ -9,11 +9,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.pay.jp/" type="text/javascript"></script>
+    <%= include_gon(init: true) %>
   </head>
 
   <body>
     <%= render 'shared/header' %>
-    <main class="mt-5">
+    <main class="mt-lg-5 mt-3">
       <div class="container">
         <div id="flash-messages">
           <%= render 'shared/flash_message' %>

@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :reservations, only: [:update, :destroy]
     resources :rooms, only: [:show]
+    get 'rooms/:id/:page' => 'rooms#pagination', as: 'room_pagination'
     resource :chats, only: [:create]
+    get '/search' => 'search#search'
   end
 
   scope module: :public do
@@ -30,9 +32,20 @@ Rails.application.routes.draw do
     patch 'users/information' => 'users#update'
     put 'users/information' => 'users#update'
 
-    resources :instructors, only: [:index, :show]
+    resources :instructors, only: [:index, :show] do
+      resources :reviews, only: [:create, :destroy]
+    end
     resources :reservations, only: [:index, :create, :update, :destroy]
     resources :rooms, only: [:show]
+    get 'rooms/:id/:page' => 'rooms#pagination', as: 'room_pagination'
     resource :chats, only: [:create]
+    resources :cards, only: [:new, :show, :create] do
+      collection do
+        post 'cancel' => 'cards#cancel'
+      end
+    end
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm' => 'contacts#confirm', as: 'confirm'
+    post 'contacts/back' => 'contacts#back', as: 'back'
   end
 end

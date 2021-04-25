@@ -52,3 +52,9 @@ InstructorLesson.seed do |s|
   s.lesson = Lesson.find(6)
 end
 
+InstructorLesson.seed do |s|
+  s.id = 10
+  s.instructor = Instructor.find(6)
+  s.lesson = Lesson.find(3)
+end
+

@@ -6,7 +6,9 @@ class Public::ChatsController < ApplicationController
     @chats = @room.chats.order(:created_at)
     @chat = Chat.new(chat_params)
     respond_to do |format|
-      format.js if @chat.save
+      if @chat.save
+        format.js
+      end
     end
   end
 

@@ -1,0 +1,17 @@
+<% instructor.reviews.each do |review| %>
+  <div class="review-border border p-3 mb-5">
+    <div class="review-content-wrap d-flex">
+      <p class="review-user mr-5">レビュー投稿者： <%= review.user.fullname %></p>
+      <p class="mt-3"><%= review.comment %></p>
+    </div>
+    <p class="review-day text-right mb-1">投稿日： <%= review.created_at.strftime('%Y/%m/%d') %></p>
+    <% if review.user == current_user %>
+      <div class="delete-review text-right">
+        <%= link_to "レビューを削除する", instructor_review_path(review.instructor.id, review.id), method: :delete, remote: true %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% unless instructor.reviews.exists? %>
+  <p class="text-center">レビューはまだありません。</p>
+<% end %>

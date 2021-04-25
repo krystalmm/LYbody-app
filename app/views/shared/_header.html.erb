@@ -9,6 +9,12 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto pr-5">
         <% if instructor_signed_in? %>
+          <li class="mr-3 mt-1 search-form">
+            <%= form_with url: instructors_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :word, class: 'form-control search-field' %>
+                <button class="search-icon" type="submit"></button>
+            <% end %>
+          </li>
           <li>
             <%= link_to instructors_users_path, class: 'nav-link text-center' do %>
               Users <br> 会員一覧

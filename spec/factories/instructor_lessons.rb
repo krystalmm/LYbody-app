@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :instructor_lesson do
-    instructor { nil }
-    lesson { nil }
+    association :instructor
+    association :lesson
   end
 end

@@ -3,19 +3,19 @@
     <div class="form-group">
       <%= f.label 'お名前' %><span class="essential-icon">必須</span>
       <div class="row mt-2 pl-4">
-        <%= f.label :firstname, '（姓）', class: 'pt-1 pr-3' %>
-        <%= f.text_field :firstname, autocomplete: 'firstname', placeholder: '例：山田', class: 'form-control col-lg-4 col-3 validate[required] mr-lg-5' %>
-        <%= f.label :lastname, '（名）', class: 'pt-1 pr-3' %>
-        <%= f.text_field :lastname, autocomplete: 'lastname', placeholder: '例：太郎', class: 'form-control col-lg-4 col-3 validate[required]' %>
+        <%= f.label :firstname, '（姓）', class: 'pt-1 pr-2' %>
+        <%= f.text_field :firstname, autocomplete: 'firstname', placeholder: '例：山田', class: 'form-control col-lg-4 col-10 validate[required] mr-lg-5' %>
+        <%= f.label :lastname, '（名）', class: 'pt-1 pr-2 mt-4 mt-lg-0' %>
+        <%= f.text_field :lastname, autocomplete: 'lastname', placeholder: '例：太郎', class: 'form-control col-lg-4 col-10 validate[required] mt-4 mt-lg-0' %>
       </div>
     </div>
     <div class="form-group mt-4">
       <%= f.label 'フリガナ' %><span class="essential-icon">必須</span>
       <div class="row mt-2 pl-4">
-        <%= f.label :kana_firstname, '（姓）', class: 'pt-1 pr-3' %>
-        <%= f.text_field :kana_firstname, autocomplete: 'kana_firstname', placeholder: '例：ヤマダ', class: 'form-control col-lg-4 col-3 validate[required, custom[katakana]] mr-lg-5' %>
-        <%= f.label :kana_lastname, '（名）', class: 'pt-1 pr-3' %>
-        <%= f.text_field :kana_lastname, autocomplete: 'kana_lastname', placeholder: '例：タロウ', class: 'form-control col-lg-4 col-3 validate[required, custom[katakana]]' %>
+        <%= f.label :kana_firstname, '（姓）', class: 'pt-1 pr-2' %>
+        <%= f.text_field :kana_firstname, autocomplete: 'kana_firstname', placeholder: '例：ヤマダ', class: 'form-control col-lg-4 col-10 validate[required, custom[katakana]] mr-lg-5' %>
+        <%= f.label :kana_lastname, '（名）', class: 'pt-1 pr-2 mt-4 mt-lg-0' %>
+        <%= f.text_field :kana_lastname, autocomplete: 'kana_lastname', placeholder: '例：タロウ', class: 'form-control col-lg-4 col-10 validate[required, custom[katakana]] mt-4 mt-lg-0' %>
       </div>
     </div>
     <div class="form-group mt-5">

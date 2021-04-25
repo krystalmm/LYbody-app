@@ -2,6 +2,8 @@
 
 <%= render 'shared/backpage' %>
 
+<%= render 'shared/loading' %>
+<div id="wrap">
 <div class="container">
   <div class="row">
     <div class="mypage col-10 offset-1">
@@ -43,56 +45,74 @@
             </tbody>
           </table>
         </div>
-        <div class="edit-link text-right pr-5">
+        <div class="edit-link text-right pr-5 mt-3">
           <%= link_to edit_information_path, class: 'border-bottom hover-link' do %>
             登録情報を編集する　→
           <% end %>
         </div>
+        <div class="card-link text-right pr-5 mt-2">
+          <% if @user.card.present? %>
+            <%= link_to card_path(@user.card), class: 'border-bottom hover-link' do %>
+              ご登録カード情報を確認する　→
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="mypage-bottom mt-5">
-        <% if @user.reservation.present? %>
-          <div class="reservation-info col-md-8 offset-md-2 border p-4">
-            <p class="mb-0">
-              <%= @user.firstname %>さんの次回のレッスン予約日時は、
-            </p>
-            <p class="text-right mb-3">
-              <span class="reservation-important">
-                <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
-              </span>です。
-            </p>
-            <div class="my-reservation-links d-flex justify-content-between col-10 offset-1">
-              <button type="button" class="btn btn-outline-light btn-sm" id="userReservationModalButton">
-                予約日時を変更する
-              </button>
-              <div class="modal fade" id="userReservationModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                  <div class="modal-content text-dark">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">予約変更</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="reservation-edit-form">
-                          <%= form_with model: @reservation, url: reservation_path(@reservation), local: true do |f| %>
-                            <%= f.hidden_field :user_id, :value => @user.id %>
-                            <%= f.hidden_field :instructor_id, :value => @reservation.instructor.id %>
-                            <%= f.label :start_time, "変更後予約日時（開始時間）" %> <br>
-                            <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_two_digit_numbers: true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
-                            <%= f.submit "変更する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>
-                          <% end %>
+        <% if @user.is_payed? %>
+          <% if @user.reservation.present? %>
+            <p class="mb-3 col-10 offset-1">※ レッスン予約日当日の該当時間になりましたら、レッスン担当のインストラクターよりZoomのURLが発行されますので、チャットのページを開いてお待ちください。</p>
+            <div class="reservation-info col-md-8 offset-md-2 border p-4">
+              <p class="mb-0">
+                <%= @user.firstname %>さんの次回のレッスン予約日時は、
+              </p>
+              <p class="text-right mb-3">
+                <span class="reservation-important">
+                  <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
+                </span>です。
+              </p>
+              <div class="my-reservation-links d-flex justify-content-between col-10 offset-1">
+                <button type="button" class="btn btn-outline-light btn-sm" id="userReservationModalButton">
+                  予約日時を変更する
+                </button>
+                <div class="modal fade" id="userReservationModal" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content text-dark">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">予約変更</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="reservation-edit-form">
+                            <%= form_with model: @reservation, url: reservation_path(@reservation), local: true do |f| %>
+                              <%= f.hidden_field :user_id, :value => @user.id %>
+                              <%= f.hidden_field :instructor_id, :value => @reservation.instructor.id %>
+                              <%= f.label :start_time, "変更後予約日時（開始時間）" %> <br>
+                              <%= f.datetime_select :start_time, { start_year: Time.now.year, end_year: Time.now.year + 2, use_two_digit_numbers: true, start_hour: 9, end_hour: 22, minute_step: 60, date_separator:'/' }, { class: 'form-control mx-2', style: 'display: inline-block;width: auto;' } %>
+                              <%= f.submit "変更する", class: 'btn btn-outline-dark ml-2', style: "vertical-align: unset;" %>
+                            <% end %>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                  </div>
                 </div>
+                <%= link_to "予約をキャンセルする", reservation_path(@reservation), class: 'btn btn-outline-light btn-sm', method: :delete, data: { confirm: '本当にキャンセルしますか？' } %>
               </div>
-              <%= link_to "予約をキャンセルする", reservation_path(@reservation), class: 'btn btn-outline-light btn-sm', method: :delete, data: { confirm: '本当にキャンセルしますか？' } %>
             </div>
+          <% else %>
+            <div class="no-reservations text-center">
+              <p>現在レッスンのご予約はございません。</p>
+            </div>
+          <% end %>
+          <p class="text-center mt-5">※ 決済の引き落とし日は、毎月月末になります。</p>
+          <div class="cancel-link text-center mt-5">
+            <%= link_to "定期決済を解除する", cancel_cards_path, method: :post, data: { confirm: '定期決済を解除すると、レッスンのご受講ができなくなり、クレジットカード情報も削除されます。本当に解除しますか？' }, class: 'btn btn-outline-light loading' %>
           </div>
         <% else %>
           <div class="pay-link text-center pt-5">
-            <%= link_to "支払いをして入会する", root_path, class: 'btn btn-outline-light btn-lg px-5' %>
+            <%= link_to "支払い手続きをしてレッスンを受講する", new_card_path, class: 'btn btn-outline-light px-5' %>
           </div>
         <% end %>
       </div>
@@ -101,4 +121,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -32,16 +32,16 @@
         </table>
       </div>
       <% if user_signed_in? %>
-        <%# <% if payed(current_user) %>
+        <% if payed(current_user) %>
           <div class="links col-8 offset-2 d-flex justify-content-between mt-5">
             <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
-            <%= link_to "チャットで質問する", room_path(@instructor), class: 'btn btn-outline-light px-5' %>
+            <%= link_to "チャットで質問する", room_path(@room), class: 'btn btn-outline-light px-5', data: { "turbolinks" => false } %>
           </div>
-        <%# <% else %>
+        <% else %>
           <div class="link text-center mt-5">
             <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
           </div>
-        <%# <% end %>
+        <% end %>
       <% else %>
         <div class="link text-center mt-5">
           <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
@@ -49,28 +49,25 @@
       <% end %>
       <div class="review mt-5 pt-5 col-10 offset-1">
         <h4 class="border-heading-bottom mb-4"><i class="far fa-comments"></i> レッスンレビュー</h4>
-        <p class="text-right mr-4">レビュー件数：件</p>
-        <div class="review-content border p-5 mt-5">
-          <%# <% comments.each do |comment| %>
-            <div class="review-content-wrap d-flex">
-              <p class="review-user mr-5">レビュー投稿者： 投稿者名表示！</p>
-              <p>レビュー内容表示！</p>
-            </div>
-            <p class="text-right">投稿日： 投稿日表示！</p>
-            <%# <% if comment.user == current_user %>
-              <div class="delete-review text-right">
-                <%= link_to "レビューを削除する", root_path %>
-              </div>
-            <%# <% end %>
-          <%# <% end %>
-          <%# <% unless comments.exists? %>
-            <p class="text-center">レビューはまだありません。</p>
-          <%# <% end %>
+        <p id="reviews-count" class="text-right mr-4">レビュー件数：<%= @instructor.reviews.count %>件</p>
+        <div id="review-content-<%= @instructor.id %>" class="p-5 mt-3">
+          <%= render 'public/reviews/review-content', instructor: @instructor %>
         </div>
-        <%# <% if user_signed_in? %>
-          <h4 class="border-heading-side my-5 pt-3">レビューを投稿する</h4>
-          <%# レビューのフォーム %>
-        <%# <% end %>
+        <% if user_signed_in? %>
+          <h4 class="border-heading-side mt-3 mb-5">レビューを投稿する</h4>
+          <div id="review-form">
+            <div class="js-error-message"></div>
+            <%= form_with(model: [@instructor, @review]) do |f| %>
+              <div class="form-group col-10 offset-1 pb-5">
+                <%= f.label :comment, "投稿内容" %>
+                <%= f.text_area :comment, class: 'form-control', rows: '4', placeholder: 'こちらにインストラクターのレッスンについてのレビューをお書きください&#13;&#10;文字数は800文字以下でご記入ください'.html_safe, id: 'review-textarea' %>
+                <div class="review-submit text-center my-5">
+                  <%= f.submit "投稿する", class: 'btn btn-outline-light' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

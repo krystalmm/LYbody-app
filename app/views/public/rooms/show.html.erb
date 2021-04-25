@@ -4,11 +4,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="user-chat-page col-10 offset-1">
+    <div class="user-chat-page col-10 offset-1" id="chat-window" style="overflow: scroll;height: 620px;">
       <h2 class="border-heading-bottom mb-5">チャット（<%= @room.instructor.name %>）</h2>
       <div id="chat-wrap">
         <%= render 'chat-content', chats: @chats, room: @room %>
       </div>
+      <%= paginate @chats %>
       <div class="user-chat-form">
         <%= form_with model: @chat, url: chats_path do |f| %>
           <%= f.hidden_field :is_user, :value => true %>

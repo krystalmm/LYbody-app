@@ -1,5 +1,6 @@
 $('#chat-wrap').html("<%= j(render 'public/rooms/chat-content', chats: @chats, room: @room) %>");
 var textarea = $('#chat-textarea');
 textarea.val("");
-window.scroll(0, $(document).height());
+var scrollHeight = document.getElementById("chat-window").scrollHeight;
+document.getElementById("chat-window").scrollTop = scrollHeight;
 textarea.height(22);

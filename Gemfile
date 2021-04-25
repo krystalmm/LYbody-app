@@ -42,15 +42,20 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
+gem 'exception_notification'
 gem 'fog-aws'
 gem 'font-awesome-sass', '~>5.13'
 gem 'fullcalendar-rails'
+gem 'gon'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'momentjs-rails'
 gem 'payjp'
 gem 'rails-i18n'
 gem 'seed-fu'
+gem 'slack-notifier'
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -78,7 +83,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

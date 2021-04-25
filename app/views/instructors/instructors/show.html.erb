@@ -117,6 +117,39 @@
           <p class="text-center mb-5">現在レッスンは予約されておりません。</p>
         <% end %>
       </div>
+      <div class="reviews border-bottom my-5">
+        <h4 class="border-heading-side mb-5 mt-5">レビュー</h4>
+        <% if @instructor.reviews.present? %>
+          <table class="table table-borderless table-sm col-10 offset-1 mb-5">
+            <thead class="border-bottom">
+              <tr>
+                <td class="pl-3">レビュー投稿者</td>
+                <td>レビュー内容</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @instructor.reviews.each do |review| %>
+                <tr>
+                  <td class="pl-3"><%= review.user.fullname %></td>
+                  <td><%= review.comment %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p class="text-center mb-5">レッスンのレビューはまだありません。</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+<% if @lesson.errors.any? %>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    // instructors/mypage のURLを取得
+    var $dir = location.href.split("/");
+    var $dir2 = $dir[$dir.length -2];
+    history.pushState('', '', '/' + $dir2 + '/mypage')
+  });
+  </script>
+<% end %>

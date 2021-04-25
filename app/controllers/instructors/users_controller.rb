@@ -2,10 +2,21 @@ class Instructors::UsersController < ApplicationController
   before_action :authenticate_instructor!
 
   def index
-    @users = User.all
+    @users = case params[:option]
+             when 'payed'
+               User.where(is_payed: true).page(params[:page]).per(10).order(:id)
+             else
+               User.page(params[:page]).per(10).order(:id)
+             end
   end
 
   def show
     @user = User.find(params[:id])
+    @room = Room.find_by(user_id: @user.id, instructor_id: current_instructor.id)
+    if @room.nil?
+      @room = Room.new(user_id: @user.id)
+      @room.instructor_id = current_instructor.id
+      redirect_to instructors_room_path(@room.id) if @room.save
+    end
   end
 end

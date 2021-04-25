@@ -5,16 +5,18 @@ class User < ApplicationRecord
 
   has_one :reservation, dependent: :destroy
   has_many :rooms, dependent: :destroy
-  has_many :cards, dependent: :destroy
+  has_one :card, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
-  validates :firstname, presence: true, length: { maximum: 30 }
-  validates :lastname, presence: true, length: { maximum: 30 }
+  validates :firstname, presence: true, length: { maximum: 15 }
+  validates :lastname, presence: true, length: { maximum: 15 }
 
   VALID_KANA_REGEX = /\A[\p{katakana}\u{30fc}\s 　]+\z/.freeze
-  validates :kana_firstname, presence: true, length: { maximum: 30 }, format: { with: VALID_KANA_REGEX }
-  validates :kana_lastname, presence: true, length: { maximum: 30 }, format: { with: VALID_KANA_REGEX }
+  validates :kana_firstname, presence: true, length: { maximum: 15 }, format: { with: VALID_KANA_REGEX }
+  validates :kana_lastname, presence: true, length: { maximum: 15 }, format: { with: VALID_KANA_REGEX }
 
-  validates :email, presence: true, length: { maximum: 255 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, length: { maximum: 255 }
 
   VALID_PHONE_REGEX = /\A\d{10,11}\z/.freeze
   validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
@@ -30,5 +32,9 @@ class User < ApplicationRecord
 
   def kana_fullname
     "#{kana_firstname}　#{kana_lastname}"
+  end
+
+  def self.looks(words)
+    @users = User.where(["concat(firstname, lastname) LIKE ?", "%#{words}%"])
   end
 end
