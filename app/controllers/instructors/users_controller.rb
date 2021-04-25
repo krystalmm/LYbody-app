@@ -12,5 +12,11 @@ class Instructors::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @room = Room.find_by(user_id: @user.id, instructor_id: current_instructor.id)
+    if @room.nil?
+      @room = Room.new(user_id: @user.id)
+      @room.instructor_id = current_instructor.id
+      redirect_to instructors_room_path(@room.id) if @room.save
+    end
   end
 end

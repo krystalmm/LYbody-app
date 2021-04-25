@@ -1,4 +1,1 @@
-$('#chat-wrap').before("<%= j(render 'public/rooms/chat-content', chats: @chats, room: @room) %>");
-var scrollPosition = document.getElementById("chat-window").scrollTop;
-var scrollHeight = document.getElementById("chat-window").scrollHeight;
-document.getElementById("chat-window").scrollTop = scrollHeight;
+$('#chat-wrap').prepend("<%= j(render 'instructors/rooms/chat-content', chats: @chats, room: @room) %>");

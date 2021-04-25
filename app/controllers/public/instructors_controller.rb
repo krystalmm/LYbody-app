@@ -6,5 +6,11 @@ class Public::InstructorsController < ApplicationController
   def show
     @instructor = Instructor.find(params[:id])
     @review = Review.new
+    @room = Room.find_by(user_id: current_user.id, instructor_id: @instructor.id)
+    if @room.nil?
+      @room = Room.new(user_id: current_user.id)
+      @room.instructor_id = @instructor.id
+      redirect_to instructors_room_path(@room.id) if @room.save
+    end
   end
 end

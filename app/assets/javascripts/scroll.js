@@ -1,11 +1,9 @@
 $(document).on('turbolinks:load', function () {
-  if ($('ul.pagination a[rel=next]').length) {
-    $('#chat-wrap').infiniteScroll({
-      path: 'ul.pagination a[rel=next]',
-      append: '.chats',
-      history: true,
-      hideNav: '.pagination',
-    });
+  if ($('#chat-window').length == 0 ) {
+    return;
   }
+
+  var scrollHeight = document.getElementById("chat-window").scrollHeight;
+  document.getElementById("chat-window").scrollTop = scrollHeight;
 });
 
