@@ -18,6 +18,7 @@ jobs:
         docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web rails db:create
       env:
         RAILS_ENV: test
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     - name: Rspec
       run:  |
         docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web bundle exec rspec
