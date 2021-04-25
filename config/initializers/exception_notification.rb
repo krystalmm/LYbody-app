@@ -19,10 +19,10 @@ ExceptionNotification.configure do |config|
   # Notifiers =================================================================
 
   # Email notifier sends notifications by email.
-  config.add_notifier :slack, {
-    webhook_url: Rails.application.credentials.slack[:webhook_url],
-    channel: '#pfslack',
-  }
+  # config.add_notifier :slack, {
+  #   webhook_url: Rails.application.credentials.slack[:webhook_url],
+  #   channel: '#pfslack',
+  # }
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {
