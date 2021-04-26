@@ -794,7 +794,14 @@ footer {
 
 @media screen and (max-width:992px) {
   html {
-    font-size: 1.5vw;
+    font-size: 1vw;
+  }
+
+
+  header {
+    li {
+      padding-right: 0;
+    }
   }
 
 
@@ -802,7 +809,7 @@ footer {
 
   .main-content {
     .main-content-sub {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
     }
   }
 }
@@ -812,7 +819,12 @@ footer {
 
 @media screen and (max-width:768px) {
   html {
-    font-size: 2vw;
+    font-size: 1.5vw;
+  }
+
+
+  body {
+    display: block;
   }
 
 
@@ -835,7 +847,10 @@ footer {
 
   .main-content {
     .main-content-sub {
-      font-size: 1rem;
+      font-size: 1.6rem;
+      position: unset;
+      text-align: center;
+      margin-top: 30px;
     }
   }
 
@@ -846,7 +861,7 @@ footer {
 
 @media screen and (max-width:544px) {
   html {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
 
 
@@ -870,7 +885,7 @@ footer {
   .main-content {
 
     .main-content-sub {
-      font-size: 0.6rem;
+      font-size: 1rem;
     }
   }
 }
