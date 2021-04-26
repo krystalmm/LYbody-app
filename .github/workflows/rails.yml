@@ -46,7 +46,7 @@ jobs:
         docker-compose run --rm web bundle exec whenever --update-crontab RAILS_ENV=production &&
         docker-compose up -d'
 
-# docker exec -it lybody-app_web_1 bash &&
+#         docker exec -it lybody-app_web_1 bash &&
 #         service cron start &&
 #         exit
 
