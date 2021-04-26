@@ -812,6 +812,19 @@ footer {
       font-size: 1.8rem;
     }
   }
+
+
+  // public/mypage
+
+  .mypage {
+    .user-image {
+      .image-wrap {
+        img {
+          width: 100px;
+        }
+      }
+    }
+  }
 }
 
 
@@ -854,6 +867,26 @@ footer {
     }
   }
 
+
+  // public/mypage
+
+  .mypage {
+    .user-image {
+      .image-wrap {
+        img {
+          width: 100px;
+        }
+      }
+    }
+
+    .table {
+      font-size: 1.1rem;
+      .td-left {
+        width: 40%;
+      }
+    }
+  }
+
 }
 
 
@@ -886,6 +919,19 @@ footer {
 
     .main-content-sub {
       font-size: 1rem;
+    }
+  }
+
+
+  // public/mypage
+
+  .mypage {
+    .user-image {
+      .image-wrap {
+        img {
+          width: 60px;
+        }
+      }
     }
   }
 }

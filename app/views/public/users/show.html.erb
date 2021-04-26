@@ -6,7 +6,7 @@
 <div id="wrap">
 <div class="container">
   <div class="row">
-    <div class="mypage col-10 offset-1">
+    <div class="mypage col-md-10 offset-md-1">
       <h2 class="border-heading-bottom mb-5">マイページ</h2>
       <div class="user-info border-bottom pb-4">
         <h4 class="border-heading-side my-5 pt-3">ご登録情報</h4>
@@ -24,7 +24,7 @@
               <% end %>
             <% end %>
           </div>
-          <table class="table table-borderless table-sm col-md-8 col-10 ml-3 mt-3">
+          <table class="table table-borderless table-sm col-md-8 col-sm-7 ml-3 mt-3">
             <tbody>
               <tr>
                 <td class="td-left">氏名</td>
@@ -62,11 +62,11 @@
         <% if @user.is_payed? %>
           <% if @user.reservation.present? %>
             <p class="mb-3 col-10 offset-1">※ レッスン予約日当日の該当時間になりましたら、レッスン担当のインストラクターよりZoomのURLが発行されますので、チャットのページを開いてお待ちください。</p>
-            <div class="reservation-info col-md-8 offset-md-2 border p-4">
+            <div class="reservation-info col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 border p-4">
               <p class="mb-0">
                 <%= @user.firstname %>さんの次回のレッスン予約日時は、
               </p>
-              <p class="text-right mb-3">
+              <p class="text-sm-right mb-3">
                 <span class="reservation-important">
                   <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
                 </span>です。
