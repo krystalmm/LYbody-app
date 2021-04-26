@@ -19,7 +19,14 @@ ExceptionNotification.configure do |config|
   # Notifiers =================================================================
 
   # Email notifier sends notifications by email.
-  if Rails.env.production? || Rails.env.develop?
+  if Rails.env.production?
+    config.add_notifier :slack, {
+      webhook_url: Rails.application.credentials.slack[:webhook_url],
+      channel: '#pfslack',
+    }
+  end
+
+  if Rails.env.development?
     config.add_notifier :slack, {
       webhook_url: Rails.application.credentials.slack[:webhook_url],
       channel: '#pfslack',

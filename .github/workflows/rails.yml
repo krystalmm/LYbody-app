@@ -42,4 +42,7 @@ jobs:
         docker-compose run --rm web rails assets:precompile RAILS_ENV=production &&
         docker-compose run --rm web rails db:migrate RAILS_ENV=production &&
         if [[ -e tmp/pids/puma.pid ]];then kill $(cat tmp/pids/puma.pid); echo kill puma process;fi &&
-        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production'
+        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production &&
+        docker exec -it lybody-app_web_1 bash &&
+        service cron start &&
+        exit'
