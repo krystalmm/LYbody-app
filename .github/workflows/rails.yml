@@ -38,13 +38,14 @@ jobs:
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd LYbody-app &&
         git pull origin master &&
-        docker-compose up -d &&
         docker-compose run --rm web bundle install &&
         docker-compose run --rm web rails assets:precompile RAILS_ENV=production &&
-        docker exec -it lybody-app_web_1 bash &&
-        bundle exec whenever --update-crontab RAILS_ENV=production &&
-        service cron start &&
-        exit &&
+        docker-compose run --rm web bundle exec whenever --update-crontab RAILS_ENV=production &&
         docker-compose run --rm web rails db:migrate RAILS_ENV=production &&
         if [[ -e tmp/pids/puma.pid ]];then kill $(cat tmp/pids/puma.pid); echo kill puma process;fi &&
-        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production'
+        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production &&
+        docker-compose up -d &&
+        docker exec -it lybody-app_web_1 bash &&
+        service cron start &&
+        exit'
+
