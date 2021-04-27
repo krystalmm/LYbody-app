@@ -11,7 +11,7 @@ class Public::InstructorsController < ApplicationController
       if @room.nil?
         @room = Room.new(user_id: current_user.id)
         @room.instructor_id = @instructor.id
-        redirect_to instructors_room_path(@room.id) if @room.save
+        redirect_to instructors_room_path(@room.id) if @room.save #public
       end
     end
   end
