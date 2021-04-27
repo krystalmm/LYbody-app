@@ -15,5 +15,5 @@ COPY . /LYbody
 RUN mkdir -p tmp/sockets
 RUN mkdir -p tmp/pids
 RUN bundle exec whenever --update-crontab
-CMD ["cron", "-f"]
-RUN service cron start
+# CMD ["cron", "-f"]
+# RUN service cron start
