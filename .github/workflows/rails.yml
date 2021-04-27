@@ -5,28 +5,28 @@ on:
     branches: [master]
 
 jobs:
-  # rspec:
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 30
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Setup docker
-  #     shell: bash
-  #     run: |
-  #       docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
-  #       docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web bundle install
-  #       docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web rails db:create
-  #     env:
-  #       RAILS_ENV: test
-  #   - name: Rspec
-  #     run:  |
-  #       docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web bundle exec rspec
-  #     env:
-  #       RAILS_ENV: test
+  rspec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup docker
+      shell: bash
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web bundle install
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web rails db:create
+      env:
+        RAILS_ENV: test
+    - name: Rspec
+      run:  |
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web bundle exec rspec
+      env:
+        RAILS_ENV: test
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # needs: rspec
+    needs: rspec
     steps:
     - uses: actions/checkout@v2
     - name: Deploy
@@ -42,11 +42,11 @@ jobs:
         docker-compose run --rm web rails assets:precompile RAILS_ENV=production &&
         docker-compose run --rm web rails db:migrate RAILS_ENV=production &&
         if [[ -e tmp/pids/puma.pid ]];then kill $(cat tmp/pids/puma.pid); echo kill puma process;fi &&
-        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production'
+        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production &&
+        docker-compose up -d'
 
 #         docker exec -it lybody-app_web_1 bash &&
 #         service cron start &&
 #         exit
 #         docker-compose run --rm web bundle exec whenever --update-crontab RAILS_ENV=production &&
-#         docker-compose up -d
 
