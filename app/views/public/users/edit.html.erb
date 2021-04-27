@@ -5,7 +5,7 @@
 <div class="container">
   <%= render 'shared/error_messages', obj: @user %>
   <div class="row">
-    <div class="user-edit col-md-8 offset-md-2 mb-5 pb-5">
+    <div class="user-edit col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 mb-5 pb-5">
       <h2 class="border-heading-bottom mb-5">ご登録情報編集</h2>
       <div class="col-10 offset-1">
         <%= form_with model: current_user, url: users_information_path, id: 'user-form', local: true do |f| %>
