@@ -62,16 +62,18 @@
         <% if @user.is_payed? %>
           <% if @user.reservation.present? %>
             <p class="mb-3 col-10 offset-1">※ レッスン予約日当日の該当時間になりましたら、レッスン担当のインストラクターよりZoomのURLが発行されますので、チャットのページを開いてお待ちください。</p>
-            <div class="reservation-info col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 border p-4">
-              <p class="mb-0">
-                <%= @user.firstname %>さんの次回のレッスン予約日時は、
-              </p>
-              <p class="text-sm-right mb-3">
-                <span class="reservation-important">
-                  <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
-                </span>です。
-              </p>
-              <div class="my-reservation-links d-flex justify-content-between col-10 offset-1">
+            <div class="reservation-info col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 border p-md-4 p-3">
+              <div class="text-center text-sm-left">
+                <p class="mb-0">
+                  <%= @user.firstname %>さんの次回のレッスン予約日時は、
+                </p>
+                <p class="text-sm-right mb-3">
+                  <span class="reservation-important">
+                    <%= @reservation.date_and_time %>（インストラクター：<%= @reservation.instructor.name %>）
+                  </span>です。
+                </p>
+              </div>
+              <div class="my-reservation-links d-flex justify-content-between col-sm-10 offset-sm-1 col-12">
                 <button type="button" class="btn btn-outline-light btn-sm" id="userReservationModalButton">
                   予約日時を変更する
                 </button>

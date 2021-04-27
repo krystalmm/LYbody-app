@@ -2,13 +2,7 @@ class Public::RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @room = Room.find_by(instructor_id: params[:id])
-
-    if @room.nil?
-      @room = Room.new(instructor_id: params[:id])
-      @room.user_id = current_user.id
-      redirect_to room_path(@room.id) if @room.save
-    end
+    @room = Room.find(params[:id])
 
     @chat = Chat.new
     chat_scope = @room.chats.order(:created_at)
@@ -24,15 +18,9 @@ class Public::RoomsController < ApplicationController
 
 
   def pagination
-    @room = Room.find_by(instructor_id: params[:id])
+    @room = Room.find(params[:id])
 
-    if @room.nil?
-      @room = Room.new(instructor_id: params[:id])
-      @room.user_id = current_user.id
-      redirect_to room_path(@room.id) if @room.save
-    end
     @chat = Chat.new
-
     chat_scope = @room.chats.order(:created_at)
     @chats = reverse_paginate(chat_scope, params[:page])
     if params[:page].present?

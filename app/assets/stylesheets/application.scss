@@ -190,6 +190,12 @@ footer {
 }
 
 
+// formのレイアウト崩れ防止
+.field_with_errors {
+  display: contents;
+}
+
+
 // 前に戻るリンク
 
 .backpage-wrap {
@@ -376,6 +382,10 @@ footer {
 
   .reservation-important {
     border-bottom: 1px solid #c2a8ff;
+  }
+
+  .br {
+    display: none;
   }
 }
 
@@ -822,6 +832,10 @@ footer {
         img {
           width: 100px;
         }
+
+        .caption {
+          padding-top: 43px;
+        }
       }
     }
   }
@@ -930,6 +944,11 @@ footer {
       .image-wrap {
         img {
           width: 60px;
+        }
+
+        .caption {
+          padding-top: 25px;
+          font-size: 0.8rem;
         }
       }
     }

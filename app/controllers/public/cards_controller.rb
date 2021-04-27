@@ -4,6 +4,7 @@ class Public::CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_payjp_secret_key, except: :new
   before_action :set_card, only: [:new, :show, :pay, :cancel]
+  before_action :ensure_current_user, only: [:show]
 
   # プラン作成
   def plan
@@ -85,5 +86,11 @@ class Public::CardsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def ensure_current_user
+    if current_user.card.id != params[:id].to_i
+      redirect_to card_path(current_user.card.id)
+    end
   end
 end
