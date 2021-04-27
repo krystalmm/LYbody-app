@@ -190,6 +190,12 @@ footer {
 }
 
 
+// formのレイアウト崩れ防止
+.field_with_errors {
+  display: contents;
+}
+
+
 // 前に戻るリンク
 
 .backpage-wrap {

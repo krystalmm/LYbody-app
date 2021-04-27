@@ -3,11 +3,16 @@ class Instructors::ReservationsController < ApplicationController
   before_action :set_reservation
 
   def update
-    if @reservation.update(reservation_params)
-      @reservation.update(end_time: @reservation.set_end_time)
-      redirect_to instructors_mypage_path, notice: '予約の変更が完了しました。'
+    if Date.valid_date?(params[:reservation]["start_time(1i)"].to_i, params[:reservation]["start_time(2i)"].to_i, params[:reservation]["start_time(3i)"].to_i)
+      if @reservation.update(reservation_params)
+        @reservation.update(end_time: @reservation.set_end_time)
+        redirect_to instructors_mypage_path, notice: '予約の変更が完了しました。'
+      else
+        flash[:danger] = '予約時間（開始時間）は現在の日時より遅い時間を選択してください。'
+        redirect_to instructors_mypage_path
+      end
     else
-      flash[:danger] = '予約時間（開始時間）は現在の日時より遅い時間を選択してください。'
+      flash[:danger] = '日付の値が不正です。'
       redirect_to instructors_mypage_path
     end
   end
