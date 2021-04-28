@@ -68,6 +68,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to users_guest_sign_in_path, class: 'nav-link text-center', method: :post do %>
+              Guest Sign In <br> ゲストログイン
+            <% end %>
+          </li>
+          <li>
             <%= link_to new_instructor_session_path, class: 'nav-link text-center' do %>
               Instructor Sign In <br> インストラクターログイン
             <% end %>

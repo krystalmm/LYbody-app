@@ -7,6 +7,9 @@
       <h2 class="border-heading-bottom mb-5">インストラクターログイン</h2>
       <%= render 'shared/login-form', model: @instructor, url: instructor_session_path %>
     </div>
+    <div class="instructor-guest-login mx-auto">
+      <%= link_to "インストラクターゲストログイン", instructors_guest_sign_in_path, method: :post, class: 'btn btn-outline-light' %>
+    </div>
   </div>
 </div>
 

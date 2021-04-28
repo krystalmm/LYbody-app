@@ -26,12 +26,12 @@ ExceptionNotification.configure do |config|
     }
   end
 
-  # if Rails.env.development?
-  #   config.add_notifier :slack, {
-  #     webhook_url: Rails.application.credentials.slack[:webhook_url],
-  #     channel: '#pfslack',
-  #   }
-  # end
+  if Rails.env.development?
+    config.add_notifier :slack, {
+      webhook_url: Rails.application.credentials.slack[:webhook_url],
+      channel: '#pfslack',
+    }
+  end
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {
