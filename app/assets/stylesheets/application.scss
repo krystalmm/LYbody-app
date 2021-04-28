@@ -290,8 +290,8 @@ footer {
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -100px;
-  margin-left: -100px;
+  margin-top: -4rem;
+  margin-left: -4rem;
   text-align: center;
   color: #e4e4e4;
   z-index: 1002;
@@ -437,6 +437,9 @@ footer {
 // public/chat page
 
 .user-chat-page {
+  overflow: scroll;
+  height: 620px;
+
   ul.pagination {
     display: none;
   }
@@ -447,7 +450,7 @@ footer {
 
     .my-chats {
       margin: 15px 0;
-      margin-right: -30px;
+      margin-right: -20px;
 
       p {
         display: inline-block;
@@ -681,6 +684,9 @@ footer {
 // instructors/chat page
 
 .instructor-chat-page {
+  overflow: scroll;
+  height: 620px;
+
   ul.pagination {
     display: none;
   }
@@ -691,7 +697,7 @@ footer {
 
     .my-chats {
       margin: 15px 0;
-      margin-right: -30px;
+      margin-right: -20px;
 
       p {
         display: inline-block;
@@ -800,17 +806,101 @@ footer {
 }
 
 
+// lg(1200px)以下
+
+@media screen and (max-width:1200px) {
+  html {
+    font-size: 1.4vw;
+  }
+
+
+  header {
+    .search-form {
+      .search-icon {
+        top: calc(50% - 15px);
+      }
+    }
+  }
+
+
+  // instructor/mypage
+
+  .instructor-mypage {
+    .instructor-img {
+      img {
+        width: 100px;
+      }
+    }
+  }
+
+
+  // instructors/chat page
+
+  .instructor-chat-page {
+    height: 600px;
+
+    .instructor-chat-form {
+      bottom: 78px;
+    }
+  }
+
+
+  // users/chat page
+
+  .user-chat-page {
+    height: 600px;
+
+    .user-chat-form {
+      bottom: 78px;
+    }
+  }
+}
+
+
 // md(992px)以下
 
 @media screen and (max-width:992px) {
   html {
-    font-size: 1vw;
+    font-size: 1.4vw;
+  }
+
+  .form-control {
+    height: calc(1.5em + 0.75rem + 5px);
   }
 
 
   header {
     li {
       padding-right: 0;
+    }
+
+    .search-field {
+      width: 400px;
+      margin: 5px auto;
+      padding: 5px 38px 5px 5px;
+    }
+
+    .search-form {
+      .search-icon {
+        width: 28px;
+        height: 28px;
+        top: calc(50% - 10px);
+        right: 250px;
+
+        &::before {
+          width: 13px;
+          height: 13px;
+          top: calc(50% - 8px);
+          left: calc(50% - 8px);
+        }
+
+        &::after {
+          width: 6px;
+          height: 4px;
+          top: calc(50% + 5px);
+          left: calc(50% + 3px);
+        }
+      }
     }
   }
 
@@ -839,6 +929,60 @@ footer {
       }
     }
   }
+
+
+  // public/instructors page
+
+  .public-instructors {
+    a img {
+      width: 200px;
+    }
+  }
+
+
+  // public/instructors show page
+
+  .instructor-detail {
+    .instructor-img img {
+      width: 150px;
+    }
+  }
+
+
+  // instructors/chat page
+
+  .instructor-chat-page {
+    height: 550px;
+
+    .instructor-chats {
+      .user-chats .user-icon img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .user-chats .chat-wrap {
+        margin-left: -10px;
+      }
+    }
+  }
+
+
+  // users/chat page
+
+  .user-chat-page {
+    height: 550px;
+
+    .user-chats {
+      .instructor-chats .instructor-icon img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .instructor-chats .chat-wrap {
+        margin-left: -10px;
+      }
+    }
+  }
 }
 
 
@@ -847,6 +991,11 @@ footer {
 @media screen and (max-width:768px) {
   html {
     font-size: 1.5vw;
+  }
+
+
+  .form-control {
+    height: calc(1.5em + 0.75rem + 8px);
   }
 
 
@@ -859,6 +1008,12 @@ footer {
     nav a img {
       width: 170px;
       height: 50px;
+    }
+
+    .search-form {
+      .search-icon {
+        right: 180px;
+      }
     }
   }
 
@@ -901,6 +1056,95 @@ footer {
     }
   }
 
+
+  // instructor/mypage
+
+  .instructor-mypage {
+    .instructor-img {
+      img {
+        width: 80px;
+      }
+    }
+  }
+
+
+  // public/instructors page
+
+  .public-instructors {
+    a img {
+      width: 150px;
+    }
+  }
+
+
+  // public/instructors show page
+
+  .instructor-detail {
+    .instructor-img img {
+      width: 120px;
+    }
+  }
+
+
+  // instructors/chat page
+
+  .instructor-chat-page {
+    height: 520px;
+
+    .instructor-chats {
+      padding: 0 10px;
+
+      .user-chats .user-icon img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .my-chats {
+        margin-right: 0;
+      }
+
+      .user-chats .chat-wrap {
+        margin-left: -15px;
+      }
+    }
+  }
+
+
+  // users/chat page
+
+  .user-chat-page {
+    height: 520px;
+
+    .user-chats {
+      padding: 0 10px;
+
+      .instructor-chats .instructor-icon img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .my-chats {
+        margin-right: 0;
+      }
+
+      .instructor-chats .chat-wrap {
+        margin-left: -15px;
+      }
+    }
+  }
+
+
+  // public/cards new page
+
+  .card-page {
+    .card-form-img {
+      img {
+        width: 40px;
+        height: 25px;
+      }
+    }
+  }
+
 }
 
 
@@ -911,11 +1155,42 @@ footer {
     font-size: 2vw;
   }
 
+  .form-control {
+    height: calc(1.5em + 0.75rem + 10px);
+  }
+
 
   header {
     nav a img {
       width: 130px;
       height: 40px;
+    }
+
+    .search-field {
+      width: 70%;
+    }
+
+    .search-form {
+      .search-icon {
+        width: 10px;
+        height: 10px;
+        top: calc(50% - 1px);
+        right: 9rem;
+
+        &::before {
+          width: 10px;
+          height: 10px;
+          top: calc(50% - 5px);
+          left: calc(50% - 5px);
+        }
+
+        &::after {
+          width: 6px;
+          height: 4px;
+          top: calc(50% + 5px);
+          left: calc(50% + 3px);
+        }
+      }
     }
   }
 
@@ -950,6 +1225,123 @@ footer {
           padding-top: 25px;
           font-size: 0.8rem;
         }
+      }
+    }
+  }
+
+
+  // instructor/mypage
+
+  .instructor-mypage {
+    .instructor-img {
+      img {
+        width: 50px;
+      }
+    }
+
+    .reservation-list {
+      table {
+        .td-left {
+          width: 35%;
+        }
+      }
+    }
+  }
+
+
+  // public/instructors page
+
+  .public-instructors {
+    a img {
+      width: 120px;
+    }
+  }
+
+
+  // public/instructors show page
+
+  .instructor-detail {
+    .instructor-img img {
+      width: 80px;
+    }
+
+    .review-text {
+      margin-left: -60px;
+      padding-top: 10px;
+    }
+  }
+
+
+  // instructors/chat page
+
+  .instructor-chat-page {
+    height: 500px;
+
+    .instructor-chats {
+      .user-chats .user-icon img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .my-chats {
+        margin-right: 10px;
+      }
+
+      .user-chats .chat-wrap {
+        margin-left: -20px;
+      }
+    }
+  }
+
+
+  // users/chat page
+
+  .user-chat-page {
+    height: 500px;
+
+    .user-chats {
+      .instructor-chats .instructor-icon img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .my-chats {
+        margin-right: 10px;
+      }
+
+      .instructor-chats .chat-wrap {
+        margin-left: -20px;
+      }
+    }
+  }
+
+
+  // public/cards show page
+
+  .card-info {
+    .card-info-heading {
+      margin-bottom: 50px;
+    }
+
+    .card-info-content {
+      padding: 15px;
+      width: 200px;
+
+      .card-number img {
+        width: 40px;
+        height: 25px;
+      }
+    }
+  }
+
+
+  // public/cards new page
+
+  .card-page {
+    .card-form-img {
+      img {
+        width: 30px;
+        height: 20px;
       }
     }
   }

@@ -2,7 +2,7 @@
   <div class="review-border border p-3 mb-5">
     <div class="review-content-wrap d-flex">
       <p class="review-user mr-5">レビュー投稿者： <%= review.user.fullname %></p>
-      <p class="mt-3"><%= review.comment %></p>
+      <p class="mt-3 review-text"><%= review.comment %></p>
     </div>
     <p class="review-day text-right mb-1">投稿日： <%= review.created_at.strftime('%Y/%m/%d') %></p>
     <% if review.user == current_user %>

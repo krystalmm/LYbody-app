@@ -10,7 +10,7 @@
         <div class="instructor-img pr-3">
           <%= image_tag @instructor.instructor_image.url(:thumb) %>
         </div>
-        <table class="table table-borderless col-9 ml-5 mt-4">
+        <table class="table table-borderless col-9 ml-md-5 ml-2 mt-4">
           <tbody>
             <tr>
               <td>インストラクター名</td>
@@ -33,21 +33,21 @@
       </div>
       <% if user_signed_in? %>
         <% if payed(current_user) %>
-          <div class="links col-8 offset-2 d-flex justify-content-between mt-5">
-            <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
-            <%= link_to "チャットで質問する", room_path(@room), class: 'btn btn-outline-light px-5', data: { "turbolinks" => false } %>
+          <div class="links col-8 offset-2 d-sm-flex d-block text-center justify-content-between mt-5">
+            <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-lg-5 mr-4 mr-sm-0 mb-3 mb-sm-0 mt-3 mt-sm-0' %>
+            <%= link_to "チャットで質問する", room_path(@room), class: 'btn btn-outline-light px-lg-5', data: { "turbolinks" => false } %>
           </div>
         <% else %>
           <div class="link text-center mt-5">
-            <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
+            <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-lg-5' %>
           </div>
         <% end %>
       <% else %>
         <div class="link text-center mt-5">
-          <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-5' %>
+          <%= link_to "予約の空き状況を確認する", reservations_path(instructor_id: @instructor.id), class: 'btn btn-outline-light px-lg-5' %>
         </div>
       <% end %>
-      <div class="review mt-5 pt-5 col-10 offset-1">
+      <div class="review mt-5 pt-5 col-lg-10 offset-lg-1 col-12">
         <h4 class="border-heading-bottom mb-4"><i class="far fa-comments"></i> レッスンレビュー</h4>
         <p id="reviews-count" class="text-right mr-4">レビュー件数：<%= @instructor.reviews.count %>件</p>
         <div id="review-content-<%= @instructor.id %>" class="p-5 mt-3">
