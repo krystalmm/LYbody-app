@@ -2,6 +2,9 @@ $(document).on('turbolinks:load', function () {
   if($('#calendar').length == 0){
     return;
   }
+
+  $('#calendar').empty();
+
   $('#calendar').fullCalendar({
 
     googleCalendarApiKey: 'AIzaSyAwUYezhMS-s1MSN2fVyuA8_I-OufFUT5E',

@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto pr-lg-5">
+      <ul class="navbar-nav ml-auto pr-xl-5">
         <% if instructor_signed_in? %>
           <li class="mr-3 mt-1 search-form">
             <%= form_with url: instructors_search_path, method: :get, local: true do |f| %>
@@ -65,6 +65,11 @@
           <li>
             <%= link_to new_user_session_path, class: 'nav-link text-center' do %>
               Sign In <br> ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_instructor_session_path, class: 'nav-link text-center' do %>
+              Instructor Sign In <br> インストラクターログイン
             <% end %>
           </li>
         <% end %>

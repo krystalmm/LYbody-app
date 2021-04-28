@@ -5,7 +5,7 @@
 <div class="container">
   <%= render 'shared/error_messages', obj: @lesson %>
   <div class="row">
-    <div class="instructor-mypage col-10 offset-1 mb-5 pb-3">
+    <div class="instructor-mypage col-md-10 offset-md-1 col-12 mb-5 pb-3">
       <h2 class="border-heading-bottom mb-5">マイページ</h2>
       <div class="instructor-info border-bottom">
         <h4 class="border-heading-side my-5 pt-3">登録情報・レッスン追加</h4>
@@ -13,7 +13,7 @@
           <div class="instructor-img">
             <%= image_tag @instructor.instructor_image.url(:thumb_sm) %>
           </div>
-          <table class="table table-borderless table-sm col-10 ml-5 mt-3">
+          <table class="table table-borderless table-sm col-10 ml-xl-5 ml-4 mt-3">
             <tbody>
               <tr>
                 <td>インストラクター名</td>
@@ -42,20 +42,20 @@
         </div>
         <div class="lesson-form my-5 col-10 offset-1">
           <%= form_with model: @lesson, url: instructors_lessons_path, local: true do |f| %>
-            <div class="existing-lesson-form d-lg-flex d-block">
+            <div class="existing-lesson-form d-xl-flex d-block">
               <p class="pr-5 mr-3">
                 <%= radio_button_tag :lesson_button, "existing_lesson", default: true %>
                 <%= f.label "既存のレッスンから選択して追加する" %>
               </p>
-              <%= f.collection_select :lesson_select, Lesson.all, :lesson, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-lg-5 ml-4' } %>
+              <%= f.collection_select :lesson_select, Lesson.all, :lesson, :lesson, { prompt: "レッスンを選択してください" }, { class: 'form-control col-xl-5 ml-xl-4' } %>
             </div>
-            <div class="add-lesson-form d-lg-flex d-block mt-3">
-              <p class="mr-5 pr-4">
+            <div class="add-lesson-form d-xl-flex d-block mt-3">
+              <p class="mr-5 pr-4 mt-4 mt-xl-0 mb-0">
                 <%= radio_button_tag :lesson_button, "add_lesson" %>
                 <%= f.label "新しくレッスンを追加する" %>
               </p>
-              <%= f.label :lesson, "レッスン名", class: 'mr-3 pt-1' %>
-              <%= f.text_field :lesson, class: 'form-control col-lg-5 mr-5' %>
+              <%= f.label :lesson, "レッスン名", class: 'mr-3 pt-xl-1' %>
+              <%= f.text_field :lesson, class: 'form-control col-xl-5 mr-5' %>
             </div>
             <div class="lesson-submit text-center mt-4">
               <%= f.submit "レッスンを追加する", class: 'btn btn-outline-light' %>
@@ -66,7 +66,7 @@
       <div class="lesson-reservation border-bottom">
         <h4 class="border-heading-side mb-5 mt-5">レッスン予約確認</h4>
         <% if @instructor.reservations.present? %>
-          <div class="reservation-list col-md-10 offset-md-1 mb-5">
+          <div class="reservation-list col-xl-10 offset-xl-1 col-12 mb-5">
             <table class="table table-borderless table-sm">
               <thead>
                 <tr>
