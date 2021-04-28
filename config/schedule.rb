@@ -21,7 +21,8 @@
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 ENV.each { |k, v| env(k, v) }
-rails_env = ENV['RAILS_ENV'] || :development
+# rails_env = ENV['RAILS_ENV'] || :development
+rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
 set :output, 'log/cron.log'
 every 1.minute do

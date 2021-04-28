@@ -4,10 +4,18 @@ Rails.application.routes.draw do
     sessions: 'instructors/sessions'
   }
 
+  devise_scope :instructor do
+    post 'instructors/guest_sign_in' => 'instructor/sessions#guest_sign_in'
+  end
+
   devise_for :users, only: [:sessions, :registrations], controllers: {
     sessions: 'public/sessions',
     registrations: 'public/registrations',
   }
+
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+  end
 
   namespace :instructors do
     get '/mypage' => 'instructors#show'

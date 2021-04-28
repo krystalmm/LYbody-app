@@ -37,4 +37,15 @@ class User < ApplicationRecord
   def self.looks(words)
     @users = User.where(["concat(firstname, lastname) LIKE ?", "%#{words}%"])
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.firstname = 'ゲスト'
+      user.lastname = 'ユーザー'
+      user.kana_firstname = 'ゲスト'
+      user.kana_lastname = 'ユーザー'
+      user.phone_number = '00000000000'
+    end
+  end
 end
