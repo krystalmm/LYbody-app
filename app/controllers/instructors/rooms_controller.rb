@@ -4,6 +4,12 @@ class Instructors::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
 
+    if @room.user.is_payed == false
+      flash[:danger] = '定期決済していないユーザーです。'
+      redirect_back(fallback_location: root_path)
+      return
+    end
+
     @chat = Chat.new
     chat_scope = @room.chats.order(:created_at)
     @chats = reverse_paginate(chat_scope, params[:page])
