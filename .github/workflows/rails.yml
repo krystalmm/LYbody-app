@@ -1,10 +1,10 @@
-name: Rails CI/CD
+# name: Rails CI/CD
 
-on:
-  push:
-    branches: [master]
+# on:
+#   push:
+#     branches: [master]
 
-jobs:
+# jobs:
   # rspec:
   #   runs-on: ubuntu-latest
   #   timeout-minutes: 30
@@ -23,24 +23,24 @@ jobs:
   #       docker-compose -f docker-compose.yml -f docker-compose.dev.yml run --rm web bundle exec rspec
   #     env:
   #       RAILS_ENV: test
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    # needs: rspec
-    steps:
-    - uses: actions/checkout@v2
-    - name: Deploy
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        USER_NAME: ${{ secrets.USER_NAME }}
-        HOST_NAME: ${{ secrets.HOST_NAME }}
-      run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd LYbody-app &&
-        git pull origin master &&
-        docker-compose run --rm web bash -c "bundle install" &&
-        if [[ -e tmp/pids/puma.pid ]];then kill $(cat tmp/pids/puma.pid); echo kill puma process;fi &&
-        docker-compose run --rm web rails db:seed_fu RAILS_ENV=production'
+  # build:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 30
+  #   # needs: rspec
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Deploy
+  #     env:
+  #       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+  #       USER_NAME: ${{ secrets.USER_NAME }}
+  #       HOST_NAME: ${{ secrets.HOST_NAME }}
+  #     run: |
+  #       echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+  #       ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd LYbody-app &&
+  #       git pull origin master &&
+  #       docker-compose run --rm web bash -c "bundle install" &&
+  #       if [[ -e tmp/pids/puma.pid ]];then kill $(cat tmp/pids/puma.pid); echo kill puma process;fi &&
+  #       docker-compose run --rm web rails db:seed_fu RAILS_ENV=production'
 
 # docker-compose up -d &&
 #         docker-compose run --rm web bundle install &&

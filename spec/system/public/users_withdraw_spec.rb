@@ -20,10 +20,7 @@ RSpec.describe 'UsersWithdraw', type: :system do
   end
 
   it 'fails login with dismissed user' do
-    click_link 'ログイン'
-    fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: user.password
-    click_button 'ログインする'
+    login_as(user)
     aggregate_failures do
       expect(current_path).to eq new_user_session_path
       expect(has_css?('.alert-danger')).to be_truthy
