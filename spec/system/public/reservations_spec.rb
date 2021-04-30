@@ -23,6 +23,18 @@ RSpec.describe 'Reservations', type: :system, js: true do
       end
     end
 
+    it 'fails update reservation when start_time < now' do
+      click_button '予約日時を変更する'
+      select Time.current.month - 1, from: "reservation[start_time(2i)]"
+      click_button '変更する'
+      aggregate_failures do
+        expect(current_path).to eq mypage_path
+        expect(has_css?('.alert-danger')).to be_truthy
+        visit current_path
+        expect(has_css?('.alert-danger')).to be_falsy
+      end
+    end
+
     it 'succeeds destroy reservation' do
       accept_alert do
         click_link '予約をキャンセルする'

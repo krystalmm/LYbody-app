@@ -4,6 +4,12 @@ class Instructors::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
 
+    if @room.user.is_payed == false
+      flash[:danger] = '定期決済していないユーザーです。'
+      redirect_back(fallback_location: root_path)
+      return
+    end
+
     @chat = Chat.new
     chat_scope = @room.chats.order(:created_at)
     @chats = reverse_paginate(chat_scope, params[:page])
@@ -35,8 +41,8 @@ class Instructors::RoomsController < ApplicationController
     if page
       page_number = page
     else
-      page_number = Kaminari.paginate_array(scope.reverse).page(1).per(8).max_pages
+      page_number = Kaminari.paginate_array(scope.reverse).page(1).per(10).max_pages
     end
-    Kaminari.paginate_array(scope.reverse).page(page_number).per(8).reverse!
+    Kaminari.paginate_array(scope.reverse).page(page_number).per(10).reverse!
   end
 end
