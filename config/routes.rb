@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get '/mypage' => 'instructors#show'
     resources :lessons, only: [:create, :destroy]
     resources :users, only: [:index, :show]
+    resources :reviews, only: [:destroy]
     resources :reservations, only: [:update, :destroy]
     resources :rooms, only: [:show]
     get 'rooms/:id/:page' => 'rooms#pagination', as: 'room_pagination'
