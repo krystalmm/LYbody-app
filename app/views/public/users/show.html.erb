@@ -58,7 +58,7 @@
           <% end %>
         </div>
       </div>
-      <div class="mypage-bottom mt-5">
+      <div class="mt-5">
         <% if @user.is_payed? %>
           <% if @user.reservation.present? %>
             <p class="mb-3 col-10 offset-1">※ レッスン予約日当日の該当時間になりましたら、レッスン担当のインストラクターよりZoomのURLが発行されますので、チャットのページを開いてお待ちください。</p>
@@ -116,6 +116,39 @@
           <div class="pay-link text-center pt-5">
             <%= link_to "支払い手続きをしてレッスンを受講する", new_card_path, class: 'btn btn-outline-light px-5' %>
           </div>
+        <% end %>
+      </div>
+      <div class="reviews border-bottom my-5">
+        <h4 class="border-heading-side mb-5 mt-5">投稿したレビュー</h4>
+        <% if @user.reviews.present? %>
+          <table class="table table-borderless table-sm col-sm-10 offset-sm-1 col-12 mb-5">
+            <thead class="border-bottom">
+              <tr>
+                <td class="pl-3">レビュー投稿日</td>
+                <td>レビュー内容</td>
+                <td>インストラクター</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.reviews.each do |review| %>
+                <tr class="review-tr">
+                  <td class="pl-3"><%= review.created_at.strftime('%Y/%m/%d') %></td>
+                  <td>
+                    <%= link_to instructor_path(review.instructor), class: 'hover-link' do %>
+                      <%= review.comment %>
+                    <% end %>
+                  </td>
+                  <td><%= review.instructor.name %></td>
+                  <td>
+                    <%= link_to "削除する", instructor_review_path(review.instructor.id, review.id), method: :delete, class: 'btn btn-outline-light btn-sm' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p class="text-center mb-5">投稿したレビューはまだありません。</p>
         <% end %>
       </div>
       <div class="withdraw-link my-5 text-right">

@@ -373,6 +373,10 @@ footer {
     }
   }
 
+  .review-tr td {
+    vertical-align: middle;
+  }
+
   .hover-link {
     &:hover {
       opacity: 0.6;
@@ -645,12 +649,24 @@ footer {
     }
   }
 
+  .review-tr td {
+    vertical-align: middle;
+  }
+
   .reservation-list {
     table {
       .td-left {
         width: 50%;
       }
     }
+  }
+
+  .review-sentiment-score-positive {
+    color: #a8e7ff;
+  }
+
+  .review-sentiment-score-negative {
+    color: #ff7b7b;
   }
 }
 

@@ -125,13 +125,25 @@
               <tr>
                 <td class="pl-3">レビュー投稿者</td>
                 <td>レビュー内容</td>
+                <td>レビュー点数</td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
               <% @instructor.reviews.each do |review| %>
-                <tr>
+                <tr class="review-tr">
                   <td class="pl-3"><%= review.user.fullname %></td>
                   <td><%= review.comment %></td>
+                  <% if review.score > 0 %>
+                    <td class="review-sentiment-score-positive"><%= review.score %></td>
+                  <% else %>
+                    <td class="review-sentiment-score-negative"><%= review.score %></td>
+                  <% end %>
+                  <% if review.score < 0 %>
+                    <td>
+                      <%= link_to "削除する", instructors_review_path(review), method: :delete, class: 'btn btn-outline-light btn-sm' %>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
