@@ -7,10 +7,10 @@ RSpec.describe 'Reviews', type: :system, js: true do
   context 'when user logged in' do
     before do
       login_as(user)
+      visit instructor_path(instructor)
     end
 
     it 'succeeds create review when user submit valid review' do
-      visit instructor_path(instructor)
       fill_in 'review-textarea', with: 'review content'
       click_button '投稿する'
       aggregate_failures do
@@ -24,7 +24,6 @@ RSpec.describe 'Reviews', type: :system, js: true do
     end
 
     it 'fails create review when user submit invalid review' do
-      visit instructor_path(instructor)
       fill_in 'review-textarea', with: ' '
       click_button '投稿する'
       aggregate_failures do
