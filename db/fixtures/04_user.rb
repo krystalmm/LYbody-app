@@ -7,7 +7,7 @@ User.seed do |s|
   s.email = "taro@example.com"
   s.password = "taropassword"
   s.phone_number = "08011112222"
-  s.is_payed = true
+  s.is_payed = false
 end
 
 User.seed do |s|
@@ -31,7 +31,7 @@ User.seed do |s|
   s.email = "yuto@example.com"
   s.password = "yutopassword"
   s.phone_number = "08000001111"
-  s.is_payed = true
+  s.is_payed = false
 end
 
 User.seed do |s|
@@ -43,7 +43,7 @@ User.seed do |s|
   s.email = "yuka@example.com"
   s.password = "yukapassword"
   s.phone_number = "0622221111"
-  s.is_payed = true
+  s.is_payed = false
 end
 
 User.seed do |s|
@@ -55,7 +55,7 @@ User.seed do |s|
   s.email = "yuno@example.com"
   s.password = "yunopassword"
   s.phone_number = "08055554444"
-  s.is_payed = true
+  s.is_payed = false
 end
 
 User.seed do |s|
@@ -67,7 +67,7 @@ User.seed do |s|
   s.email = "haru@example.com"
   s.password = "harupassword"
   s.phone_number = "0655553333"
-  s.is_payed = true
+  s.is_payed = false
 end
 
 
