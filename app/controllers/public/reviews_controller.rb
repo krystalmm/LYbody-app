@@ -5,6 +5,7 @@ class Public::ReviewsController < ApplicationController
   def create
     review = current_user.reviews.new(review_params)
     review.instructor_id = @instructor.id
+    @reviews = @instructor.reviews
     review.score = Language.get_data(review_params[:comment])
     respond_to do |format|
       if review.save
@@ -17,6 +18,7 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     review = Review.find_by(id: params[:id], instructor_id: @instructor.id)
+    @reviews = @instructor.reviews
     respond_to do |format|
       if review.destroy
         format.html { redirect_to mypage_path, notice: 'レビューが削除されました。' }
