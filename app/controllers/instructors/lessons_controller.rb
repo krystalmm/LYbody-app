@@ -15,6 +15,7 @@ class Instructors::LessonsController < ApplicationController
       redirect_to instructors_mypage_path, notice: 'レッスンが追加されました。'
     else
       @instructor = current_instructor
+      @reviews = @instructor.reviews
       render 'instructors/instructors/show'
     end
   end

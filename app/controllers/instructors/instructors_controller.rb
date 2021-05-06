@@ -4,5 +4,6 @@ class Instructors::InstructorsController < ApplicationController
   def show
     @instructor = current_instructor
     @lesson = Lesson.new
+    @reviews = @instructor.reviews.includes([:user])
   end
 end
