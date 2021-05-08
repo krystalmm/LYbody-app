@@ -48,8 +48,10 @@ RSpec.describe 'Users', type: :request do
         firstname: 'テスト', lastname: 'ユーザー', kana_firstname: 'テスト', kana_lastname: 'ユーザー',
         email: 'testuser@example.com', phone_number: '01022223333'
       } }
-      expect(response).to redirect_to mypage_path
-      expect(user.reload.email).to eq 'testuser@example.com'
+      aggregate_failures do
+        expect(response).to redirect_to mypage_path
+        expect(user.reload.email).to eq 'testuser@example.com'
+      end
     end
 
     it 'fails update user with wrong information' do
@@ -75,8 +77,10 @@ RSpec.describe 'Users', type: :request do
 
     it 'succeeds withdraw user' do
       patch withdraw_path
-      expect(response).to redirect_to root_path
-      expect(user.is_valid).to eq false
+      aggregate_failures do
+        expect(response).to redirect_to root_path
+        expect(user.is_valid).to eq false
+      end
     end
   end
 
