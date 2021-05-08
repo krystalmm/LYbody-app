@@ -92,5 +92,7 @@ RSpec.configure do |config|
   config.after(:all) do
     FileUtils.rm_rf(Dir[Rails.root.join("public/uploads_#{Rails.env}/")]) if Rails.env.test?
   end
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end
 

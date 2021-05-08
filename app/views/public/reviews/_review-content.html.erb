@@ -1,4 +1,4 @@
-<% instructor.reviews.each do |review| %>
+<% reviews.each do |review| %>
   <div class="review-border border p-3 mb-5">
     <div class="review-content-wrap d-flex">
       <p class="review-user mr-5">レビュー投稿者： <%= review.user.fullname %></p>
@@ -12,6 +12,6 @@
     <% end %>
   </div>
 <% end %>
-<% unless instructor.reviews.exists? %>
+<% unless reviews.exists? %>
   <p class="text-center">レビューはまだありません。</p>
 <% end %>

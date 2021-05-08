@@ -1,5 +1,5 @@
-$('#review-content-<%= @instructor.id %>').html('<%= j(render 'public/reviews/review-content', instructor: @instructor) %>');
-$('#reviews-count').html('レビュー件数：<%= @instructor.reviews.count %>件');
+$('#review-content-<%= @instructor.id %>').html('<%= j(render 'public/reviews/review-content', reviews: @reviews) %>');
+$('#reviews-count').html('レビュー件数：<%= @reviews.count %>件');
 $('#error_explanation').empty();
 <% flash.each do |message_type, message| %>
   $('#flash-messages').html("<div class='alert alert-success alert-dismissible fade show' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='閉じる'><span aria-hidden='true'>&times;</span></button><%= message %></div>");
