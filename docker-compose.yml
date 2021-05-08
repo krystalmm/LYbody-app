@@ -5,12 +5,9 @@ services:
     command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/LYbody
-      - bundle_path:/bundle
       - public-data:/LYbody/public
       - tmp-data:/LYbody/tmp
       - log-data:/var/log/nginx
-    environment:
-      - BUNDLE_PATH=/bundle
     tty: true
     stdin_open: true
 
@@ -25,7 +22,6 @@ services:
       - web
 
 volumes:
-  bundle_path:
   public-data:
   tmp-data:
   log-data:
