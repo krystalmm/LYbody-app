@@ -45,5 +45,5 @@ jobs:
         docker-compose exec -T web rails db:migrate RAILS_ENV=production &&
         if [[ -e tmp/pids/puma.pid ]];then kill $(cat tmp/pids/puma.pid); echo kill puma process;fi'
 
-# docker-compose build
+
 #  docker-compose exec -T web rails db:seed_fu RAILS_ENV=production &&

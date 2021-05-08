@@ -10,6 +10,14 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
+  describe '#show' do
+    before { sign_in user }
+    it 'responds successfully' do
+      get mypage_path
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe '#create' do
     it 'succeeds create a new user with correct signup information' do
       user_params = FactoryBot.attributes_for(:user)
@@ -20,6 +28,15 @@ RSpec.describe 'Users', type: :request do
         expect(response).to have_http_status(302)
         expect(response).to redirect_to mypage_path
       end
+    end
+  end
+
+  describe '#edit' do
+    before { sign_in user }
+
+    it 'responds successfully' do
+      get edit_information_path
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -35,5 +52,61 @@ RSpec.describe 'Users', type: :request do
       expect(user.reload.email).to eq 'testuser@example.com'
     end
 
+    it 'fails update user with wrong information' do
+      patch users_information_path, params: { user: {
+        firstname: ' ', lastname: ' ', kana_firstname: ' ', kana_lastname: ' ',
+        email: 'test@invalid', phone_number: '111222'
+      } }
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe '#unsubscribe' do
+    before { sign_in user }
+
+    it 'responds successfully' do
+      get unsubscribe_path
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe '#withdraw' do
+    before { sign_in user }
+
+    it 'succeeds withdraw user' do
+      patch withdraw_path
+      expect(response).to redirect_to root_path
+      expect(user.is_valid).to eq false
+    end
+  end
+
+  describe 'before_action: :authenticate_user' do
+    it 'redirects mypage when not logged in' do
+      get mypage_path
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'redirects edit when not logged in' do
+      get edit_information_path
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'redirects update when not logged in' do
+      patch users_information_path, params: { user: {
+        firstname: 'テスト', lastname: 'ユーザー', kana_firstname: 'テスト', kana_lastname: 'ユーザー',
+        email: 'testuser@example.com', phone_number: '01022223333'
+      } }
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'redirects unsubscribe when not logged in' do
+      get unsubscribe_path
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'redirects withdraw when not logged in' do
+      patch withdraw_path
+      expect(response).to redirect_to new_user_session_path
+    end
   end
 end

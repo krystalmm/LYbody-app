@@ -21,7 +21,7 @@ class Public::UsersController < ApplicationController
   def unsubscribe; end
 
   def withdraw
-    current_user.update(is_valid: false)
+    @user.update(is_valid: false)
     reset_session
     flash[:info] = 'ありがとうございました。またのご利用をお待ちしております。'
     redirect_to root_path
