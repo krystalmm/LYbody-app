@@ -25,6 +25,13 @@ RSpec.describe 'UsersLogin', type: :request do
       } }
       expect(response).to redirect_to new_user_session_path
     end
+
+    it 'fails login with invalid information' do
+      post user_session_path, params: { user: {
+        email: 'invalid@example.com', password: 'invalidpassword'
+      } }
+      expect(response.body).to include 'メールアドレスまたはパスワードが違います。'
+    end
   end
 
   describe '#destroy' do
