@@ -34,4 +34,16 @@ RSpec.describe 'UsersLogin', type: :system, js: true do
       expect(has_css?('.alert-danger')).to be_falsy
     end
   end
+
+  it 'succeeds login when click guest login link' do
+    visit new_user_session_path
+    click_on 'ゲストログイン'
+    aggregate_failures do
+      expect(current_path).to eq mypage_path
+      expect(page).to have_content 'ゲストユーザーとしてログインしました。'
+      expect(has_css?('.alert-success')).to be_truthy
+      visit current_path
+      expect(has_css?('.alert-success')).to be_falsy
+    end
+  end
 end

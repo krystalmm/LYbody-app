@@ -35,6 +35,20 @@ RSpec.describe 'Reservations', type: :system, js: true do
     end
   end
 
+  it 'fails update reservation when start_time is invalid date' do
+    click_button '変更する'
+    select '4', from: "reservation[start_time(2i)]"
+    select '31', from: "reservation[start_time(3i)]"
+    find('#modal-submit').click
+    aggregate_failures do
+      expect(current_path).to eq instructors_mypage_path
+      expect(has_css?('.alert-danger')).to be_truthy
+      expect(page).to have_content '日付の値が不正です。'
+      visit current_path
+      expect(has_css?('.alert-danger')).to be_falsy
+    end
+  end
+
   it 'succeeds destroy reservation' do
     accept_alert do
       click_link '削除する'

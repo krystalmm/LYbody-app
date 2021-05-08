@@ -1,2 +1,0 @@
-module Instructors::ReservationsHelper
-end

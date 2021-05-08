@@ -65,7 +65,7 @@
       </div>
       <div class="lesson-reservation border-bottom">
         <h4 class="border-heading-side mb-5 mt-5">レッスン予約確認</h4>
-        <% if @instructor.reservations.present? %>
+        <% if @reservations.present? %>
           <div class="reservation-list col-xl-10 offset-xl-1 col-12 mb-5">
             <table class="table table-borderless table-sm">
               <thead>
@@ -77,7 +77,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @instructor.reservations.each do |reservation| %>
+                <% @reservations.each do |reservation| %>
                 <tr>
                   <td class="pt-3 pl-3"><%= reservation.date_and_time %></td>
                   <td class="pt-3"><%= reservation.user.fullname %></td>
