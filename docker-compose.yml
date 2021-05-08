@@ -9,8 +9,6 @@ services:
       - public-data:/LYbody/public
       - tmp-data:/LYbody/tmp
       - log-data:/var/log/nginx
-    environment:
-      - BUNDLE_PATH=/bundle
     tty: true
     stdin_open: true
 
@@ -25,7 +23,6 @@ services:
       - web
 
 volumes:
-  bundle_path:
   public-data:
   tmp-data:
   log-data:
