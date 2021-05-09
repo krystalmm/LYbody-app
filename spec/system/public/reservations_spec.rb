@@ -6,7 +6,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   context 'when reservation date is not today or tommorow' do
     before do
-      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id, start_time: DateTime.current + 5, end_time: DateTime.current + 6)
+      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id)
       login_as(user)
     end
 
@@ -65,7 +65,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   context 'when reservation date is today or tommorow' do
     before do
-      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id)
+      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id, start_time: "#{DateTime.current.year}-#{DateTime.current.month}-#{DateTime.current.day + 1} 17:00", end_time: "#{DateTime.current.year}-#{DateTime.current.month}-#{DateTime.current.day + 1} 18:00")
       login_as(user)
     end
 
