@@ -49,7 +49,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
       end
     end
 
-    it 'succeeds destroy reservation' do
+    it 'succeeds delete reservation' do
       accept_alert do
         click_link '予約をキャンセルする'
       end
@@ -82,7 +82,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
       end
     end
 
-    it 'fails destroy reservation' do
+    it 'fails delete reservation' do
       accept_alert do
         click_link '予約をキャンセルする'
       end

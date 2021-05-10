@@ -49,7 +49,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
     end
   end
 
-  it 'succeeds destroy reservation' do
+  it 'succeeds delete reservation' do
     accept_alert do
       click_link '削除する'
     end

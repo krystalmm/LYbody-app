@@ -35,7 +35,7 @@ RSpec.describe 'Reviews', type: :system, js: true do
       end
     end
 
-    it 'succeeds destroy review when correct user' do
+    it 'succeeds delete review when correct user' do
       FactoryBot.create(:review, user_id: user.id, instructor_id: instructor.id)
       visit instructor_path(instructor)
       expect(page).to have_content user.fullname
@@ -49,7 +49,7 @@ RSpec.describe 'Reviews', type: :system, js: true do
       end
     end
 
-    it 'fails destroy review when not correct user' do
+    it 'fails delete review when not correct user' do
       other_user = FactoryBot.create(:user)
       FactoryBot.create(:review, user_id: other_user.id, instructor_id: instructor.id)
       visit instructor_path(instructor)

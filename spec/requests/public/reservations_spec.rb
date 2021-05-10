@@ -89,7 +89,7 @@ RSpec.describe 'Reservations', type: :request do
 
     before { sign_in user }
 
-    it 'succeeds destroy reservation' do
+    it 'succeeds delete reservation' do
       aggregate_failures do
         expect do
           delete reservation_path(reservation)
