@@ -8,10 +8,32 @@ RSpec.describe 'Reservations', type: :request do
     before { sign_in instructor }
 
     it 'succeeds update reservation with valid datetime' do
-      patch instructors_reservation_path(reservation), params: { reservation: FactoryBot.attributes_for(:reservation) }
+      patch instructors_reservation_path(reservation), params: { reservation: {
+        "start_time(1i)": "#{DateTime.current.year}", "start_time(2i)": "#{DateTime.current.month + 1}", "start_time(3i)": "10", "start_time(4i)": "17", "start_time(5i)": "00"
+      } }
       aggregate_failures do
-        expect(response).to have_http_status(302)
         expect(response).to redirect_to instructors_mypage_path
+        expect(reservation.reload.start_time.to_time).to eq "#{DateTime.current.year}-#{DateTime.current.month + 1}-10 17:00".to_time
+      end
+    end
+
+    it 'fails update reservation with invalid datetime' do
+      patch instructors_reservation_path(reservation), params: { reservation: {
+        "start_time(1i)": "#{DateTime.current.year + 1}", "start_time(2i)": "02", "start_time(3i)": "31", "start_time(4i)": "17", "start_time(5i)": "00"
+      } }
+      aggregate_failures do
+        expect(response).to redirect_to instructors_mypage_path
+        expect(reservation.reload.start_time.to_time).to_not eq "#{DateTime.current.year + 1}-02-31 17:00".to_time
+      end
+    end
+
+    it 'fails update reservation when start_time < now' do
+      patch instructors_reservation_path(reservation), params: { reservation: {
+        "start_time(1i)": "2021", "start_time(2i)": "01", "start_time(3i)": "19", "start_time(4i)": "17", "start_time(5i)": "00"
+      } }
+      aggregate_failures do
+        expect(response).to redirect_to instructors_mypage_path
+        expect(reservation.reload.start_time.to_time).to_not eq '2021-01-19 17:00'.to_time
       end
     end
   end
