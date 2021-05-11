@@ -5,6 +5,8 @@
 トレーニングをしていく上での不明点や疑問点をチャットでインストラクターに相談することもできます。
 パーソナルジムのサイトなので、シックでシンプルなデザインを意識しました。
 
+![lybody-online-top](https://user-images.githubusercontent.com/71312197/116621371-059bc480-a97e-11eb-8e26-6c87f0a8c461.png)
+
 ### サイトテーマ
 オンラインパーソナルジムサイト
 
@@ -27,8 +29,9 @@ https://docs.google.com/spreadsheets/d/1zEFPaBFNXamLd9ti4T9cmBucDQ6VpfFjD2NiNodr
 * フレームワーク：Ruby on Rails
 * JSライブラリ：jQuery
 * IDE：Cloud9
-* テスト:RSpec
+* テスト：RSpec
 * Docker/Docker-compose
+* CI/CD：GitHub Actions
 
 ## 使用素材
 * O-DAN
