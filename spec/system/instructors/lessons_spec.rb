@@ -21,7 +21,7 @@ RSpec.describe 'Lessons', type: :system, js: true do
     end
 
     choose 'lesson_button_existing_lesson'
-    select 'new_lesson', from: "lesson[lesson_select]"
+    select 'new_lesson', from: 'lesson[lesson_select]'
     click_button 'レッスンを追加する'
     aggregate_failures do
       expect(current_path).to eq instructors_mypage_path

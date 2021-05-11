@@ -13,10 +13,10 @@ class Instructors::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @room = Room.find_by(user_id: @user.id, instructor_id: current_instructor.id)
-    if @room.nil?
-      @room = Room.new(user_id: @user.id)
-      @room.instructor_id = current_instructor.id
-      @room.save
-    end
+    return unless @room.nil?
+
+    @room = Room.new(user_id: @user.id)
+    @room.instructor_id = current_instructor.id
+    @room.save
   end
 end

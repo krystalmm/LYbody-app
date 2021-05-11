@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Contacts", type: :request do
-  describe "#new" do
+RSpec.describe 'Contacts', type: :request do
+  describe '#new' do
     it 'responds successfully' do
       get new_contact_path
       expect(response).to have_http_status(:success)

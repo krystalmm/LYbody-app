@@ -39,9 +39,9 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_normal_user
-    if @user.email == 'guest@example.com'
-      flash[:danger] = 'ゲストユーザーの更新はできません。'
-      redirect_to mypage_path
-    end
+    return unless @user.email == 'guest@example.com'
+
+    flash[:danger] = 'ゲストユーザーの更新はできません。'
+    redirect_to mypage_path
   end
 end

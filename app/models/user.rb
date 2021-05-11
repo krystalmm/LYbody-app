@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def self.looks(words)
-    @users = User.where(["concat(firstname, lastname) LIKE ?", "%#{words}%"])
+    @users = User.where(['concat(firstname, lastname) LIKE ?', "%#{words}%"])
   end
 
   def self.guest

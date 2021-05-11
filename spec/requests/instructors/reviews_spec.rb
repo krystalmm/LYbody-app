@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Reviews", type: :request do
+RSpec.describe 'Reviews', type: :request do
   let(:instructor) { FactoryBot.create(:instructor) }
   let!(:review) { FactoryBot.create(:review, instructor_id: instructor.id) }
 
-  describe "#destroy" do
+  describe '#destroy' do
     before { sign_in instructor }
 
     it 'succeeds delete review' do

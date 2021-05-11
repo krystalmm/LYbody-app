@@ -3,8 +3,6 @@ class Instructors::ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
-    if review.destroy
-      redirect_to instructors_mypage_path, notice: 'レビューが削除されました。'
-    end
+    redirect_to instructors_mypage_path, notice: 'レビューが削除されました。' if review.destroy
   end
 end

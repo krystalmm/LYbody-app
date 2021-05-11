@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Reviews", type: :request do
+RSpec.describe 'Reviews', type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:instructor) { FactoryBot.create(:instructor) }
   let!(:review) { FactoryBot.create(:review, user_id: user.id, instructor_id: instructor.id) }
 
-  describe "#create" do
+  describe '#create' do
     before { sign_in user }
 
     it 'succeeds create review with valid information' do

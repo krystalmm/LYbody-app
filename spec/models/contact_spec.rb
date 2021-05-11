@@ -8,7 +8,7 @@ RSpec.describe Contact, type: :model do
   end
 
   it 'is invalid without a name' do
-    contact.name = ""
+    contact.name = ''
     expect(contact).to be_invalid
   end
 
@@ -18,7 +18,7 @@ RSpec.describe Contact, type: :model do
   end
 
   it 'is invalid without an email' do
-    contact.email = ""
+    contact.email = ''
     expect(contact).to be_invalid
   end
 
@@ -29,7 +29,8 @@ RSpec.describe Contact, type: :model do
   end
 
   it 'has invalid email' do
-    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar..com]
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com
+                           foo@bar..com]
     invalid_addresses.each do |invalid_address|
       contact.email = invalid_address
       expect(contact).to be_invalid, "#{invalid_address.inspect} should be invalid."
@@ -37,7 +38,7 @@ RSpec.describe Contact, type: :model do
   end
 
   it 'is invalid without a message' do
-    contact.message = ""
+    contact.message = ''
     expect(contact).to be_invalid
   end
 

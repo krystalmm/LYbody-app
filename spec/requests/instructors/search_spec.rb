@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Search", type: :request do
+RSpec.describe 'Search', type: :request do
   let(:instructor) { FactoryBot.create(:instructor) }
 
-  describe "#search" do
+  describe '#search' do
     before { sign_in instructor }
 
     it 'responds successfully' do

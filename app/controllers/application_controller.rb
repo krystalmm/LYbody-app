@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :handle_404
 
   def handle_404
-    render file: Rails.root.join('public', '404.html'), status: :not_found, layout: false
+    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false
   end
 
   def handle_500(e)
     ExceptionNotifier.notify_exception(e, env: request.env, data: { message: 'error' })
-    render file: Rails.root.join('public', '500.html'), status: :internal_server_error, layout: false
+    render file: Rails.root.join('public/500.html'), status: :internal_server_error, layout: false
   end
 
   protected

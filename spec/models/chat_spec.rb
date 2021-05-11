@@ -8,7 +8,7 @@ RSpec.describe Chat, type: :model do
   end
 
   it 'is invalid without a message' do
-    chat.message = ""
+    chat.message = ''
     expect(chat).to be_invalid
   end
 

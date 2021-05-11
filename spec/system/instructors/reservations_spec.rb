@@ -11,7 +11,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   it 'succeeds update reservation' do
     click_button '変更する'
-    select '19', from: "reservation[start_time(4i)]"
+    select '19', from: 'reservation[start_time(4i)]'
     find('#modal-submit').click
     aggregate_failures do
       expect(current_path).to eq instructors_mypage_path
@@ -25,7 +25,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   it 'fails update reservation when start_time < now' do
     click_button '変更する'
-    select Time.current.month - 1, from: "reservation[start_time(2i)]"
+    select Time.current.month - 1, from: 'reservation[start_time(2i)]'
     find('#modal-submit').click
     aggregate_failures do
       expect(current_path).to eq instructors_mypage_path
@@ -37,8 +37,8 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   it 'fails update reservation when start_time is invalid date' do
     click_button '変更する'
-    select '4', from: "reservation[start_time(2i)]"
-    select '31', from: "reservation[start_time(3i)]"
+    select '4', from: 'reservation[start_time(2i)]'
+    select '31', from: 'reservation[start_time(3i)]'
     find('#modal-submit').click
     aggregate_failures do
       expect(current_path).to eq instructors_mypage_path
