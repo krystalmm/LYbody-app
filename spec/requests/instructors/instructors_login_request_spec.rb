@@ -35,4 +35,12 @@ RSpec.describe 'InstructorsLogin', type: :request do
       expect(response).to redirect_to new_instructor_session_path
     end
   end
+
+  describe 'instructor guest login' do
+    it 'succeeds login' do
+      FactoryBot.create(:instructor, id: 1)
+      post instructors_guest_sign_in_path
+      expect(response).to redirect_to instructors_mypage_path
+    end
+  end
 end
