@@ -73,13 +73,23 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe '#withdraw' do
-    before { sign_in user }
+    let(:guest_user) { FactoryBot.create(:user, email: 'guest@example.com') }
 
     it 'succeeds withdraw user' do
+      sign_in user
       patch withdraw_path
       aggregate_failures do
         expect(response).to redirect_to root_path
         expect(user.is_valid).to eq false
+      end
+    end
+
+    it 'fails withdraw when logged in guest user' do
+      sign_in guest_user
+      patch withdraw_path
+      aggregate_failures do
+        expect(response).to redirect_to mypage_path
+        expect(guest_user.is_valid).to eq true
       end
     end
   end
