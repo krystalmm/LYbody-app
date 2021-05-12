@@ -6,13 +6,13 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   context 'when reservation date is not today or tommorow' do
     before do
-      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id, start_time: DateTime.current + 5, end_time: DateTime.current + 6)
+      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id)
       login_as(user)
     end
 
     it 'succeeds update reservation' do
       click_button '予約日時を変更する'
-      select '19', from: "reservation[start_time(4i)]"
+      select '19', from: 'reservation[start_time(4i)]'
       click_button '変更する'
       aggregate_failures do
         expect(current_path).to eq mypage_path
@@ -25,7 +25,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
     it 'fails update reservation when start_time < now' do
       click_button '予約日時を変更する'
-      select Time.current.month - 1, from: "reservation[start_time(2i)]"
+      select Time.current.month - 1, from: 'reservation[start_time(2i)]'
       click_button '変更する'
       aggregate_failures do
         expect(current_path).to eq mypage_path
@@ -37,8 +37,8 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
     it 'fails update reservation when start_time is invalid date' do
       click_button '予約日時を変更する'
-      select '04', from: "reservation[start_time(2i)]"
-      select '31', from: "reservation[start_time(3i)]"
+      select '04', from: 'reservation[start_time(2i)]'
+      select '31', from: 'reservation[start_time(3i)]'
       click_button '変更する'
       aggregate_failures do
         expect(current_path).to eq mypage_path
@@ -49,7 +49,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
       end
     end
 
-    it 'succeeds destroy reservation' do
+    it 'succeeds delete reservation' do
       accept_alert do
         click_link '予約をキャンセルする'
       end
@@ -65,13 +65,14 @@ RSpec.describe 'Reservations', type: :system, js: true do
 
   context 'when reservation date is today or tommorow' do
     before do
-      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id)
+      FactoryBot.create(:reservation, user_id: user.id, instructor_id: instructor.id,
+                                      start_time: "#{DateTime.current.year}-#{DateTime.current.month}-#{DateTime.current.day + 1} 17:00", end_time: "#{DateTime.current.year}-#{DateTime.current.month}-#{DateTime.current.day + 1} 18:00")
       login_as(user)
     end
 
     it 'fails update reservation' do
       click_button '予約日時を変更する'
-      select '19', from: "reservation[start_time(4i)]"
+      select '19', from: 'reservation[start_time(4i)]'
       click_button '変更する'
       aggregate_failures do
         expect(current_path).to eq mypage_path
@@ -82,7 +83,7 @@ RSpec.describe 'Reservations', type: :system, js: true do
       end
     end
 
-    it 'fails destroy reservation' do
+    it 'fails delete reservation' do
       accept_alert do
         click_link '予約をキャンセルする'
       end

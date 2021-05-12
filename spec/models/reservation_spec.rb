@@ -21,18 +21,21 @@ RSpec.describe Reservation, type: :model do
 
   it 'is invalid with a duplicate start_time scope: :instructor' do
     instructor = FactoryBot.create(:instructor)
-    FactoryBot.create(:reservation, instructor_id: instructor.id, start_time: DateTime.current + 2.hour, end_time: DateTime.current + 3.hour)
-    reservation = FactoryBot.build(:reservation, instructor_id: instructor.id, start_time: DateTime.current + 2.hour, end_time: DateTime.current + 3.hour)
+    FactoryBot.create(:reservation, instructor_id: instructor.id, start_time: DateTime.current + 2.hours,
+                                    end_time: DateTime.current + 3.hours)
+    reservation = FactoryBot.build(:reservation, instructor_id: instructor.id, start_time: DateTime.current + 2.hours,
+                                                 end_time: DateTime.current + 3.hours)
     expect(reservation).to be_invalid
   end
 
   it 'is invalid without an end_time' do
-    reservation.end_time = ""
+    reservation.end_time = ''
     expect(reservation).to be_invalid
   end
 
   it 'is invalid when start_time > end_time' do
-    reservation = FactoryBot.build(:reservation, start_time: DateTime.current + 3.hour, end_time: DateTime.current + 2.hour)
+    reservation = FactoryBot.build(:reservation, start_time: DateTime.current + 3.hours,
+                                                 end_time: DateTime.current + 2.hours)
     expect(reservation).to be_invalid
   end
 

@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user
-  before_action :ensure_normal_user, only: [:update]
+  before_action :guest_user_update, only: [:update]
+  before_action :guest_user_withdraw, only: [:withdraw]
 
   def show
     @reservation = Reservation.find_by(user_id: current_user.id)
@@ -21,7 +22,7 @@ class Public::UsersController < ApplicationController
   def unsubscribe; end
 
   def withdraw
-    current_user.update(is_valid: false)
+    @user.update(is_valid: false)
     reset_session
     flash[:info] = 'ありがとうございました。またのご利用をお待ちしております。'
     redirect_to root_path
@@ -38,10 +39,17 @@ class Public::UsersController < ApplicationController
                                  :password, :icon_image)
   end
 
-  def ensure_normal_user
-    if @user.email == 'guest@example.com'
-      flash[:danger] = 'ゲストユーザーの更新はできません。'
-      redirect_to mypage_path
-    end
+  def guest_user_update
+    return unless @user.email == 'guest@example.com'
+
+    flash[:danger] = 'ゲストユーザーの更新はできません。'
+    redirect_to mypage_path
+  end
+
+  def guest_user_withdraw
+    return unless @user.email == 'guest@example.com'
+
+    flash[:danger] = 'ゲストユーザーの退会はできません。'
+    redirect_to mypage_path
   end
 end

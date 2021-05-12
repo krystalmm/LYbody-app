@@ -8,7 +8,7 @@ RSpec.describe Lesson, type: :model do
   end
 
   it 'is invalid without a lesson' do
-    lesson.lesson = ""
+    lesson.lesson = ''
     expect(lesson).to be_invalid
   end
 

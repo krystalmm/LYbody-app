@@ -3,17 +3,17 @@ class Public::CardsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_payjp_secret_key, except: :new
-  before_action :set_card, only: [:new, :show, :pay, :cancel]
+  before_action :set_card, only: %i[new show pay cancel]
   before_action :ensure_current_user, only: [:show]
   before_action :redirect, only: [:cancel]
 
   # プラン作成
   def plan
     Payjp::Plan.create(
-      :amount => 8000,
-      :interval => 'month',
-      :billing_day => 31,
-      :currency => 'jpy',
+      amount: 8000,
+      interval: 'month',
+      billing_day: 31,
+      currency: 'jpy'
     )
   end
 
@@ -29,7 +29,7 @@ class Public::CardsController < ApplicationController
     default_card_information = customer.cards.retrieve(@card.card_id)
     @card_info = customer.cards.retrieve(@card.card_id)
     @exp_month = default_card_information.exp_month.to_s
-    @exp_year = default_card_information.exp_year.to_s.slice(2,3)
+    @exp_year = default_card_information.exp_year.to_s.slice(2, 3)
     @card_brand = default_card_information.brand
   end
 
@@ -54,9 +54,9 @@ class Public::CardsController < ApplicationController
   def pay
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.create(
-      :customer => @card.customer_id,
-      :plan => plan,
-      :metadata => { user_id: current_user.id }
+      customer: @card.customer_id,
+      plan: plan,
+      metadata: { user_id: current_user.id }
     )
     current_user.update(subscription_id: subscription.id, is_payed: true)
     redirect_to mypage_path, notice: '定期決済の処理が完了致しました。これからさまざまなレッスンをお楽しみください。'
@@ -84,15 +84,13 @@ class Public::CardsController < ApplicationController
   end
 
   def ensure_current_user
-    if current_user.card.id != params[:id].to_i
-      redirect_to card_path(current_user.card.id)
-    end
+    redirect_to card_path(current_user.card.id) if current_user.card.id != params[:id].to_i
   end
 
   def redirect
-    if current_user.reservation.present?
-      flash[:danger] = '現在ご予約されているレッスンがございますので、定期決済の解除はできません。'
-      redirect_to mypage_path
-    end
+    return if current_user.reservation.blank?
+
+    flash[:danger] = '現在ご予約されているレッスンがございますので、定期決済の解除はできません。'
+    redirect_to mypage_path
   end
 end

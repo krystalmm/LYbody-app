@@ -8,7 +8,7 @@ RSpec.describe Review, type: :model do
   end
 
   it 'is invalid without a comment' do
-    review.comment = ""
+    review.comment = ''
     expect(review).to be_invalid
   end
 

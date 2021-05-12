@@ -30,7 +30,24 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 25
 
 Metrics/MethodLength:
-  Max: 13
+  Max: 15
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Layout/LineLength:
+  Exclude:
+    - 'spec/**/*'
+  Max: 121
+
+Naming/MethodParameterName:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+
+Naming/VariableNumber:
+  Exclude:
+    - 'app/controllers/application_controller.rb'

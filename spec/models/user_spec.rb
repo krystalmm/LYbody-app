@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without a firstname' do
-    user.firstname = ""
+    user.firstname = ''
     expect(user).to be_invalid
   end
 
@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without a lastname' do
-    user.lastname = ""
+    user.lastname = ''
     expect(user).to be_invalid
   end
 
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without a kana_firstname' do
-    user.kana_firstname = ""
+    user.kana_firstname = ''
     expect(user).to be_invalid
   end
 
@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without a kana_lastname' do
-    user.kana_lastname = ""
+    user.kana_lastname = ''
     expect(user).to be_invalid
   end
 
@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without an email' do
-    user.email = ""
+    user.email = ''
     expect(user).to be_invalid
   end
 
@@ -81,7 +81,8 @@ RSpec.describe User, type: :model do
   end
 
   it 'has invalid email' do
-    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com foo@bar..com]
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com
+                           foo@bar..com]
     invalid_addresses.each do |invalid_address|
       user.email = invalid_address
       expect(user).to be_invalid, "#{invalid_address.inspect} should be invalid."
@@ -99,12 +100,13 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid without a phone_number' do
-    user.phone_number = ""
+    user.phone_number = ''
     expect(user).to be_invalid
   end
 
   it 'has invalid phone_number' do
-    invalid_phone_numbers = %w[111222233333 111222233 111222233 11122223 1112222 111222 11122 1112 111 11 1 １１１２２２２３３３３ １１２２２２３３３３]
+    invalid_phone_numbers = %w[111222233333 111222233 111222233 11122223 1112222 111222 11122 1112 111 11 1 １１１２２２２３３３３
+                               １１２２２２３３３３]
     invalid_phone_numbers.each do |invalid_phone_number|
       user.phone_number = invalid_phone_number
       expect(user).to be_invalid, "#{invalid_phone_number.inspect} should be invalid."

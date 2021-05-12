@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Contacts', type: :system, js:true do
+RSpec.describe 'Contacts', type: :system, js: true do
   before do
     visit new_contact_path
   end

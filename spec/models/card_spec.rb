@@ -8,12 +8,12 @@ RSpec.describe Card, type: :model do
   end
 
   it 'is invalid without a customer_id' do
-    card.customer_id = ""
+    card.customer_id = ''
     expect(card).to be_invalid
   end
 
   it 'is invalid without a card_id' do
-    card.card_id = ""
+    card.card_id = ''
     expect(card).to be_invalid
   end
 

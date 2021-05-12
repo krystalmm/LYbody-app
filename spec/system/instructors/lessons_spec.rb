@@ -20,9 +20,8 @@ RSpec.describe 'Lessons', type: :system, js: true do
       expect(page).to have_content 'new_lesson'
     end
 
-    # 既存のレッスン追加
     choose 'lesson_button_existing_lesson'
-    select 'new_lesson', from: "lesson[lesson_select]"
+    select 'new_lesson', from: 'lesson[lesson_select]'
     click_button 'レッスンを追加する'
     aggregate_failures do
       expect(current_path).to eq instructors_mypage_path

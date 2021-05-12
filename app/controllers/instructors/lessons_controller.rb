@@ -1,8 +1,6 @@
 class Instructors::LessonsController < ApplicationController
   before_action :authenticate_instructor!
 
-  # rubocop:disable Metrics/AbcSize
-
   def create
     case params[:lesson_button]
     when 'existing_lesson'
@@ -19,8 +17,6 @@ class Instructors::LessonsController < ApplicationController
       render 'instructors/instructors/show'
     end
   end
-
-  # rubocop:enable Metrics/AbcSize
 
   def destroy
     @lesson = Lesson.find(params[:id])
