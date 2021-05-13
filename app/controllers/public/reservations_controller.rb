@@ -69,7 +69,10 @@ class Public::ReservationsController < ApplicationController
 
     respond_to do |format|
       format.js { render :date_valid }
-      format.html { redirect_to mypage_path, danger: '日付の値が不正です。' }
+      format.html {
+        flash[:danger] = '日付の値が不正です。'
+        redirect_to mypage_path
+      }
     end
   end
 
