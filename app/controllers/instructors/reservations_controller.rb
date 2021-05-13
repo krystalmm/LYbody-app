@@ -33,6 +33,7 @@ class Instructors::ReservationsController < ApplicationController
     return if Date.valid_date?(params[:reservation]['start_time(1i)'].to_i, params[:reservation]['start_time(2i)'].to_i,
                                params[:reservation]['start_time(3i)'].to_i)
 
-    redirect_to instructors_mypage_path, danger: '日付の値が不正です。'
+    flash[:danger] = '日付の値が不正です。'
+    redirect_to instructors_mypage_path
   end
 end
