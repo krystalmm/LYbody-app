@@ -24,6 +24,9 @@
 ## 機能一覧
 https://docs.google.com/spreadsheets/d/1zEFPaBFNXamLd9ti4T9cmBucDQ6VpfFjD2NiNodrttU/edit#gid=0
 
+## AWS構成図
+![lybody-AWS構成図](https://user-images.githubusercontent.com/71312197/118216418-6f53bc80-b4ae-11eb-9a3e-6577b6014ffa.png)
+
 ## 開発環境
 * OS：Linux(CentOS)
 * 言語：HTML,CSS,JavaScript,Ruby,SQL
