@@ -12,9 +12,9 @@ end
 
 User.seed do |s|
   s.id = 2
-  s.firstname = "佐藤"
+  s.firstname = "斉藤"
   s.lastname = "道子"
-  s.kana_firstname = "サトウ"
+  s.kana_firstname = "サイトウ"
   s.kana_lastname = "ミチコ"
   s.email = "michiko@example.com"
   s.password = "michikopassword"
@@ -37,11 +37,11 @@ end
 User.seed do |s|
   s.id = 4
   s.firstname = "立花"
-  s.lastname = "由香"
+  s.lastname = "実香"
   s.kana_firstname = "タチバナ"
-  s.kana_lastname = "ユカ"
-  s.email = "yuka@example.com"
-  s.password = "yukapassword"
+  s.kana_lastname = "ミカ"
+  s.email = "mika@example.com"
+  s.password = "mikapassword"
   s.phone_number = "0622221111"
   s.is_payed = false
 end
