@@ -25,6 +25,7 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
+  # RSpec記述の為に使用
   chrome:
     image: selenium/standalone-chrome:latest
     shm_size: 256m
