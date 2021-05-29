@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     get 'users/information/edit' => 'users#edit', as: 'edit_information'
     patch 'users/information' => 'users#update'
     put 'users/information' => 'users#update'
+    patch 'users/icon_information' => 'users#icon'
+    put 'users/icon_information' => 'users#icon'
 
     resources :instructors, only: [:index, :show] do
       resources :reviews, only: [:create, :destroy]

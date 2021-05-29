@@ -19,6 +19,16 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def icon
+    if @user.update(icon_params)
+      redirect_to mypage_path, notice: 'ご登録情報の更新が完了しました。'
+    else
+      @reservation = Reservation.find_by(user_id: current_user.id)
+      @reviews = @user.reviews.includes([:instructor])
+      render :show
+    end
+  end
+
   def unsubscribe; end
 
   def withdraw
@@ -36,7 +46,11 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:firstname, :lastname, :kana_firstname, :kana_lastname, :email, :phone_number,
-                                 :password, :icon_image)
+                                 :password)
+  end
+
+  def icon_params
+    params.require(:user).permit(:icon_image)
   end
 
   def guest_user_update
