@@ -5,6 +5,7 @@
 <%= render 'shared/loading' %>
 <div id="wrap">
 <div class="container">
+  <%= render 'shared/error_messages', obj: @user %>
   <div class="row">
     <div class="mypage col-md-10 offset-md-1">
       <h2 class="border-heading-bottom mb-5">マイページ</h2>
@@ -12,7 +13,7 @@
         <h4 class="border-heading-side my-5 pt-3">ご登録情報</h4>
         <div class="user-info-main d-flex">
           <div class="user-image px-5">
-            <%= form_with model: @user, url: users_information_path, id: 'icon-form', local: true do |f| %>
+            <%= form_with model: @user, url: users_icon_information_path, id: 'icon-form', local: true do |f| %>
               <%= f.label :icon_image do %>
                 <div class="image-wrap">
                   <%= image_tag @user.icon_image.url, class: 'user-icon' %>
@@ -158,3 +159,14 @@
   </div>
 </div>
 </div>
+
+<% if @user.errors.any? %>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    // users/mypage のURLを取得
+    var $dir = location.href.split("/");
+    var $dir2 = $dir[$dir.length -2];
+    history.pushState('', '', '/' + $dir2 + '/mypage')
+  });
+  </script>
+<% end %>
