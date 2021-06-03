@@ -52,7 +52,6 @@ class Public::CardsController < ApplicationController
   end
 
   def pay
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.create(
       customer: @card.customer_id,
       plan: plan,
@@ -63,7 +62,6 @@ class Public::CardsController < ApplicationController
   end
 
   def cancel
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.retrieve(current_user.subscription_id)
     subscription.cancel
     customer = Payjp::Customer.retrieve(@card.customer_id)
