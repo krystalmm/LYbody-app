@@ -38,7 +38,10 @@ class Public::CardsController < ApplicationController
       redirect_to new_card_path
     else
       customer = Payjp::Customer.create(
-        card: params['payjp-token']
+        card: params['payjp-token'],
+        description: current_user.fullname,
+        email: current_user.email,
+        metadata: { user: current_user.id }
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
@@ -52,7 +55,6 @@ class Public::CardsController < ApplicationController
   end
 
   def pay
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.create(
       customer: @card.customer_id,
       plan: plan,
@@ -63,7 +65,6 @@ class Public::CardsController < ApplicationController
   end
 
   def cancel
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     subscription = Payjp::Subscription.retrieve(current_user.subscription_id)
     subscription.cancel
     customer = Payjp::Customer.retrieve(@card.customer_id)
