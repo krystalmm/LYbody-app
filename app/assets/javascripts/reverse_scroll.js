@@ -1,11 +1,10 @@
 $(document).on('turbolinks:load', function () {
   var i = 2;
-  chatwindow = document.getElementById('chat-window');
   $('#chat-window').scrollTop(1);
-  if (chatwindow == null) {
+  if ($('#chat-window') == null) {
     return;
   }
-  chatwindow.onscroll = function () {
+  document.getElementById('chat-window').onscroll = function () {
     // 一番上にスクロールされた時の処理
     if (($('#chat-window').scrollTop() == 0) && (i <= parseInt($("#chat-window").find("ul.pagination a.last").prop("search").match(/[0-9]/), 10))) {
       $.ajax({
