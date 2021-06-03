@@ -38,7 +38,10 @@ class Public::CardsController < ApplicationController
       redirect_to new_card_path
     else
       customer = Payjp::Customer.create(
-        card: params['payjp-token']
+        card: params['payjp-token'],
+        description: current_user.fullname,
+        email: current_user.email,
+        metadata: { user: current_user.id }
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
